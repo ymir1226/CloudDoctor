@@ -1,0 +1,43 @@
+<view class="per-container">
+	<view class="person-top">
+		<view class="info-box">
+			<image class="head-img" src="../../src/icon/persons.png" mode="aspectFill"></image>
+			<view class="text-box">
+				<text>某用户</text>
+				<text>xxxxxxxxxxxx</text>
+			</view>
+		</view>
+		<view class="ding-box">
+			<image class="ding-img" src="../../src/icon/dingding.png"></image>
+		</view>
+	</view>
+
+	<view class="per-mid">
+		<view class="img-box">
+			<image mode="widthFix" class="con-img" src='../../src/icon/record.png'></image>
+		</view>
+		<view class="img-box">
+			<image mode="widthFix" class="con-img" src='../../src/icon/consult.png'></image>
+		</view>
+		<view class="img-box">
+			<image mode="widthFix" class="con-img" src='../../src/icon/info.png'></image>
+		</view>
+		<view class="img-box">
+			<image mode="widthFix" class="con-img" src='../../src/icon/prescription.png'></image>
+		</view>
+		<view class="img-box">
+			<image mode="widthFix" class="con-img" src='../../src/icon/adm.png'></image>
+		</view>
+		<view class="img-box">
+			<image mode="widthFix" class="con-img" src='../../src/icon/favorite.png'></image>
+		</view>
+	</view>
+	<view class="per-bottom">
+		<image class="bottom-img" src="../../src/icon/bottom1.png" mode="widthFix"></image>
+		<image class="bottom-img" src="../../src/icon/bottom2.png" mode="widthFix"></image>
+		<image class="bottom-img-mid" src="../../src/icon/bottom5.png" mode="widthFix"></image>
+
+		<image class="bottom-img" src="../../src/icon/bottom3.png" mode="widthFix"></image>
+		<image class="bottom-img" src="../../src/icon/bottom4.png" mode="widthFix"></image>
+	</view>
+</view>

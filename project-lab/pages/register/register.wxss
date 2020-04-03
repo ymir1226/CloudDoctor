@@ -1,0 +1,55 @@
+.reg-box{
+  background: #0091ff;
+}
+
+.reg-top{
+  display:block;
+  width: 100%;
+}
+
+.reg-mid{
+  background-color: white;
+  height: 180rpx;
+  border-radius: 0 0 100rpx 100rpx;
+  position: relative;
+  top: -5rpx;
+}
+
+.reg-text{
+  display: block;
+  text-align: center;
+  letter-spacing: 15rpx;
+  font-size: 35rpx;
+  font-weight: 600;
+  
+}
+
+.reg-bottom{
+  text-align: center;
+  /* position: relative;
+  top: -90rpx; */
+  width: auto;
+  background-color: #0091ff;
+}
+
+.reg-bottom text{
+  display: inline-block;
+  background-color: #0091ff;
+  color: #fff;
+  font-size: 24rpx;
+  
+  
+}
+
+.reg-button{
+  margin: 200rpx 20rpx 0rpx 20rpx;
+  border-radius: 100rpx;
+  background-color: #0091ff;
+  border:2rpx solid #fff;
+  color: #fff;
+}
+
+.reg-button-hover{
+  background-color: #fff;
+  color: #0091ff; 
+}

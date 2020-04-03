@@ -1,0 +1,17 @@
+<view class="reg-box" >
+	<image class="reg-top" src='../../src/register-top.png' mode="widthFix" bindtap="loginss"></image>
+	<view class="reg-mid">
+		<text class="reg-text">在家就能与医生</text>
+		<text class="reg-text">预约线上问诊</text>
+	</view>
+
+	<view class="reg-bottom" >
+		<button class='reg-button' hover-class="reg-button-hover" style='padding: 3px 40px;' size="mini">登录</button>
+		<button class='reg-button' hover-class="reg-button-hover" style='padding: 3px 40px;' size="mini">注册</button>
+		<view style="padding: 90rpx 0;background-color:#0091ff">
+			<text>如果你是医生？</text><text style="text-decoration: underline;">点击这里</text>
+		</view>
+	</view>
+
+
+</view>

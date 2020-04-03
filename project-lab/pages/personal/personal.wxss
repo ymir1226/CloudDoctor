@@ -1,0 +1,86 @@
+.per-container{
+  background-color: #f6f6f6;
+  height: 100vh;
+}
+
+.person-top{
+  display: flex;
+  justify-content: space-between;
+  padding: 50rpx;
+}
+.info-box{
+  display: flex;
+  align-items: center;
+}
+
+.text-box{
+  margin-left: 20rpx;
+}
+
+.text-box text{
+  font-size: 30rpx;
+  display: block;
+}
+
+.head-img{
+  
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.ding-box{
+  width: 70rpx;
+  height: 70rpx;
+  padding: 10rpx;
+  border-radius: 30rpx;
+  box-shadow:0px 0px  15px 1px #ddd;
+}
+
+.ding-img{
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.per-mid{
+  display: flex;
+  flex-wrap: wrap;
+  margin:  0 50rpx;
+  justify-content: space-between;
+}
+
+.img-box{
+  width: 300rpx;
+  height: 300rpx;
+  background-color: white;
+  margin-bottom: 40rpx;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:0px 0px  15px 1px #ddd;
+
+}
+
+.con-img{
+  width: 150rpx;
+}
+
+.per-bottom{
+  width: 100vw;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 50rpx;
+
+}
+
+.bottom-img{
+  width: 130rpx;
+}
+
+.bottom-img-mid{
+  width: 80rpx;
+}
