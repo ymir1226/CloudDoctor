@@ -31,6 +31,8 @@
 		<view class="img-box">
 			<image mode="widthFix" class="con-img" src='../../src/icon/favorite.png'></image>
 		</view>
+		<view style="width:600rpx;height:180rpx;backgrand:transparent;">
+		</view>
 	</view>
 	<view class="per-bottom">
 		<image class="bottom-img" src="../../src/icon/bottom1.png" mode="widthFix"></image>
