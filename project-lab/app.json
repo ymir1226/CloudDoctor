@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/inquiry/inquiry",
     "pages/personal/personal",
     "pages/register/register"
-    
     
   ],
   "window": {

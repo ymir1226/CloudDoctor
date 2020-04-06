@@ -1,0 +1,74 @@
+<view class="inq-container">
+	<view class="card">
+		<view class="card-head">
+			<image src="../../src/icon/question.png" mode="widthFix"></image>
+			<text>请输入你的问题/描述你的症状</text>
+		</view>
+		<view class="card-body">
+			<textarea maxlength='1000' placeholder="请输入你的问题"></textarea>
+			<view class="card-button">
+				<image mode="widthFix" src="../../src/icon/label.png"></image>
+				<text>上传图片</text>
+			</view>
+		</view>
+	</view>
+
+	<view class="card">
+		<view class="card-head">
+			<image src="../../src/icon/menu.png" mode="widthFix"></image>
+			<text>其他信息</text>
+		</view>
+		<view class="card-body">
+
+			<view class="select-item">
+				<text>您以前有任何诊断过的疾病吗？</text>
+				<switch bindchange="medHistoryChange"></switch>
+			</view>
+			<view model:hidden="{{medHistory}}">
+				<view class="add-content"></view>
+				<view class="card-button">
+					<image src="../../src/icon/add.png" mode="widthFix"></image>
+					<text>添加病史</text>
+				</view>
+			</view>
+
+			<view class="select-item">
+				<text>您有服用过什么药物吗？</text>
+				<switch bindchange="medicineChange"></switch>
+			</view>
+			<view hidden="{{medicine}}">
+				<view class="add-content"></view>
+				<view class="card-button">
+					<image src="../../src/icon/add.png" mode="widthFix"></image>
+					<text>添加药物</text>
+				</view>
+			</view>
+
+			<view class="select-item">
+				<text>您对什么过敏吗？</text>
+				<switch bindchange="allergyChange"></switch>
+			</view>
+			<view hidden="{{allergy}}">
+				<view class="add-content"></view>
+				<view class="card-button">
+					<image src="../../src/icon/add.png" mode="widthFix"></image>
+					<text>添加</text>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<text class="alert">对于紧急医疗情况，请致电120（或您当地的紧急服务部门）或去最近的急诊室</text>
+
+	<view class="inq-bottom">
+		<view class="protect">
+			<image src="../../src/icon/lock.png" mode="widthFix"></image>
+			<text>您的个人信息将受到100%保护</text>
+		</view>
+
+		<view class="card-button" id="pay">
+			<text>支付诊费</text>
+			<image mode="widthFix" src="../../src/icon/Right.png"></image>
+		</view>
+	</view>
+</view>
