@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/inquiry/inquiry",
     "pages/personal/personal",
-    "pages/register/register"
+    "pages/inquiry/inquiry",
+    "pages/register/register",
+    "pages/room/room"
     
   ],
   "window": {

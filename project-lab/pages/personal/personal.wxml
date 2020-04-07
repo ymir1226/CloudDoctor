@@ -1,9 +1,12 @@
 <view class="per-container">
 	<view class="person-top">
 		<view class="info-box">
-			<image class="head-img" src="../../src/icon/persons.png" mode="aspectFill"></image>
+			<view class="head-img">
+        <open-data class="head-img" type="userAvatarUrl"></open-data>
+      </view>
+			<!-- <image class="head-img" src="../../src/icon/persons.png" mode="aspectFill"></image> -->
 			<view class="text-box">
-				<text>某用户</text>
+				<open-data type="userNickName" lang="zh_CN"></open-data>
 				<text>xxxxxxxxxxxx</text>
 			</view>
 		</view>
@@ -17,7 +20,8 @@
 			<image mode="widthFix" class="con-img" src='../../src/icon/record.png'></image>
 		</view>
 		<view class="img-box">
-			<image mode="widthFix" class="con-img" src='../../src/icon/consult.png'></image>
+			<!-- <image mode="widthFix" class="con-img" src='../../src/icon/consult.png'></image> -->
+      <image mode="widthFix" bindtap="goChat" class="con-img" src='../../src/icon/consult.png'></image>
 		</view>
 		<view class="img-box">
 			<image mode="widthFix" class="con-img" src='../../src/icon/info.png'></image>
