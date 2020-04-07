@@ -1,0 +1,110 @@
+<view class="reply-container">
+	<view class="card">
+		<view class="card-body doc-info">
+			<image mode="widthFix" src="../../src/icon/persons.png"></image>
+			<view style="margin-bottom: 0;" class="doc-info-right">
+				<text style="font-size:45rpx">吴医生</text>
+				<text>过敏与免疫学</text>
+				<view style="display:flex;align-items:center;">
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<text >4.8</text>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="card">
+
+		<view class="card-head">
+			<image mode="widthFix" src="../../src/icon/time.png"></image>
+			<text>回复时间</text>
+		</view>
+		<view class="card-body">
+			<view>回复时间：xxx</view>
+			<view>图文问诊：xxx</view>
+		</view>
+	</view>
+
+	<view class="card">
+
+		<view class="card-head">
+			<image mode="widthFix" src="../../src/icon/question.png"></image>
+			<text>问诊信息</text>
+		</view>
+		<view class="card-body">
+			<view>我的问题</view>
+			<view class="note">提交时间 xxx</view>
+			<view>患者：4岁儿童</view>
+			<view>
+				我认为我的儿子接触过水痘，怎么办？我认为我的儿子接触过水痘，怎么办？我认为我的儿子接触过水痘，怎么办？我认为我的儿子接触过水痘，怎么办？
+			</view>
+
+			<view class="illness-box">
+				<image mode="widthFix" src="../../src/icon/illness.png"></image>
+				<view class="illness-des">
+					<view>脖子后发红</view>
+					<view class="note">上传时间：xxx</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="card-body">
+			<view>医生回复</view>
+			<view class="note">回复时间：xxx</view>
+			<view>水痘疫苗是一种弱化的水痘活菌。水痘疫苗是一种弱化的水痘活菌。水痘疫苗是一种弱化的水痘活菌。水痘疫苗是一种弱化的水痘活菌。水痘疫苗是一种弱化的水痘活菌。水痘疫苗是一种弱化的水痘活菌。</view>
+		</view>
+
+    <view class="card-body">
+      <view>处方</view>
+      <view class="precription">
+        <view class="pre-name">xxxxx</view>
+        <view class="pre-des">每天四次,xxxxx。</view>
+      </view>
+
+      <view class="card-button">
+        <text>继续问诊</text>
+      </view>
+    </view>
+
+
+	</view>
+
+	<view class="card">
+
+		<view class="card-head">
+      <image mode="widthFix" src="../../src/icon/menu.png"></image>
+      <text>其他信息</text>
+    </view>
+		<view class="card-body">
+      <view>病史</view>
+      <view>一次流感 <span class="note">(Dec 15,2019)</span></view>
+      <view>药物</view>
+      <view>青霉素 <span class="note">(Dec 15,2019)</span></view>
+      <view>过敏史</view>
+      <view>麻疹 <span class="note">(Dec 15,2019)</span></view>
+    </view>
+	</view>
+
+	<view class="card">
+
+		<view class="card-head">
+      <image mode="widthFix" src="../../src/icon/comment.png"></image>
+      <text>评论</text>
+    </view>
+		<view class="card-body">
+      <view class="star-set">
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+      </view>
+      <view>
+        医生提供的答案非常有用，知识渊博。医生提供的答案非常有用，知识渊博。医生提供的答案非常有用，知识渊博。医生提供的答案非常有用，知识渊博。
+      </view>
+    </view>
+	</view>
+
+	<text class="alert">对于紧急医疗情况，请致电120（或您当地的紧急服务部门）或去最近的急诊室</text>
+
+</view>

@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/personal/personal",
+    "pages/reply/reply",
     "pages/inquiry/inquiry",
-    "pages/register/register",
-    "pages/room/room"
-    
+    "pages/personal/personal",
+    "pages/room/room",
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",
