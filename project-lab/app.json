@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/doctorList/doctorList",
+    "pages/doctorHome/doctorHome",
     "pages/reply/reply",
     "pages/inquiry/inquiry",
     "pages/personal/personal",

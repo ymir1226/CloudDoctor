@@ -1,0 +1,7 @@
+<!--pages/components/tabBar/tabBar.wxml-->
+<view class="tabbar" style="width:{{width}}">
+  <view  wx:for="{{list}}" data-key='{{index}}' bindtap='tabBarSelected'> 
+    <text class="tabbarText" style="color:{{currentItem===index?'black':'rgb(203, 202, 202)'}}">{{item.title}}</text>
+    <view class="blackUnderline" style="display:{{currentItem===index?'block':'none'}}"></view>
+  </view>
+</view>

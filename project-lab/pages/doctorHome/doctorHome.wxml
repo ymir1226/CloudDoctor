@@ -1,0 +1,141 @@
+
+<view class="container">
+  <view class="blueBackground"></view>
+  <view class="doctorBasicInfo">
+    <view class="doctorImgInfo">
+      <image src="../../src/doctor.jfif" class="doctorImg"></image>
+      <view class="doctorInfo">
+        <text class="doctorName">吴医生</text>
+        <text class="doctorDep">副主任医师</text>
+        <view class="doctorScoreReview">
+          <image src="../../src/icon/star.png" class="star"></image>
+          <text class="doctorScore">4.8</text>
+          <text class="doctorReview">(1387 reviews)</text>
+        </view>
+        <text class="doctorSpecial">擅长：面部轮廓</text>
+      </view>
+    </view>
+    <view class="doctorWork">
+      <view>
+        <text style="display:block;font-size:25rpx;color:#c0c0c0;">病例</text>
+        <text style="display:block;font-size:45rpx;color:black;">1523</text>
+      </view>
+      <view>
+        <text style="display:block;font-size:25rpx;color:#c0c0c0;">问诊量</text>
+        <text style="display:block;font-size:45rpx;color:black;">423</text>
+      </view>
+      <view>
+        <text style="display:block;font-size:25rpx;color:#c0c0c0;">接诊率</text>
+        <text style="display:block;font-size:45rpx;color:black;">100%</text>
+      </view>
+    </view>
+  </view>
+  <view class="title">
+    <text style="font-size:35rpx;color:black;margin-left:35rpx;">私人问诊服务</text>
+    <image src="../../src/icon/i .png" style="margin-left:15rpx;height:50rpx;width:50rpx"></image>
+    <text style="font-size:35rpx;color:rgb(10, 143, 245);margin-left:280rpx;">医生排班</text>
+  </view>
+  <view class="consultType">
+    <button style="width:220rpx;height:140rpx;">
+      <image src="../../src/icon/email.png" style="display:block;width:60rpx;height:60rpx;"></image>
+      <text style="font-size:25rpx;color:white;display:block;">图文问诊</text>
+    </button>
+    <button style="width:220rpx;height:140rpx;">
+      <image src="../../src/icon/video.png" style="display:block;width:60rpx;height:60rpx;"></image>
+      <text style="display:block;font-size:25rpx;color:white;">视频问诊</text>
+    </button>
+    <button style="width:220rpx;height:140rpx;">
+      <image src="../../src/icon/appointment.png" style="display:block;width:60rpx;height:60rpx;"></image>
+      <text style="font-size:25rpx;color:white;display:block;">预约挂号</text>
+    </button>
+  </view>
+  <view class="tabbar">
+  <view wx:for="{{list}}" data-key='{{index}}' bindtap='tabBarSelected'> 
+    <text class="tabbarText" style="color:{{currentItem===index?'black':'rgb(203, 202, 202)'}}">{{item.title}}</text>
+    <view class="blackUnderline" style="display:{{currentItem===index?'block':'none'}}"></view>
+  </view>
+  </view>
+  <view class="infoShow">
+    <view style="height:80rpx;width:100%;"></view>
+    <text style="font-size:40rpx;color:black;font-weight:bolder;margin-left:30rpx;">基本信息</text>
+    <view class="aboutMe">
+      <view class="aboutMePart1">
+        <image src="../../src/icon/aboutMe.png" class="aboutMeImage"></image>
+        <text style="margin-top:20rpx;margin-left:40rpx;font-weight:bolder;">关于我</text>
+      </view>
+      <view class="aboutMePart2">
+        <view style="margin-left:10%;width:80%;">
+          <text style="font-size:30rpx;word-break: break-all;">
+          我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍
+          </text>
+        </view>
+        <text class="knowMore">了解更多</text>
+      </view>
+    </view>
+    <view class="address">
+      <map id="map" longitude="{{map.longitude}}" latitude="{{map.latitude}}" scale="{{map.scale}}" markers="{{map.markers}}" show-location style="width:100%;height:400rpx;border-top-left-radius:30rpx;border-top-right-radius:30rpx;">
+      </map>
+      <view style="height:auto;width:100%;padding-bottom:40rpx;padding-top:20rpx;">
+        <view style="margin-left:5%;width:90%;">
+          <text style="word-break:break-all;margin-left:30rpx;margin-right:30rpx;">
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
+        </view>
+        <view style="width:100%;display:flex;flex-direction:row;margin-top:60rpx;">
+          <image src="../../src/icon/telephone.png" style="width:40rpx;height:40rpx;margin-left:30rpx;"></image>
+          <text style="margin-left:40rpx;color:rgb(10, 143, 245);font-size:35rpx;">021-8812345</text>
+        </view>
+      </view>
+    </view>
+    <view style="margin-top:60rpx;margin-left:4%;">
+      <text style="font-size:40rpx;color:black;font-weight:bolder;">工作经历</text>
+    </view>
+    <view class="classroom">
+      <view class="classroomPart1">
+        <image src="../../src/icon/classroom.png" style="height:60rpx;width:60rpx;margin-left:40rpx;"></image>
+        <text style="font-size:40rpx;font-weight:bolder;margin-left:40rpx;">科室</text>
+      </view>
+      <view class="classroomPart2">
+        <view class="classroomItem" wx:for="{{classroomList}}">
+          <image src="{{item.imgurl}}" style="width:60rpx;height:60rpx;margin-left:40rpx;"></image>
+          <text style="font-size:40rpx;margin-left:40rpx;word-break:break-all;">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="experience">
+      <view class="experiencePart1">
+        <image src="../../src/icon/Stethoscope.png" style="height:60rpx;width:60rpx;margin-left:40rpx;"></image>
+        <text style="font-size:40rpx;font-weight:bolder;margin-left:40rpx;">经验</text>
+      </view>
+      <view class="experiencePart2">
+        <view class="experienceItem" wx:for="{{experienceList}}">
+          <text style="font-size:35rpx;display:block;margin-left:40rpx;">{{item.title}}</text>
+          <text style="font-size:40rpx;display:block;margin-left:40rpx;font-weight:bolder;word-break:break-all;margin-top:20rpx;">{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+    <view style="margin-top:60rpx;margin-left:4%;">
+      <text style="font-size:40rpx;color:black;font-weight:bolder;">教育经历</text>
+    </view>
+    <view class="education">
+      <view class="educationPart1">
+        <image src="../../src/icon/education.png" style="height:60rpx;width:60rpx;margin-left:40rpx;"></image>
+        <text style="font-size:40rpx;font-weight:bolder;margin-left:40rpx;">教育</text>
+      </view>
+      <view class="educationPart2">
+        <view style="width:100%;margin-top:30rpx;" wx:for="{{educationList}}">
+          <text style="font-size:35rpx;margin-left:40rpx;">{{item.school}}</text>
+          <view class="educationItem">
+            <image src="{{item.imgUrl}}" style="width:150rpx;height:150rpx;"></image>
+            <view style="margin-left:40rpx;height:auto;width:65%;">
+              <text style="font-size:35rpx;font-weight:bolder;word-break:break-all;display:block;">{{item.college}}</text>
+              <text style="font-size:30rpx;color:gray;margin-top:15rpx;display:block;">{{item.date}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <button class="requestNewConsult" style="width:92%;">Request New Consult</button>
+  </view>
+</view>
+
+

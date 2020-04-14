@@ -1,0 +1,354 @@
+/* pages/doctorHome/doctorHome.wxss */
+.container
+{
+  width: 100%;
+  height: auto;
+  background-color: rgba(250, 250, 250, 0.981);
+}
+.blueBackground
+{
+  width: 100%;
+  margin-top: -200rpx;
+  height: 400rpx;
+  background-color: rgb(10, 143, 245);
+}
+.doctorBasicInfo
+{
+  margin-top: -300rpx;
+  background-color: white;
+  border-radius: 30rpx;
+  width: 90%;
+  height: 450rpx;
+}
+.doctorImgInfo
+{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height:300rpx ;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  border-bottom-color:#f2eeee; 
+  border-bottom-width:2rpx;
+  border-bottom-style:solid;
+}
+.doctorImg
+{
+  width:129rpx;
+  height:128rpx;
+  border-radius: 20rpx;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+.doctorInfo
+{
+  height: auto;
+  margin-left: 50rpx;
+  margin-top: 5%;
+}
+.doctorName
+{
+  display: block;
+  font-size: 30rpx;
+  color: rgb(10, 143, 245);
+  font-weight: bolder;
+}
+.doctorDep
+{
+  display: block;
+  margin-top: 20rpx;
+  color: black;
+  font-size: 25rpx;
+}
+.doctorScoreReview
+{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  height: auto;
+  width: auto;
+}
+.star
+{
+  width: 40rpx;
+  height: 40rpx;
+  float: left;
+}
+.doctorScore
+{
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  font-weight: bolder;
+  color:black
+}
+.doctorReview
+{
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  color: #c0c0c0;
+}
+.doctorSpecial
+{
+  height: auto;
+  line-height: 1em;
+  margin-top: 10rpx;
+  font-size: 25rpx;
+  color: #c0c0c0;
+}
+.doctorWork
+{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 150rpx;
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+}
+.title
+{
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.consultType
+{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 150rpx;
+  width: 100%;
+  margin-top: 40rpx;
+}
+.consultType button
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(10, 143, 245);
+  border-radius: 20rpx;
+  text-align:center;
+}
+
+.tabbar
+{
+  margin-left: -30%;
+  margin-top: 60rpx;
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.tabbarText
+{
+  font-size:35rpx;
+  color:rgb(203, 202, 202);
+  font-weight:bolder;
+}
+.blackUnderline
+{
+  display: none;
+  height: 5rpx;
+  width: 60rpx;
+  background-color: black;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
+}
+.infoShow
+{
+  margin-top: 30rpx;
+  height: auto;
+  width: 100%;
+  padding-bottom: 60rpx;
+}
+.aboutMe
+{
+  margin-left: 4%;
+  background-color: white;
+  margin-top: 60rpx;
+  border-radius: 30rpx;
+  width: 92%;
+  height: auto;
+}
+.aboutMePart1
+{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100rpx;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  border-bottom-color:#f2eeee; 
+  border-bottom-width:2rpx;
+  border-bottom-style:solid;
+}
+.aboutMeImage
+{
+  margin-top: 20rpx;
+  margin-left:30rpx;
+  height:60rpx;
+  width:60rpx;
+  border-radius:20rpx;
+}
+.aboutMePart2
+{
+  width:100%;
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+  height: auto;
+  padding-bottom: 140rpx;
+}
+.knowMore
+{
+  background-color: white;
+  float: right;
+  width:auto;
+  margin-top: 40rpx;
+  margin-right: 60rpx;
+  height:40rpx ;
+  font-size: 35rpx;
+  color:rgb(10, 143, 245); 
+  font-weight: bolder;
+}
+.address
+{
+  margin-left: 4%;
+  background-color: white;
+  margin-top: 60rpx;
+  border-radius: 30rpx;
+  width: 92%;
+  height: auto;
+  overflow: hidden;
+}
+.classroom
+{
+  margin-left: 4%;
+  background-color: white;
+  margin-top: 60rpx;
+  border-radius: 30rpx;
+  width: 92%;
+  height: auto;
+}
+.classroomPart1
+{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  width:100%;
+  height:140rpx;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  border-bottom-color:#f2eeee; 
+  border-bottom-width:2rpx;
+  border-bottom-style:solid;
+  align-items: center;
+}
+.classroomPart2
+{
+  width: 100%;
+  height: auto;
+  padding-bottom: 60rpx;
+}
+.classroomItem
+{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top:40rpx;
+}
+.experience
+{
+  margin-left: 4%;
+  background-color: white;
+  margin-top: 60rpx;
+  border-radius: 30rpx;
+  width: 92%;
+  height: auto;
+}
+.experiencePart1
+{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  width:100%;
+  height:140rpx;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  border-bottom-color:#f2eeee; 
+  border-bottom-width:2rpx;
+  border-bottom-style:solid;
+  align-items: center;
+}
+.experiencePart2
+{
+  width: 100%;
+  height: auto;
+  padding-bottom: 60rpx;
+}
+.experienceItem
+{
+  width: 100%;
+  margin-top:40rpx;
+}
+.education
+{
+  margin-left: 4%;
+  background-color: white;
+  margin-top: 60rpx;
+  border-radius: 30rpx;
+  width: 92%;
+  height: auto;
+}
+.educationPart1
+{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  width:100%;
+  height:140rpx;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  border-bottom-color:#f2eeee; 
+  border-bottom-width:2rpx;
+  border-bottom-style:solid;
+  align-items: center;
+}
+.educationPart2
+{
+  width: 100%;
+  height: auto;
+  padding-bottom: 60rpx;
+}
+.educationItem
+{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top:20rpx;
+  margin-left: 40rpx;
+}
+.requestNewConsult
+{
+  margin-left: 4%;
+  background-color: rgb(10, 143, 245);
+  font-size:40rpx;
+  font-weight:bold;
+  vertical-align: middle;
+  color: white;
+  margin-top: 60rpx;
+  border-radius: 60rpx;
+  height: 100rpx;
+}
