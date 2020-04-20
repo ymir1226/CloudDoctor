@@ -3,7 +3,7 @@
 {
   width: 100%;
   height: auto;
-  background-color: rgba(250, 250, 250, 0.981);
+  background-color: ghostwhite;
 }
 .blueBackground
 {
@@ -352,3 +352,89 @@
   border-radius: 60rpx;
   height: 100rpx;
 }
+.modalBody
+{
+  position: fixed;
+  border-top-left-radius: 60rpx;
+  border-top-right-radius: 60rpx;
+  padding-bottom: 40rpx;
+  width:100%;
+  background-color: white;
+  z-index: 1001; 
+  left: 0; 
+  right:0; 
+}
+.modalItem
+{
+  border-bottom-color:#f2eeee;
+  border-bottom-width:2rpx;
+  border-bottom-style:solid;
+  width:100%;
+  padding-bottom:20rpx;
+  padding-top:20rpx;
+  display: flex;
+  flex-direction: row;
+}
+.time
+{
+  margin-left: 40rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.reservationButton
+{
+  background-color: rgb(10, 143, 245);
+  border-radius: 50rpx;
+  width:80%;
+  height:80rpx;
+  margin-left:10%;
+  margin-top:30rpx;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content: center;
+}
+.modalCancel
+{
+  position: fixed; 
+  z-index: 1000;
+  top:0; 
+  left: 0; 
+  right:0; 
+  bottom: 0;
+  background-color: rgba(0,0,0,.5);
+}
+
+/*模态框*/
+.modals
+{
+  position:fixed; 
+  z-index: 999;
+  top:0; 
+  left: 0; 
+  right:0; 
+  bottom: 0;
+}
+.modals-cancel
+{
+  position:absolute; 
+  z-index:1000; 
+  top:0; 
+  left: 0; 
+  right:0; 
+  bottom: 0;
+  background-color: rgba(0,0,0,.5);
+}
+.bottom-dialog-body
+{
+  position:absolute; 
+  z-index:1001; 
+  bottom:0; 
+  left:0; 
+  right:0; 
+  padding:30rpx; 
+  height:300rpx; 
+  background-color:#fff;
+}
+/*动画前初始位置*/
+.bottom-pos{-webkit-transform:translateY(100%);transform:translateY(100%);}

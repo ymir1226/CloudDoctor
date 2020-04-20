@@ -136,6 +136,63 @@
     </view>
     <button class="requestNewConsult" style="width:92%;">Request New Consult</button>
   </view>
+  <view style="width:100%;position:fixed;height:auto" >
+    <view class="modalBody" id="modalBody" style="bottom:{{modalBodyBottom}};">
+      <view style="width:100%;height:auto;padding-top:12rpx;" bindtap="showAndHideModal">
+        <view style="width:30%;margin-left:35%;background-color:gray;border-radius:10rpx;height:10rpx;" ></view>
+      </view>
+      <view class="modalItem">
+        <text style="font-size:35rpx;margin-left:30rpx;font-weight:bold;">排班时间</text>
+      </view>
+      <view class="modalItem">
+        <text style="font-size:30rpx;margin-left:30rpx;font-weight:bold;width:120rpx;">SUN</text>
+        <view class="time">
+          <text style="display:block;">08:00 AM - 12:00 PM</text>
+          <text style="display:block;margin-top:10rpx;">02:00 PM - 21:00 PM</text>
+        </view>
+      </view>
+      <view class="modalItem">
+        <text style="font-size:30rpx;margin-left:30rpx;font-weight:bold;width:120rpx;">MON</text>
+        <view class="time">
+          <text style="display:block;">08:00 AM - 12:00 PM</text>
+          <text style="display:block;margin-top:10rpx;">02:00 PM - 21:00 PM</text>
+        </view>
+      </view>
+      <view class="modalItem">
+        <text style="font-size:30rpx;margin-left:30rpx;font-weight:bold;width:120rpx;">TUE</text>
+        <view class="time">
+          <text style="display:block;">08:00 AM - 12:00 PM</text>
+          <text style="display:block;margin-top:10rpx;">02:00 PM - 21:00 PM</text>
+        </view>
+      </view>
+      <view class="modalItem">
+        <text style="font-size:30rpx;margin-left:30rpx;font-weight:bold;width:120rpx;">WED</text>
+        <view class="time">
+          <text style="display:block;">08:00 AM - 12:00 PM</text>
+          <text style="display:block;margin-top:10rpx;">02:00 PM - 21:00 PM</text>
+        </view>
+      </view>
+      <view class="modalItem">
+        <text style="font-size:30rpx;margin-left:30rpx;font-weight:bold;width:120rpx;">THU</text>
+        <view class="time">
+          <text style="display:block;">08:00 AM - 12:00 PM</text>
+          <text style="display:block;margin-top:10rpx;">02:00 PM - 21:00 PM</text>
+        </view>
+      </view>
+      <view class="modalItem">
+        <text style="font-size:30rpx;margin-left:30rpx;font-weight:bold;width:120rpx;">FRI</text>
+        <view class="time">
+          <text style="display:block;">08:00 AM - 12:00 PM</text>
+          <text style="display:block;margin-top:10rpx;">02:00 PM - 21:00 PM</text>
+        </view>
+      </view>
+      <button class="reservationButton" style="width:80%;height:100rpx;">
+        <image src="../../src/icon/doctorReservation.png" style="display:block;width:80rpx;height:80rpx;"></image>
+        <text style="font-size:40rpx;color:white;margin-left:20rpx;">预约</text>
+      </button>
+    </view>
+    <view class="modalCancel" hidden="{{hideModal}}"></view>
+  </view>
 </view>
 
 

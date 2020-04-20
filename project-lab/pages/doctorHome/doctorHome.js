@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    modalBodyBottom:0,
+    hideModal:true,
     list:[
       {title:'简介'},
       {title:'见解'},
@@ -72,7 +74,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var query = wx.createSelectorQuery();
+    var that = this;
+    query.select('#modalBody').boundingClientRect(function (rect) {
+      let ratio = 750 / rect.width;
+      that.setData({
+       modalBodyBottom:-(rect.height*ratio-30)+'rpx',
+      })
+    }).exec();
   },
 
   /**
@@ -131,5 +140,30 @@ Page({
     this.setData({
       currentItem:index
     })
+  },
+  
+  /*
+  *显示预约Modal
+  */
+ showAndHideModal:function(){
+   var height=wx.getSystemInfoSync().windowHeight
+   var that=this;
+  if(that.data.hideModal==true){
+    that.setData({hideModal:false})
+    that.animate('#modalBody',[
+      {bottom:-(height*0.93),ease: 'ease'},
+      {bottom:0,ease: 'ease'}
+    ],2500)
+  }else{
+    that.setData({hideModal:true})
+    that.animate('#modalBody',[
+      {bottom:0,ease: 'ease'},
+      {bottom:-(height*0.93),ease: 'ease'}
+    ],2500)
   }
+
+  
+ }
+ 
+
 })
