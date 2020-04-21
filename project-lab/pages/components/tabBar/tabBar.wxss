@@ -1,0 +1,23 @@
+/* pages/components/tabBar/tabBar.wxss */
+.tabbar
+{
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.tabbarText
+{
+  font-size:35rpx;
+  color:rgb(203, 202, 202);
+  font-weight:bolder;
+}
+.blackUnderline
+{
+  display: none;
+  height: 5rpx;
+  width: 60rpx;
+  background-color: black;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
+}
