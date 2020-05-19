@@ -1,5 +1,7 @@
 {
 	"description": "项目配置文件",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"miniprogramRoot": "miniprogram/",
 	"packOptions": {
 		"ignore": []
 	},
@@ -7,23 +9,33 @@
 		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
-		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
 		"coverView": true,
+		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"preloadBackgroundData": false,
+		"enhance": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.3",
-	"appid": "wxafca70e7f4aa121f",
+	"appid": "wx7793c11227913a66",
 	"projectname": "project-lab",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,

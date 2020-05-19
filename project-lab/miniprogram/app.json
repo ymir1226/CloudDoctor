@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/personal/personal",
+    "pages/room/room",
     "pages/doctorHome/doctorHome",
     "pages/doctorList/doctorList",
     "pages/reply/reply",
     "pages/inquiry/inquiry",
-    "pages/personal/personal",
-    "pages/room/room",
     "pages/register/register"
   ],
   "window": {
