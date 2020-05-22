@@ -4,7 +4,6 @@
 			<view class="head-img">
         <open-data class="head-img" type="userAvatarUrl"></open-data>
       </view>
-			<!-- <image class="head-img" src="../../src/icon/persons.png" mode="aspectFill"></image> -->
 			<view class="text-box">
 				<open-data type="userNickName" lang="zh_CN"></open-data>
 				<!-- <text>xxxxxxxxxxxx</text> -->
