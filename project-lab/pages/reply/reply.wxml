@@ -3,27 +3,64 @@
 		<view class="card-body doc-info">
 			<image mode="widthFix" src="../../src/icon/persons.png"></image>
 			<view style="margin-bottom: 0;" class="doc-info-right">
-				<text style="font-size:45rpx">吴医生</text>
-				<text>过敏与免疫学</text>
+				<!-- <text style="font-size:45rpx">{{doctorName}}</text> -->
+				 <text style="font-size:45rpx">吴医生</text>
+				<!-- <text>{{department}}</text> -->
+				<text>心内科</text>
 				<view style="display:flex;align-items:center;">
 					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<!-- <text >{{score}}</text> -->
 					<text >4.8</text>
 				</view>
 			</view>
 		</view>
 	</view>
 
-	<view class="card">
+  	<view class="patient-card">
+		<view class="card-head">
+			<image src="../../src/icon/boy.png" mode="widthFix"></image>
+			<!-- <text>{{item.name}}</text>    -->
+			<text>张三</text>   
+		</view>
+	  <view class="card-body">
+
+    
+
+    <view class="precription">
+        <view class="pre-name">既往病史</view>
+        <!-- <view class="pre-des">{{item.illness_history}}</view> -->
+				 <view class="pre-des">一次流感</view>
+    </view>
+
+    <view>   </view>
+    <view class="precription">
+      <view class="pre-name">用药史</view>
+      <!-- <view class="pre-des">{{item.medicine_history}}</view> -->
+			<view class="pre-des">阿莫西林</view> 
+    </view>
+
+    <view>   </view>
+    <view class="precription">
+      <view class="pre-name">过敏史</view>
+      <!-- <view class="pre-des">{{item.allergen}}</view> -->
+			<view class="pre-des">黄曲霉素</view>
+		</view>
+
+	</view>
+  </view>
+
+
+	<!-- <view class="card">
 
 		<view class="card-head">
 			<image mode="widthFix" src="../../src/icon/time.png"></image>
 			<text>回复时间</text>
 		</view>
 		<view class="card-body">
-			<view>回复时间：xxx</view>
-			<view>图文问诊：xxx</view>
-		</view>
-	</view>
+			<view>回复时间：{{replyTime}}</view>
+			<view>图文问诊：{{createTime}}</view>
+		</view> -->
+	<!-- </view> -->
 
 	<view class="card">
 
@@ -36,15 +73,15 @@
 			<view class="note">提交时间 xxx</view>
 			<view>患者：4岁儿童</view>
 			<view>
-				我认为我的儿子接触过水痘，怎么办？我认为我的儿子接触过水痘，怎么办？我认为我的儿子接触过水痘，怎么办？我认为我的儿子接触过水痘，怎么办？
+       {{content}}    
 			</view>
 
 			<view class="illness-box">
 				<image mode="widthFix" src="../../src/icon/illness.png"></image>
-				<view class="illness-des">
+				<!-- <view class="illness-des">
 					<view>脖子后发红</view>
 					<view class="note">上传时间：xxx</view>
-				</view>
+				</view> -->
 			</view>
 		</view>
 
@@ -61,15 +98,40 @@
         <view class="pre-des">每天四次,xxxxx。</view>
       </view>
 
-      <view class="card-button">
+      <view class="card-button" bindtap="continueInquiry">
         <text>继续问诊</text>
       </view>
     </view>
 
-
 	</view>
 
-	<view class="card">
+<view class="card" hidden="{{ifInquiry==1?false:true}}">
+		<view class="card-head">
+			<image src="../../src/icon/question.png" mode="widthFix"></image>
+			<text>请输入你的问题/描述你的症状</text>
+		</view>
+		<view class="card-body">
+			<textarea maxlength='1000' placeholder="请输入你的问题" bindinput="handleInput"></textarea>
+			<view class="card-button" bindtap="uploadPic">
+				<image mode="widthFix" src="../../src/icon/label.png"></image>
+				<text>上传图片</text>
+			</view>
+      <view class="send-more-result-main" hidden="{{images==0}}">
+        <block wx:for="{{images}}" wx:for-index="idx">
+          <view class="file-box">
+          <view class="img-box">
+          <image src="{{item}}" mode="aspectFill" ></image>
+          <icon class="remove-icon" type="cancel" size="23" color="#B2B2B2" catchtap="deleteImage"/>
+          </view>
+          </view>
+        </block>
+      </view>
+		</view>
+	</view>
+
+
+
+	<!-- <view class="card">
 
 		<view class="card-head">
       <image mode="widthFix" src="../../src/icon/menu.png"></image>
@@ -83,8 +145,10 @@
       <view>过敏史</view>
       <view>麻疹 <span class="note">(Dec 15,2019)</span></view>
     </view>
-	</view>
+	</view> -->
 
+  
+<!-- 
 	<view class="card">
 
 		<view class="card-head">
@@ -103,8 +167,13 @@
         医生提供的答案非常有用，知识渊博。医生提供的答案非常有用，知识渊博。医生提供的答案非常有用，知识渊博。医生提供的答案非常有用，知识渊博。
       </view>
     </view>
-	</view>
+	</view> -->
 
 	<text class="alert">对于紧急医疗情况，请致电120（或您当地的紧急服务部门）或去最近的急诊室</text>
 
 </view>
+
+	<view class="bottom-card-button" id="pay">
+			<text>结束问诊</text>
+			<image mode="widthFix" src="../../src/icon/Right.png"></image>
+	</view>

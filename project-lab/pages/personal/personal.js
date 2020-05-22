@@ -8,9 +8,34 @@ Page({
       userOrderId: "a3510731313",
     })
   },
-  goChat: function (e) {
+  // goChat: function (e) {
+  //   wx.navigateTo({
+  //     url: '/pages/room/room?id=' + this.data.userOrderId,
+  //   })
+  // },
+  redirectToCollect:function(e){
     wx.navigateTo({
-      url: '/pages/room/room?id=' + this.data.userOrderId,
+      url: '/pages/collect/collect',
     })
   },
+  redirectToPatientList: function (e) {
+    wx.navigateTo({
+      url: '/pages/patientList/patientList',
+    })
+  },
+  redirectToInquiryHistory: function (e) {
+    wx.navigateTo({
+      url: '/pages/inquiryHistory/inquiryHistory',
+    })
+  },
+  redirectToChat: function (e) {
+    wx.navigateTo({
+      url: '/pages/chat/chat',
+    })
+  },
+  redirectToPrescription: function (e) {
+    wx.navigateTo({
+      url: '/pages/prescription/prescription',
+    })
+  }
 })

@@ -1,49 +1,62 @@
 /* pages/doctorList/doctorList.wxss */
 .container
 {
-  background-color: ghostwhite;
+  background-color: #f6f6f6;
 }
 .search
 {
-  border-radius: 40rpx;
-  background-color: rgb(255, 255, 255);
+  border-radius: 30rpx;
+  background-color:#c0c0c0;
+  opacity:0.3;
   margin-top: -180rpx;
-  height: 98rpx;
-  width: 90%;
+  height: 70rpx;
+  width: 94%
 }
 .searchImg
 {
   border-top-left-radius: 40rpx;
   border-bottom-left-radius: 40rpx;
   margin-top: 0;
-  height: 99rpx;
+  height: 50rpx;
   width: 15%;
   float: left;
 }
 .inputSearch
 {
-  margin-left: 15%;
-  width: 70%;
-  height: 98rpx;
+  margin-left: 0%;
+  width: 81%;
+  height: 70rpx;
   font-size: 35rpx;
 }
 .deleteImg
 {
-  width: 15%;
+  width: 9%;
   margin-top: 0;
-  height: 99rpx;
-  border-bottom-right-radius: 40rpx;
-  border-top-right-radius: 40rpx;
+  height: 70rpx;
+  border-bottom-right-radius: 30rpx;
+  border-top-right-radius: 30rpx;
   float: right;
 }
 .content
 {
-  margin-top: 50rpx;
+  margin-top: 20rpx;
   flex-direction: row;
   flex-wrap: nowrap;
   display: flex;
   height: auto;
   width: 100%;
+}
+.sector-one{
+  width: 2%;
+  margin-left: 0;
+  display: block;
+  height: auto;
+}
+.sector-two{
+  width: 2%;
+  margin-left: 0;
+  display: block;
+  height: auto;
 }
 .typeList
 {
@@ -54,9 +67,9 @@
 }
 .doctorList
 {
-  width: 80%;
+  margin-right: 0rpx;
+  width: 76%;
   float: right;
-  
   height: auto;
 }
 .type
@@ -69,17 +82,17 @@
   width: 90%;
   height: 138rpx;
   background-color:#ffffff;
-  border-bottom-color:#c0c0c0; 
-  border-bottom-width:4rpx;
-  border-bottom-style:solid;
-  border-radius: 10rpx;
+  /* border-bottom-color:#c0c0c0;  */
+  /* border-bottom-width:4rpx;
+  border-bottom-style:solid; */
+  border-radius: 15rpx;
   text-align: center;
 }
 .typeText
 {
-  font-size: 35rpx;
-  font-weight: bolder;
-  color: rgb(81, 65, 226);
+  font-size: 32rpx;
+  font-weight: 520;
+  color: rgb(10, 143, 245);
   text-align: center;
 }
 .doctor
@@ -96,8 +109,8 @@
 }
 .doctorImg
 {
-  width:129rpx;
-  height:128rpx;
+  width:138rpx;
+  height:138rpx;
   margin-top:49rpx;
   margin-left:43rpx;
   float:left;
@@ -121,9 +134,9 @@
 }
 .doctorName
 {
-  font-size: 40rpx;
+  font-size: 35rpx;
   font-weight: bold;
-  color: rgb(110, 110, 247);
+  color: rgb(10, 143, 245);
 }
 .doctorPos
 {
@@ -192,12 +205,13 @@
   color: red;
 }
 .consultButton
-{
-  margin-right: 0;
+{ margin-left: 50rpx;
+  /* margin-right: 0; */
   height: auto;
   float: right;
   border-radius: 40rpx;
-  background-color: rgb(81, 65, 226);
-  font-size: 24rpx;
+  background-color:  rgba(10, 143, 245,0.9);
+  font-size: 26rpx;
+  font-weight: 500;
   color: #ffffff;
 }

@@ -7,7 +7,7 @@
 			<!-- <image class="head-img" src="../../src/icon/persons.png" mode="aspectFill"></image> -->
 			<view class="text-box">
 				<open-data type="userNickName" lang="zh_CN"></open-data>
-				<text>xxxxxxxxxxxx</text>
+				<!-- <text>xxxxxxxxxxxx</text> -->
 			</view>
 		</view>
 		<view class="ding-box">
@@ -16,34 +16,34 @@
 	</view>
 
 	<view class="per-mid">
-		<view class="img-box">
+		<view class="img-box" bindtap="redirectToInquiryHistory">
 			<image mode="widthFix" class="con-img" src='../../src/icon/record.png'></image>
 		</view>
-		<view class="img-box">
+		<view class="img-box" bindtap="redirectToChat">
 			<!-- <image mode="widthFix" class="con-img" src='../../src/icon/consult.png'></image> -->
       <image mode="widthFix" bindtap="goChat" class="con-img" src='../../src/icon/consult.png'></image>
 		</view>
-		<view class="img-box">
+		<!-- <view class="img-box">
 			<image mode="widthFix" class="con-img" src='../../src/icon/info.png'></image>
+		</view> -->
+		<view class="img-box" bindtap="redirectToPrescription">
+			<image mode="widthFix" class="con-img" src='../../src/icon/prescription.png' ></image>
 		</view>
-		<view class="img-box">
-			<image mode="widthFix" class="con-img" src='../../src/icon/prescription.png'></image>
-		</view>
-		<view class="img-box">
+		<view class="img-box" bindtap="redirectToPatientList">
 			<image mode="widthFix" class="con-img" src='../../src/icon/adm.png'></image>
 		</view>
-		<view class="img-box">
+		<view class="img-box" bindtap="redirectToCollect">
 			<image mode="widthFix" class="con-img" src='../../src/icon/favorite.png'></image>
 		</view>
 		<view style="width:600rpx;height:180rpx;backgrand:transparent;">
 		</view>
 	</view>
-	<view class="per-bottom">
+	<!-- <view class="per-bottom">
 		<image class="bottom-img" src="../../src/icon/bottom1.png" mode="widthFix"></image>
 		<image class="bottom-img" src="../../src/icon/bottom2.png" mode="widthFix"></image>
 		<image class="bottom-img-mid" src="../../src/icon/bottom5.png" mode="widthFix"></image>
 
 		<image class="bottom-img" src="../../src/icon/bottom3.png" mode="widthFix"></image>
 		<image class="bottom-img" src="../../src/icon/bottom4.png" mode="widthFix"></image>
-	</view>
+	</view> -->
 </view>

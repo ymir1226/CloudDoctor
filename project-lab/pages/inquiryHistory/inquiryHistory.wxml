@@ -1,0 +1,23 @@
+<!--pages/inquiryHistory/inquiryHistory.wxml-->
+<view class="inq-container">
+	<view class="card" wx:for="{{inquiryList}}" bindtap="onClickInquiry">
+		<view class="card-head">
+			<image src="../../src/icon/question.png" mode="widthFix"></image>
+      <view style="display:flex;align-items:center;">
+      <text>吴医生</text>
+      <!-- <view class="doctorReview">
+			<text>最近回复：{{item.created_at}}</text>
+      </view> -->
+      </view>
+    </view>
+	  <view class="card-body">
+    <view class="precription">
+        <view class="pre-name">最近回复：{{item.created_at}}</view>
+        <view class="pre-des">{{item.abstract}}</view>
+    </view>
+	</view>
+  
+  </view>
+
+
+</view>

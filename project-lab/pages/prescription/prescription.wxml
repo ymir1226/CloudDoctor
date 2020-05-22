@@ -1,0 +1,16 @@
+<!--pages/prescription/prescription.wxml-->
+<view class="reply-container"> 
+ <view class="card" wx:for="{{prescriptionList}}" bindtap="onClickPrescription">
+		<view class="card-body doc-info">
+			<image mode="widthFix" src="../../src/icon/persons.png"></image>
+			<view style="margin-bottom: 0;" class="doc-info-right">
+				<text style="font-size:45rpx">{{item.content}}</text>
+				<text>{{item.department}}</text>
+				<view style="display:flex;align-items:center;">
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<text >{{item.score}}</text>
+				</view>
+			</view>
+		</view>
+  </view>
+</view>

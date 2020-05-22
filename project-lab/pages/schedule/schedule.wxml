@@ -1,0 +1,47 @@
+<!--pages/schedule/schedule.wxml-->
+<view class="inq-container">
+
+
+	<view class="card">
+		<view class="card-head">
+			<image src="../../src/icon/menu.png" mode="widthFix"></image>
+			<text>预约挂号</text>
+		</view>
+		<view class="card-body">
+
+<view class="card-button" bindtap="uploadPic" bindtap="pickerShow">
+				<image mode="widthFix" src="../../src/icon/label.png"></image>
+				<text>选择预约时间</text>
+</view>
+
+<view style="text-align:center;margin-top:20px">
+  <view wx:if="{{startTime}}">
+    开始时间：{{startTime}}
+  </view>
+  <view wx:if="{{endTime}}">
+    结束时间：{{endTime}}
+  </view>
+</view>
+
+
+<timePicker pickerShow="{{isPickerShow}}" id="picker" wx:if="{{isPickerRender}}" bind:hidePicker="pickerHide" bind:setPickerTime="setPickerTime"
+  config="{{pickerConfig}}"></timePicker>
+			
+ 
+ 
+ </view>
+</view>
+
+
+	<view class="inq-bottom">
+		<view class="protect">
+			<image src="../../src/icon/lock.png" mode="widthFix"></image>
+			<text>您的个人信息将受到100%保护</text>
+		</view>
+
+		<view class="card-button" id="pay" bindtap="payForChat">
+			<text>支付诊费</text>
+			<image mode="widthFix" src="../../src/icon/Right.png"></image>
+		</view>
+	</view>
+</view>

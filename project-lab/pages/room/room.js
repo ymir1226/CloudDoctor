@@ -18,6 +18,18 @@ Page({
   },
 
   onLoad: function (opentions) {
+     const eventChannel = this.getOpenerEventChannel()
+     var that = this
+    // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
+    eventChannel.on('sendData', data => {
+      that.setData({
+        chatRoomGroupId: data
+        //todo: 从后端获取 医生姓名、医生患者openid
+      });
+      console.log(this.data.chatRoomGroupId)
+    })
+   
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -36,7 +48,7 @@ Page({
     })
 
     this.setData({
-      chatRoomGroupId: opentions.id,
+      //chatRoomGroupId: opentions.id,
       onGetUserInfo: this.onGetUserInfo,
       getOpenID: this.getOpenID,
     })
