@@ -77,8 +77,8 @@ Page({
     var that = this
     //请求医生列表
     wx.request({
-      // url: 'http://119.45.143.38:80/api/chatorder/getChatOrderByPatientId',
-      url: 'http://localhost:8000/api/chatorder/getChatOrderByPatientId',
+      url: 'http://119.45.143.38:80/api/chatorder/getChatOrderByPatientId',
+      //url: 'http://localhost:8000/api/chatorder/getChatOrderByPatientId',
       data: {
         // id_patient: app.globalData.id
         id_patient: 2
