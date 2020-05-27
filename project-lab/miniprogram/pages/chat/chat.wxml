@@ -1,0 +1,16 @@
+<!--pages/chat/chat.wxml-->
+
+<view class='flex '>
+  <scroll-view class="flex1" scroll-y scroll-into-view="id{{toView}}" style='height:calc(100vh - 102rpx)'>
+    <!-- <block wx:for='{{list}}' wx:key='id'> -->
+      <!-- <view class='lh40 fz16 color9e ml10' id='id{{item.id}}'>{{item.title}}</view> -->
+      <view class='bgf fz14'>
+        <view class='flex alic borderbe0 ml10 pt15 pb15' wx:for='{{orderList}}'  data-groupId='{{item.group_id}}' bindtap='redirectToChatRoom'>
+          <image src='{{n.doctor_avatar}}' class='img mr15'></image>
+          <text>{{item.doctor_name}}</text>
+          <image wx:if='{{n.heart=="1"&&!n.cue}}' src='../../src/icon/star.png' class='right posAbs mr15 r10'></image>
+        </view>
+      </view>
+    <!-- </block> -->
+  </scroll-view>
+</view>

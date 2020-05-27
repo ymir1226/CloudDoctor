@@ -1,0 +1,76 @@
+<!--pages/editPatient/editPatient.wxml-->
+<view class="inq-container">
+
+
+	<view class="card">
+		<view class="card-head">
+			<image src="../../src/icon/menu.png" mode="widthFix"></image>
+			<text>就诊人信息</text>
+		</view>
+	<view class="card-body">
+
+
+<view class="weui-cells__title">就诊人</view>
+    <view class="weui-cells weui-cells_after-title">
+    <view class="page-second-title"></view> 
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" auto-focus placeholder="{{name}}" bindinput="getName"/>
+      </view>
+  </view>
+  <view class="page-section" bindchange="radioChange">
+    <view class="page-section-title">性别</view>
+    <view class="page-second-title"></view> 
+    <radio-group bindchange="radioChange">
+    <label class="radio">
+      <radio value="r1" checked="{{male}}"/>男
+    </label>
+    <label class="radio">
+      <radio value="r2" checked="{{female}}"/>女
+    </label>
+    </radio-group>
+  </view>
+
+  <view class="page-section-title">年龄</view>
+  <view class="page-second-title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" auto-focus placeholder="{{age}}"
+        bindinput="getAge"/>
+      </view>
+  </view>
+			
+
+	
+   <view class="page-section-title">病史</view>    
+   <view class="page-second-title"></view> 
+      <textarea maxlength='800' placeholder="{{illness_history}}" bindinput="getIllnessHistory"></textarea>
+   <view class="page-section-title">用药史</view> 
+   <view class="page-second-title"></view>        
+      <textarea maxlength='800' placeholder="{{medicine_history}}" bindinput="getMedicineHistory"></textarea>
+    <view class="page-section-title">过敏药物</view>   
+    <view class="page-second-title"></view>  
+      <textarea maxlength='800' placeholder="{{allergen}}" bindinput="getAllergen"></textarea>
+		
+
+
+	</view>
+	</view>
+
+
+
+
+
+
+
+	<view class="inq-bottom">
+		<view class="protect">
+			<image src="../../src/icon/lock.png" mode="widthFix"></image>
+			<text>您的个人信息将受到100%保护</text>
+		</view>
+
+		<view class="card-button" id="pay" bindtap="onClickSave">
+			<text>保存</text>
+			<image mode="widthFix" src="../../src/icon/Right.png"></image>
+		</view>
+	</view>
+</view>

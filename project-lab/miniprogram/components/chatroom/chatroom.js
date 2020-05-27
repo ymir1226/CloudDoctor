@@ -373,12 +373,14 @@ Component({
           this.scrollToBottom(true)
 
           const uploadTask = wx.cloud.uploadFile({
-            cloudPath: `${this.properties.groupId}/${Math.random()}_${Date.now()}.${res.tempFilePaths[0].match(/\.(\w+)$/)[1]}`,
+            // cloudPath: `${this.data.openId}/${Math.random()}_${Date.now()}.${res.tempFilePaths[0].match(/\.(\w+)$/)[1]}`,
+             cloudPath: `${this.properties.groupId}/${Math.random()}_${Date.now()}.${res.tempFilePaths[0].match(/\.(\w+)$/)[1]}`,
             filePath: res.tempFilePaths[0],
             config: {
               env: envId,
             },
             success: res => {
+              console.log("send img success")
               this.try(async () => {
                 await this.db.collection(collection).add({
                   data: {
@@ -389,6 +391,9 @@ Component({
               }, '发送图片成功')
             },
             fail: e => {
+            
+              console.log("send img fail")
+              console.log(e)
               console.log(cloudPath)
               this.showError('发送图片失败', e)
             },

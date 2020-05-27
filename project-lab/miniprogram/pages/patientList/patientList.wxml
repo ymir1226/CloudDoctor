@@ -1,0 +1,51 @@
+<!--pages/patientList/patientList.wxml-->
+<view class="inq-container">
+	<view class="card" wx:for="{{patientList}}">
+		<view class="card-head">
+			<image src="../../src/icon/boy.png" mode="widthFix"></image>
+			<text>{{item.name}}</text>
+      <view class="img-box">
+      	<image src="../../src/icon/edit.png" mode="widthFix" bindtap="editPatient" data-patientid="{{item.id}}"></image>
+   
+        	<image src="../../src/icon/remove.png" mode="widthFix" bindtap="modalTap" data-patientid="{{item.id}}"></image>
+      </view>
+		</view>
+	  <view class="card-body">
+	    <!-- <view>既往病史</view> -->
+
+    
+
+    <view class="precription">
+        <view class="pre-name">既往病史</view>
+        <view class="pre-des">{{item.illness_history}}</view>
+    </view>
+
+    <view>   </view>
+    <view class="precription">
+      <view class="pre-name">过敏史</view>
+      <view class="pre-des">{{item.medicine_history}}</view>
+    </view>
+
+    <view>   </view>
+    <view class="precription">
+      <view class="pre-name">过敏史</view>
+      <view class="pre-des">{{item.allergen}}</view>
+		</view>
+
+	</view>
+  
+  </view>
+
+<modal title="删除病历" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" bindconfirm="deletePatient" bindcancel="modalChange">
+ 	<text>是否确认删除？</text>
+</modal>
+
+
+	
+	<view class="card-button" bindtap="addPatient">
+		<image src="../../src/icon/add.png" mode="widthFix" ></image>
+		<text>添加病历</text>
+	</view>
+	
+
+</view>

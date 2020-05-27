@@ -112,3 +112,37 @@
 #pay text{
   color: #fff; 
 }
+
+
+.send-more-result-main{
+margin-top:30rpx;
+}
+.send-more-result-main image{
+  height: 100%;
+  width: 100%;
+}
+.send-more-result-main .file-box{
+margin-right: 14rpx;
+height: 160rpx;
+width: 160rpx;
+position:relative;
+display:inline-block;
+}
+
+.send-more-result-main .file-box .img-box{
+  height: 100%;
+  width: 100%;
+}
+.send-more-result-main .remove-icon{
+position: absolute;
+right:5rpx;
+top:5rpx;
+}
+
+.weui-cells__title{
+  margin-top: 40rpx;
+}
+
+.second_title{
+  margin-top: 20rpx;
+}

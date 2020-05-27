@@ -1,0 +1,73 @@
+.reply-container{
+  background-color: #f6f6f6;
+  padding: 40rpx;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+}
+.card{
+  background-color: white;
+  border-radius: 40rpx;
+  margin-top: 20rpx;
+}
+.card-head{
+  border-bottom: 1px solid #eee;
+  padding: 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.card-body{
+  padding:40rpx;
+}
+
+.card-head image{
+  width: 80rpx;
+  border-radius: 30rpx;
+}
+
+.card-body view{
+  margin-bottom: 20rpx;
+}
+
+.card-head text{
+  margin-left: 40rpx;
+}
+
+.card-body textarea{
+  border: 1px solid #f6f6f6;
+  background-color: #fafafa;
+  padding: 30rpx;
+  border-radius: 30rpx;
+  width: auto;
+  height: 250rpx;
+}
+
+.doc-info{
+  display: flex;
+  align-items: center;
+
+}
+
+.doc-info image{
+  width: 150rpx;
+  border-radius: 40rpx;
+}
+
+.doc-info-right{
+  margin-left: 30rpx;
+  
+}
+
+.doc-info-right>text{
+ display: block;
+ margin-bottom: 10rpx;
+}
+
+.doc-info-right image{
+  width: 40rpx;
+  margin-right: 10rpx;
+}
+
+
+

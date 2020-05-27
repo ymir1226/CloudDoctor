@@ -1,38 +1,42 @@
 <!--pages/doctorList/doctorList.wxml-->
 <view class="container">
   <view class="search">
-    <image src="../../src/icon/delete.png" class="deleteImg"></image>
-    <image src="../../src/icon/bottom2.png" class="searchImg"></image>
-    <input placeholder="搜疾病/症状/科室" class="inputSearch"></input>
+    <!-- <image src="../../src/icon/delete.png" class="deleteImg"></image> -->
+    <image src="../../src/icon/search.png" bindtap="onClickSearch" class="deleteImg"></image>
+    <input placeholder="搜疾病/症状/科室" style="text-align:center" bindinput="bindSearch" class="inputSearch"></input>
+
   </view>
   <view class="content">
+  <view class="sector-one"></view>
     <view class="typeList">
-      <view class="type"  wx:for="{{typeArray}}">
+      <view class="type"  wx:for="{{typeArray}}" bindtap="onClickDepartment" data-departmentName="{{item.type}}">
         <text class="typeText">{{item.type}}</text>
       </view>
     </view>
     <view class="doctorList">
-      <view class="doctor" wx:for="{{doctorArray}}">
-        <image src="{{item.imgurl}}" class="doctorImg"></image>
+      <view class="doctor" wx:for="{{doctorList}}">
+        <!-- <image src="{{item.avatar}}" class="doctorImg"></image> -->
+        <image src="../../src/doctor1.png" class="doctorImg"></image>
         <view class="doctorInfo">
           <view class="doctorNamePos">
-            <text class="doctorName">{{item.doctorName}}</text>
-            <text class="doctorPos">{{item.doctorPos}}</text>
+            <text class="doctorName">{{item.doctor_name}}</text>
+            <text class="doctorPos">{{item.title}}</text>
           </view>
-          <text class="doctorDep">{{item.doctorDep}}</text>
+          <text class="doctorDep">{{item.department}}</text>
           <view class="doctorScore">
             <image src="../../src/icon/star.png" class="star"></image>
             <text class="score">{{item.score}}</text>
-            <text class="review">{{item.review}}</text>
+            <text class="review">{{item.reviews}} reviews</text>
           </view>
-          <text class="doctorSpecial">{{item.doctorSpecial}}</text>
+          <text class="doctorSpecial">{{item.expert}}</text>
           <view class="priceConsult">
-            <text class="price">{{item.price}}</text>
-            <button style="width:auto" class="consultButton">向他咨询</button>
+            <text class="price">￥{{item.price}}</text>
+            <button style="width:auto" class="consultButton" bindtap="onClickConsult" data-doctorId="{{item.id}}">向他咨询</button>
           </view>
         </view>
       </view>
     </view>
   </view>
+  <view class="sector-two"></view>
 </view>
 

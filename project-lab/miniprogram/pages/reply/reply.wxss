@@ -6,13 +6,29 @@
   position: relative;
 }
 
-.card{
+.pre-name{
+  color: #199bfe;
+  font-size: 35rpx;
+}
+.precription{
+  background-color: #f6f6f6;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-top: 40rpx;
+}
+
+.patient-card{
   background-color: white;
   border-radius: 40rpx;
   margin-top: 20rpx;
   font-size: 32rpx;
 }
 
+.card{
+  background-color: white;
+  border-radius: 40rpx;
+  margin-top: 20rpx;
+}
 .card-head{
   border-bottom: 1px solid #eee;
   padding: 40rpx;
@@ -103,7 +119,7 @@
 
 .pre-name{
   color: #199bfe;
-  font-size: 40rpx;
+  font-size: 35rpx;
 }
 
 .card-button{
@@ -143,4 +159,35 @@
 
 .star-set image{
   width: 60rpx;
+}
+
+.bottom-card-button{
+  border: 1px solid #ccc;
+  border-radius: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.bottom-card-button image{
+  width:60rpx;
+}
+.bottom-card-button text{
+  padding: 20rpx;
+  color: #999;
+}
+
+.bottom-card-button:hover{
+  filter: brightness(0.9);
+}
+
+#pay{
+  background-color: #0091ff;
+}
+
+#pay text{
+  color: #fff; 
 }

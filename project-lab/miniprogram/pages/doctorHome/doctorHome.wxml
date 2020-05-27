@@ -3,50 +3,50 @@
   <view class="blueBackground"></view>
   <view class="doctorBasicInfo">
     <view class="doctorImgInfo">
-      <image src="../../src/doctor.jfif" class="doctorImg"></image>
+      <image src="../../src/doctor1.png" class="doctorImg"></image>
       <view class="doctorInfo">
-        <text class="doctorName">吴医生</text>
-        <text class="doctorDep">副主任医师</text>
+        <text class="doctorName">{{doctorName}}</text>
+        <text class="doctorDep">{{title}}</text>
         <view class="doctorScoreReview">
           <image src="../../src/icon/star.png" class="star"></image>
-          <text class="doctorScore">4.8</text>
-          <text class="doctorReview">(1387 reviews)</text>
+          <text class="doctorScore">{{score}}</text>
+          <text class="doctorReview">({{reviews}} 人评分)</text>
         </view>
-        <text class="doctorSpecial">擅长：面部轮廓</text>
+        <text class="doctorSpecial">擅长：{{expert}}</text>
       </view>
     </view>
     <view class="doctorWork">
       <view>
         <text style="display:block;font-size:25rpx;color:#c0c0c0;">病例</text>
-        <text style="display:block;font-size:45rpx;color:black;">1523</text>
+        <text style="display:block;font-size:45rpx;color:black;">{{patientNum}}</text>
       </view>
       <view>
         <text style="display:block;font-size:25rpx;color:#c0c0c0;">问诊量</text>
-        <text style="display:block;font-size:45rpx;color:black;">423</text>
+        <text style="display:block;font-size:45rpx;color:black;">{{quiryNum}}</text>
       </view>
       <view>
         <text style="display:block;font-size:25rpx;color:#c0c0c0;">接诊率</text>
-        <text style="display:block;font-size:45rpx;color:black;">100%</text>
+        <text style="display:block;font-size:45rpx;color:black;">{{rate}}%</text>
       </view>
     </view>
   </view>
   <view class="title">
     <text style="font-size:35rpx;color:black;margin-left:35rpx;">私人问诊服务</text>
     <image src="../../src/icon/i .png" style="margin-left:15rpx;height:50rpx;width:50rpx"></image>
-    <text style="font-size:35rpx;color:rgb(10, 143, 245);margin-left:280rpx;">医生排班</text>
+    <!-- <text style="font-size:35rpx;color:rgb(10, 143, 245);margin-left:280rpx;">医生排班</text> -->
   </view>
   <view class="consultType">
-    <button style="width:220rpx;height:140rpx;">
+    <button style="width:220rpx;height:140rpx;" bindtap="onClickInquiry">
       <image src="../../src/icon/email.png" style="display:block;width:60rpx;height:60rpx;"></image>
       <text style="font-size:25rpx;color:white;display:block;">图文问诊</text>
     </button>
-    <button style="width:220rpx;height:140rpx;">
+    <button style="width:220rpx;height:140rpx;" bindtap="redirectToChatRooms">
       <image src="../../src/icon/video.png" style="display:block;width:60rpx;height:60rpx;"></image>
-      <text style="display:block;font-size:25rpx;color:white;">视频问诊</text>
+      <text style="display:block;font-size:25rpx;color:white;" >在线咨询</text>
     </button>
-    <button style="width:220rpx;height:140rpx;">
+    <button style="width:220rpx;height:140rpx;" bindtap="redirectToSchedule">
       <image src="../../src/icon/appointment.png" style="display:block;width:60rpx;height:60rpx;"></image>
-      <text style="font-size:25rpx;color:white;display:block;">预约挂号</text>
+      <text style="font-size:25rpx;color:white;display:block;" >预约挂号</text>
     </button>
   </view>
   <view class="tabbar">
@@ -55,7 +55,7 @@
     <view class="blackUnderline" style="display:{{currentItem===index?'block':'none'}}"></view>
   </view>
   </view>
-  <view class="infoShow">
+  <view class="infoShow" hidden="{{currentItem==0?false:true}}">
     <view style="height:80rpx;width:100%;"></view>
     <text style="font-size:40rpx;color:black;font-weight:bolder;margin-left:30rpx;">基本信息</text>
     <view class="aboutMe">
@@ -66,7 +66,7 @@
       <view class="aboutMePart2">
         <view style="margin-left:10%;width:80%;">
           <text style="font-size:30rpx;word-break: break-all;">
-          我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍我知道这里是一段介绍
+          {{introduction}}
           </text>
         </view>
         <text class="knowMore">了解更多</text>
@@ -78,11 +78,11 @@
       <view style="height:auto;width:100%;padding-bottom:40rpx;padding-top:20rpx;">
         <view style="margin-left:5%;width:90%;">
           <text style="word-break:break-all;margin-left:30rpx;margin-right:30rpx;">
-          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
+          {{address}}</text>
         </view>
         <view style="width:100%;display:flex;flex-direction:row;margin-top:60rpx;">
           <image src="../../src/icon/telephone.png" style="width:40rpx;height:40rpx;margin-left:30rpx;"></image>
-          <text style="margin-left:40rpx;color:rgb(10, 143, 245);font-size:35rpx;">021-8812345</text>
+          <text style="margin-left:40rpx;color:rgb(10, 143, 245);font-size:35rpx;">{{contactNumber}}</text>
         </view>
       </view>
     </view>
@@ -134,8 +134,32 @@
         </view>
       </view>
     </view>
-    <button class="requestNewConsult" style="width:92%;">Request New Consult</button>
+    <!-- <button class="requestNewConsult" style="width:92%;">Request New Consult</button> -->
   </view>
+
+ <view class="infoShow" hidden="{{currentItem==0?true:false}}">
+    <!-- <view style="height:80rpx;width:100%;"></view> -->
+    <!-- <text style="font-size:40rpx;color:black;font-weight:bolder;margin-left:30rpx;">基本信息</text> -->
+    <view class="aboutMe" wx:for="{{commentList}}">
+      <view class="aboutMePart1">
+        <image src="../../src/icon/aboutMe.png" class="aboutMeImage"></image>
+        <text style="margin-top:20rpx;margin-left:40rpx;font-weight:bolder;">Y**r</text>
+      </view>
+      <view class="aboutMePart2">
+        <view style="margin-left:10%;width:80%;">
+          <text style="font-size:30rpx;word-break: break-all;">
+          {{item.content}}
+          </text>
+        </view>
+        <!-- <text class="knowMore">了解更多</text> -->
+      </view>
+    </view>
+</view>
+
+
+<!-- 
+
+  
   <view style="width:100%;position:fixed;height:auto" >
     <view class="modalBody" id="modalBody" style="bottom:{{modalBodyBottom}};">
       <view style="width:100%;height:auto;padding-top:12rpx;" bindtap="showAndHideModal">
@@ -192,7 +216,6 @@
       </button>
     </view>
     <view class="modalCancel" hidden="{{hideModal}}"></view>
-  </view>
+  </view> -->
 </view>
-
 
