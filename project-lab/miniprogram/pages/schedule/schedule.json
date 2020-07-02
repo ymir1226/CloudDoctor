@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "timePicker": "../../../components/timePicker/timePicker"
+    "timePicker": "../../../components/timePicker/timePicker",
+    "Calendar": "../../components/calendar/calendar"
   }
 }

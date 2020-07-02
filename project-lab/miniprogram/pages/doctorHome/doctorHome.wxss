@@ -12,6 +12,15 @@
   height: 400rpx;
   background-color: rgb(10, 143, 245);
 }
+.like-set{
+  /* text-align: right; */
+  margin-left: 180rpx;
+}
+
+
+.star-set image{
+  width: 40rpx;
+}
 .doctorBasicInfo
 {
   margin-top: -300rpx;
@@ -73,6 +82,13 @@
   width: 40rpx;
   height: 40rpx;
   float: left;
+}
+.like
+{
+  width: 60rpx;
+  height: 60rpx;
+  float: right;
+
 }
 .doctorScore
 {
@@ -438,3 +454,5 @@
 }
 /*动画前初始位置*/
 .bottom-pos{-webkit-transform:translateY(100%);transform:translateY(100%);}
+
+

@@ -7,7 +7,7 @@ const db = cloud.database();
 exports.main = async (event, context) => {
   try {
     const { OPENID } = cloud.getWXContext();
-
+    console.log(OPENID)
     const result = await db.collection('SubscribeMessage').add({
       data: {
         //具体的字段可以根据自己的需求使用，但是data的值要注意

@@ -1,4 +1,5 @@
 // pages/schedule/schedule.js
+const app=getApp()
 const TmplId = '4SnZohkpw5KAM4rxZYUrUl1TDncs9-RexIfgsNoFIwo';
 Page({
 
@@ -6,6 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    /********************日 历 */
+    value: '2018-11-11',
+    week: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    lastMonth: 'lastMonth',
+    nextMonth:'nextMonth',
+    selectVal: '',
     /***********time picker */
     doctorid:1,
     isPickerRender: false,
@@ -35,7 +42,10 @@ Page({
       }
     },
     //********订单数据 */
-    groupid:"lEbXFYvNgv",
+    price:0,
+    id_patient:1,
+    id_doctor:1,
+    group_id:"lEbXFYvNgv",
     patient_openid:"ozQ6_4qgR8emn3uCrSABUCFGt24k",
     doctor_openid:"ozQ6_4ppwIxQiIAk-UDfjlDP7Fqk",
     doctor_name:"钟医生",
@@ -51,7 +61,12 @@ Page({
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
     eventChannel.on('sendData', data => {
       that.setData({
-        doctorid: data
+        patient_openid:data.patient_openid,
+        doctor_openid:data.doctor_openid,
+        doctor_name:data.doctor_name,
+        id_patient:data.id_patient,
+        id_doctor:data.id_doctor,
+        price:data.price
       });
       console.log(that.data.doctorid, ' from doctorList');
       this.getScheduleByDoctorId(that.data.doctorid)
@@ -159,46 +174,11 @@ Page({
     this.addChatOrder()
      // 订单支付成功后，发推送：
      // 直接取this.data.groupid, patient_openid, doctor_openid
-    this.Subscribe()
-  },
-  /**
-   * 发起订单
-   */
-  addChatOrder : function(){
-    
-    var that = this
-    //添加订单，订单生成后，返回groupid
-    // wx.request({
-    //   url: 'http://localhost:8000/api/chatorder/addChatOrder',
-    //   data: {
-    //     price:2,
-    //     id_patient:2,
-    //     id_doctor:2,
-    //     patient_openid:"ozQ6_4qgR8emn3uCrSABUCFGt24k",
-    //     doctor_openid:"ozQ6_4ppwIxQiIAk-UDfjlDP7Fqk",
-    //     state:0,
-    //     doctor_name:"钟医生",
-    //     start_time:
-    //     end_time
-    //   },
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   method: 'POST',
-    //   success(res) {
-    //     console.log(res.data.data)
-    //     let resp = res.data.data
-    //     //异常处理
-    //     that.setData(
-    //       {
-           
-    //       }
-    //     )
-    //   }
-    // })
-
    
   },
+  /**
+   * 订阅消息
+   **/
 
   Subscribe: function (e) {
     const self = this
@@ -242,7 +222,9 @@ Page({
       },
     });
   },
-
+/**
+   * 发送订阅消息
+   **/
   //实现在满足条件的时候给用户发送模板消息
   //像二手物品交易中，将用户的物品信息存储起来，等到其他人购买，提醒用户发货
   //就可以在别人下单的函数中，给卖家发送模板消息。
@@ -262,6 +244,89 @@ Page({
       }
     })
 
-  }
+  },
+   //组件监听事件
+   select(e) {
+    // console.log(e)
+    this.setData({
+        selectVal:e.detail
+    })
+   },
 
+    toggleType(){
+        this.selectComponent('#Calendar').toggleType();
+    },
+
+    /**
+   * 确认支付
+   */
+  addChatOrder: function(){
+var that=this
+    console.log("pay...")
+     //预支付
+ wx.request({
+  url: 'http://119.45.143.38:80/api/chatorder/addChatOrder',
+  data: {
+   id_patient:app.globalData.id,
+   id_doctor:that.data.id_doctor,
+   patient_openid:app.globalData.openid,
+   doctor_openid:that.data.doctor_openid,
+   state:0,
+   doctor_name:that.data.doctor_name,
+   start_time:that.data.startTime,
+   end_time:that.data.endTime,
+   price:that.data.price
+  },
+  header: {
+    'content-type': 'application/json' // 默认值
+  },
+  method: 'POST',
+  success(res) {
+    console.log("response...")
+    console.log(res)
+    //groupid
+    var groupid=res.data.groupId
+    var orderid=res.data.orderId
+    var value1="item.thing1.value"
+    var value2="item.thing3.value"
+    var value3="item.character_string5.value"
+    that.setData({
+      group_id:groupid,
+      [value1]:that.data.doctor_name+"的咨询",
+      [value2]:that.data.startTime,
+      [value3]:orderid
+    })
+    console.log(that.data)
+
+    var prePayInfo=res.data.prePayInfo
+    // 调起支付
+    wx.requestPayment(
+    {
+      'timeStamp': prePayInfo.timeStamp,
+      'nonceStr': prePayInfo.nonceStr,
+      'package': prePayInfo.package,
+      'signType': 'MD5',
+      'paySign': prePayInfo.paySign,
+      'success': function (res) {
+        console.log(res)
+        that.Subscribe()
+        that.redirectToChat()
+       },
+      'fail': function (res) {
+        console.log(res)
+       }
+    })
+  },
+  fail(res){
+    console.log("response...")
+    console.log(res.data)
+  },
+})
+   },
+
+   redirectToChat(){
+    wx.redirectTo({
+      url: '/pages/chat/chat',
+    })
+   }
 })

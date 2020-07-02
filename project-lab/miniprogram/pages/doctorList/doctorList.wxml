@@ -4,13 +4,21 @@
     <!-- <image src="../../src/icon/delete.png" class="deleteImg"></image> -->
     <image src="../../src/icon/search.png" bindtap="onClickSearch" class="deleteImg"></image>
     <input placeholder="搜疾病/症状/科室" style="text-align:center" bindinput="bindSearch" class="inputSearch"></input>
-
   </view>
+  <view class='result-container' style="position: fixed; z-index: 10">
+  <view class='search-history' wx:if="{{StorageFlag}}">
+      <view class='weui-flex' wx:for="{{searcherStorage}}" catchtap='tapSearcherStorage' data-searchtext="{{item.text}}">
+        <text>{{item.text}}</text>
+        <span class='close'>{{item.hot}}</span>
+      </view>
+  </view>
+</view>
   <view class="content">
   <view class="sector-one"></view>
     <view class="typeList">
-      <view class="type"  wx:for="{{typeArray}}" bindtap="onClickDepartment" data-departmentName="{{item.type}}">
-        <text class="typeText">{{item.type}}</text>
+      <view class="type"  wx:for="{{typeArray}}" bindtap="onClickDepartment" data-department="{{item}}">
+        <text class="typeText1" wx:if = "{{item.status == 0}}">{{item.type}}</text>
+        <text class="typeText2" wx:if = "{{item.status == 1}}">{{item.type}}</text>
       </view>
     </view>
     <view class="doctorList">

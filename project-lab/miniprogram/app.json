@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/doctorList/doctorList",
+    "pages/comment/comment",
+    "pages/schedule/schedule",
+    "pages/checkOrder/checkOrder",
     "pages/reply/reply",
     "pages/personal/personal",
     "pages/chat/chat",
@@ -12,9 +15,8 @@
     "pages/doctorHome/doctorHome",
     "pages/collect/collect",
     "pages/inquiryHistory/inquiryHistory",
-    "pages/prescription/prescription",
-    "pages/schedule/schedule",
-    "components/timePicker/timePicker"
+    "pages/prescription/prescription"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,8 +29,8 @@
       {
         "pagePath": "pages/doctorList/doctorList",
         "text": "首页",
-        "iconPath":"src/icon/home.png",
-        "selectedIconPath":"src/icon/home.png"
+        "iconPath": "src/icon/home.png",
+        "selectedIconPath": "src/icon/home.png"
       },
       {
         "pagePath": "pages/personal/personal",

@@ -5,6 +5,7 @@ Page({
    */
   data: {
     inquiryList: [],
+    picurlList:''
   },
 
   /**
@@ -97,6 +98,7 @@ Page({
             inquiryList: res.data.data
           }
         )
+        
       }
     })
   },
@@ -114,5 +116,7 @@ Page({
         res.eventChannel.emit('sendData', inquiryid)
       }
     })
-  }
+  },
+   
+  
 })

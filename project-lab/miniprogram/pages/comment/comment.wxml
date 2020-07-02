@@ -1,0 +1,45 @@
+<!--miniprogram/comment/comment.wxml-->
+<!--pages/schedule/schedule.wxml-->
+<view class="inq-container">
+
+
+	<view class="card">
+		<view class="card-head">
+			<image src="../../src/icon/menu.png" mode="widthFix"></image>
+			<text>评价问诊</text>
+		</view>
+		<view class="card-body">
+
+  <view class="star-set">
+	<view>
+					<image mode="widthFix" src="../../src/icon/star.png" bindtap="onClickStar" data-star="{{item}}" wx:for="{{starArray}}"></image>
+					<image mode="widthFix" src="../../src/icon/star.png" wx:for="{{unstarArray}}" data-star="{{item}}" class="gray" bindtap="onClickStar"></image>
+      </view>
+			</view>
+			<view style="height:10px"></view>
+     	<textarea maxlength='1000' placeholder="请输入您对本次问诊服务的评价" bindinput="handleInput"></textarea>
+
+<view class="card-button" bindtap="uploadPic" bindtap="commit">
+				<image mode="widthFix" src="../../src/icon/edit.png"></image>
+				<text>提交评价</text>
+</view>
+
+<view style="text-align:center;margin-top:20px">
+  <view wx:if="{{startTime}}">
+    开始时间：{{startTime}}
+  </view>
+  <view wx:if="{{endTime}}">
+    结束时间：{{endTime}}
+  </view>
+</view>
+
+
+			
+ 
+ 
+ </view>
+</view>
+
+
+</view>
+

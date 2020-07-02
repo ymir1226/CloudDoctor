@@ -8,7 +8,7 @@ Page({
   data: {
     focus: false,
     val: '',
-    // orderList: [{ name: '吴医生', src: 'http://img1.imgtn.bdimg.com/it/u=105692044,3597038919&fm=27&gp=0.jpg', cue: '血糖控制异常', heart: 1 }, { name: '张医生', src: 'http://img1.imgtn.bdimg.com/it/u=105692044,3597038919&fm=27&gp=0.jpg', heart: 1 }],
+    // orderList: [{ name: '吴医生', src: 'http://img1.imgtn.bdimg.com/it/u=105692044,3597038919&fm=27&gp=0.jpg', cue: '血糖控制异常', status: 2 }, { name: '张医生', src: 'http://img1.imgtn.bdimg.com/it/u=105692044,3597038919&fm=27&gp=0.jpg', status: 1 }],
     orderList: [],
     toView: 1
    
@@ -78,10 +78,8 @@ Page({
     //请求医生列表
     wx.request({
       url: 'http://119.45.143.38:80/api/chatorder/getChatOrderByPatientId',
-      //url: 'http://localhost:8000/api/chatorder/getChatOrderByPatientId',
       data: {
-        // id_patient: app.globalData.id
-        id_patient: 2
+        id_patient: app.globalData.id
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -103,17 +101,44 @@ Page({
    * 跳转至对应聊天界面
    */
   redirectToChatRoom: function (event) {
-    console.log(event.currentTarget.dataset.groupid)
-    var groupid = event.currentTarget.dataset.groupid
-    //var doctorinfo = {group_id:groupid,}
+    console.log(event.currentTarget.dataset.item)
+    var groupid = event.currentTarget.dataset.item.groupid
+    var doctor_name = event.currentTarget.dataset.item.doctor_name
+    var doctor_avatar = event.currentTarget.dataset.item.doctor_avatar
+    var state=event.currentTarget.dataset.item.state
+    console.log(state)
+    if(state==1){
     wx.navigateTo({
       url: '/pages/room/room',
       success: function (res) {
+        var chatinfo={
+          groupid: groupid,
+          doctor_name:doctor_name,
+          doctor_avatar:doctor_avatar
+        }
         // 通过eventChannel向被打开页面传送数据
         //res.eventChannel.emit('sendData', roomid)
-        res.eventChannel.emit('sendData', groupid)
+        res.eventChannel.emit('sendData', chatinfo)
       }
-    })
+    })}
+    else if(state==2){
+      wx.showToast({
+        icon: 'none',
+        title: '预约还未开始！',
+      })
+    }
+    // else if(state==3){
+    //   wx.showToast({
+    //     icon: 'none',
+    //     title: '预约已经结束！',
+    //   })
+    // }
   },
+  showToast(){
+    wx.showToast({
+      icon: 'none',
+      title: '预约还未开始！',
+    })
+  }
 
 })

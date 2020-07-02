@@ -10,7 +10,7 @@ Page({
     // chatRoomEnvId: 'release-f8415a',
     chatRoomCollection: 'chatroom',
     chatRoomGroupId: '',
-    chatRoomGroupName: '聊天室',
+    chatRoomGroupName: '吴医生',
 
     // functions for used in chatroom components
     onGetUserInfo: null,
@@ -23,8 +23,9 @@ Page({
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
     eventChannel.on('sendData', data => {
       that.setData({
-        chatRoomGroupId: data
-        //todo: 从后端获取 医生姓名、医生患者openid
+        //chatRoomGroupId: "asdfghjkll"
+        chatRoomGroupId: data.groupid,
+        chatRoomGroupName:data.doctor_name
       });
       console.log(this.data.chatRoomGroupId)
     })
@@ -75,7 +76,7 @@ Page({
       name: 'login',
     })
 
-    return result.openid
+    return "olNFt5WTT2m0YRK2SdXtGz3Mv2mA"
   },
 
   onGetUserInfo: function (e) {

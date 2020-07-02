@@ -119,5 +119,16 @@ Page({
         console.log(res.data.data)
       }
     })
+  },
+  onClickDoctor(event){
+    console.log(event.currentTarget.dataset.doctorid)
+    var doctorid = event.currentTarget.dataset.doctorid
+    wx.navigateTo({
+      url: '/pages/doctorHome/doctorHome',
+      success: function (res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('sendData', doctorid)
+      }
+    })
   }
 })
