@@ -1,16 +1,16 @@
 <view class="reply-container">
 	<view class="card">
 		<view class="card-body doc-info">
-			<image mode="widthFix" src="../../src/icon/persons.png"></image>
+			<image mode="widthFix" src="../../src/doctor1.png"></image>
 			<view style="margin-bottom: 0;" class="doc-info-right">
 				<!-- <text style="font-size:45rpx">{{doctorName}}</text> -->
-				 <text style="font-size:45rpx">吴医生</text>
-				<!-- <text>{{department}}</text> -->
-				<text>心内科</text>
+				 <text style="font-size:45rpx">{{doctor_name}}</text>
+				<text>{{department}}</text>
+				<!-- <text>心内科</text> -->
 				<view style="display:flex;align-items:center;">
 					<image mode="widthFix" src="../../src/icon/star.png"></image>
-					<!-- <text >{{score}}</text> -->
-					<text >4.8</text>
+					<text >{{score}}</text>
+					<!-- <text >4.8</text> -->
 				</view>
 			</view>
 		</view>
@@ -20,7 +20,7 @@
 		<view class="card-head">
 			<image src="../../src/icon/boy.png" mode="widthFix"></image>
 			<!-- <text>{{item.name}}</text>    -->
-			<text>张三</text>   
+			<text>{{patient_name}}</text>   
 		</view>
 	  <view class="card-body">
 
@@ -29,21 +29,21 @@
     <view class="precription">
         <view class="pre-name">既往病史</view>
         <!-- <view class="pre-des">{{item.illness_history}}</view> -->
-				 <view class="pre-des">一次流感</view>
+				 <view class="pre-des">{{illness_history}}</view>
     </view>
 
     <view>   </view>
     <view class="precription">
       <view class="pre-name">用药史</view>
       <!-- <view class="pre-des">{{item.medicine_history}}</view> -->
-			<view class="pre-des">阿莫西林</view> 
+			<view class="pre-des">{{medicine_history}}</view> 
     </view>
 
     <view>   </view>
     <view class="precription">
       <view class="pre-name">过敏史</view>
       <!-- <view class="pre-des">{{item.allergen}}</view> -->
-			<view class="pre-des">黄曲霉素</view>
+			<view class="pre-des">{{allergen}}</view>
 		</view>
 
 	</view>
@@ -68,42 +68,48 @@
 			<image mode="widthFix" src="../../src/icon/question.png"></image>
 			<text>问诊信息</text>
 		</view>
-		<view class="card-body">
+		<view wx:for="{{replyList}}">
+		<block wx:if="{{item.from_user==1}}">
+		<view class="card-body">		
 			<view>我的问题</view>
-			<view class="note">提交时间 xxx</view>
-			<view>患者：4岁儿童</view>
+	
+			<view class="note">提交时间：{{item.created_at}}</view>
+	
 			<view>
-       {{content}}    
+       {{item.content}}    
 			</view>
 
 			<view class="illness-box">
-				<image mode="widthFix" src="../../src/icon/illness.png"></image>
-				<!-- <view class="illness-des">
-					<view>脖子后发红</view>
-					<view class="note">上传时间：xxx</view>
-				</view> -->
+				<image mode="widthFix" src="../../src/icon/illness.png"></image>		
 			</view>
 		</view>
-
+	</block>
+	<block wx:if="{{item.from_user==0}}">
 		<view class="card-body">
 			<view>医生回复</view>
-			<view class="note">回复时间：xxx</view>
-			<view>水痘疫苗是一种弱化的水痘活菌。水痘疫苗是一种弱化的水痘活菌。水痘疫苗是一种弱化的水痘活菌。水痘疫苗是一种弱化的水痘活菌。水痘疫苗是一种弱化的水痘活菌。水痘疫苗是一种弱化的水痘活菌。</view>
+			<view class="note">回复时间：{{item.created_at}}</view>
+			<!-- <view>水痘疫苗是一种弱化的水痘活菌。不要用阿司匹林或含有阿司匹林的药物治疗发烧，或其它水痘症状，以免引发雷氏症候群，影响肝脏和大脑，而且可能会致命。一定要保持身体水分充足。水痘患者可能会脱水。一整天都要多喝水和其它补水液体，比如运动饮料。</view> -->
+			<view>{{item.content}}</view>
 		</view>
-
+</block>
+</view>
     <view class="card-body">
       <view>处方</view>
       <view class="precription">
-        <view class="pre-name">xxxxx</view>
-        <view class="pre-des">每天四次,xxxxx。</view>
+        <view class="pre-name">无环鸟苷</view>
+        <view class="pre-des">每天四次</view>
+				 <view class="pre-name">阿精胞甘</view>
+        <view class="pre-des">每天两次</view>
       </view>
 
-      <view class="card-button" bindtap="continueInquiry">
+     
+    </view>
+		<view class="card-body">
+ <view class="card-button" bindtap="continueInquiry" wx:if="{{state==0}}">
         <text>继续问诊</text>
       </view>
-    </view>
-
 	</view>
+		</view>
 
 <view class="card" hidden="{{ifInquiry==1?false:true}}">
 		<view class="card-head">
@@ -115,6 +121,10 @@
 			<view class="card-button" bindtap="uploadPic">
 				<image mode="widthFix" src="../../src/icon/label.png"></image>
 				<text>上传图片</text>
+			</view>
+				<view class="card-button" bindtap="onClickCommit">
+				<image mode="widthFix" src="../../src/icon/edit.png"></image>
+				<text>提交问诊</text>
 			</view>
       <view class="send-more-result-main" hidden="{{images==0}}">
         <block wx:for="{{images}}" wx:for-index="idx">
@@ -148,8 +158,8 @@
 	</view> -->
 
   
-<!-- 
-	<view class="card">
+
+	<view class="card" wx:if="{{state==1}}">
 
 		<view class="card-head">
       <image mode="widthFix" src="../../src/icon/comment.png"></image>
@@ -157,23 +167,23 @@
     </view>
 		<view class="card-body">
       <view class="star-set">
-					<image mode="widthFix" src="../../src/icon/star.png"></image>
-					<image mode="widthFix" src="../../src/icon/star.png"></image>
-					<image mode="widthFix" src="../../src/icon/star.png"></image>
-					<image mode="widthFix" src="../../src/icon/star.png"></image>
-					<image mode="widthFix" src="../../src/icon/star.png"></image>
+								<image mode="widthFix" src="../../src/icon/star.png" bindtap="onClickStar" data-star="{{item}}" wx:for="{{starArray}}"></image>
+					<image mode="widthFix" src="../../src/icon/star.png" wx:for="{{unstarArray}}" data-star="{{item}}" class="gray" bindtap="onClickStar"></image>
       </view>
-      <view>
-        医生提供的答案非常有用，知识渊博。医生提供的答案非常有用，知识渊博。医生提供的答案非常有用，知识渊博。医生提供的答案非常有用，知识渊博。
-      </view>
+      <!-- <view wx:if="{{id_inquiry!=24}}">
+        医生提供的答案非常有用，知识渊博，给我开出的处方很有效，吃了两天身体就有明显好转，头也不痛了，气也不喘了，吃饭很有食欲，恢复得非常棒。医生真的特别耐心，态度亲切。非常感谢医生！
+      </view> -->
+			 <!-- <view wx:if="{{id_inquiry==24}}">
+        医生真的非常耐心!
+      </view> -->
     </view>
-	</view> -->
+	</view>
 
-	<text class="alert">对于紧急医疗情况，请致电120（或您当地的紧急服务部门）或去最近的急诊室</text>
+	<text class="alert" >对于紧急医疗情况，请致电120（或您当地的紧急服务部门）或去最近的急诊室</text>
 
 </view>
 
-	<view class="bottom-card-button" id="pay">
+	<view class="bottom-card-button" id="pay" bindtap="finishInquiry" wx:if="{{state==0}}">
 			<text>结束问诊</text>
 			<image mode="widthFix" src="../../src/icon/Right.png"></image>
 	</view>

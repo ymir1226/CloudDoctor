@@ -5,8 +5,18 @@
     <view class="doctorImgInfo">
       <image src="../../src/doctor1.png" class="doctorImg"></image>
       <view class="doctorInfo">
+       <view style="width:180px"></view>
+        <view wx:if="{{isCollect == 0}}">
+         <image src="../../src/icon/dislike.png" class="like" bindtap="onClickLike"></image>
+        </view>
+         <view wx:if="{{isCollect == 1}}">
+         <image src="../../src/icon/like.png" class="like" bindtap="onClickDislike"></image>
+        </view>
         <text class="doctorName">{{doctorName}}</text>
+       
         <text class="doctorDep">{{title}}</text>
+        
+       
         <view class="doctorScoreReview">
           <image src="../../src/icon/star.png" class="star"></image>
           <text class="doctorScore">{{score}}</text>
@@ -31,8 +41,8 @@
     </view>
   </view>
   <view class="title">
-    <text style="font-size:35rpx;color:black;margin-left:35rpx;">私人问诊服务</text>
-    <image src="../../src/icon/i .png" style="margin-left:15rpx;height:50rpx;width:50rpx"></image>
+    <text style="font-size:35rpx;color:black;margin-left:35rpx;">问诊服务定价</text>
+    <image src="../../src/icon/i .png" style="margin-left:15rpx;height:50rpx;width:50rpx" bindtap="showPrice"></image>
     <!-- <text style="font-size:35rpx;color:rgb(10, 143, 245);margin-left:280rpx;">医生排班</text> -->
   </view>
   <view class="consultType">
@@ -144,14 +154,27 @@
       <view class="aboutMePart1">
         <image src="../../src/icon/aboutMe.png" class="aboutMeImage"></image>
         <text style="margin-top:20rpx;margin-left:40rpx;font-weight:bolder;">Y**r</text>
+           <view style="margin-left:10%;width:80%;margin-top:10rpx">
+          <!-- <text style="font-size:30rpx;word-break: break-all;">
+          
+          </text> -->
+           <view class="star-set">
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+					<image mode="widthFix" src="../../src/icon/star.png"></image>
+      </view>
+          
+        </view>
       </view>
       <view class="aboutMePart2">
-        <view style="margin-left:10%;width:80%;">
-          <text style="font-size:30rpx;word-break: break-all;">
-          {{item.content}}
-          </text>
-        </view>
-        <!-- <text class="knowMore">了解更多</text> -->
+      
+         <view style="margin-left:10%;width:80%;">
+        <text style="font-size:40rpx;">
+        {{item.content}}
+      </text>
+       </view>
       </view>
     </view>
 </view>

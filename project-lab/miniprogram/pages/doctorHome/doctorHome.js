@@ -6,15 +6,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    patientid:0,
+    department:'',
+    chat_order_price:40,
+    inquiry_order_price:20,
+    doctor_openid:"",
+    patientid:1,
     doctorid:1,
-    doctorName:'医师',
+    doctorName:'钟医生',
     title:'主任医师',
-    score:5,
+    score:4.9,
     reviews:999,
     expert:'儿科',
-    patientNum:1000,
-    quiryNum:100,
+    patientNum:1240,
+    quiryNum:1024,
     rate:99,
     introduction:"我知道这里是一段介绍",
     address:'地址',
@@ -40,25 +44,16 @@ Page({
     },
     classroomList:[
       {imgurl:'../../src/icon/throat.png',
-      name:'xxxxxxxxxx'},
+      name:'上海市第十人民医院 心内科'},
       {imgurl:'../../src/icon/throat.png',
-      name:'xxxxxxxxxx'},
-      {imgurl:'../../src/icon/throat.png',
-      name:'xxxxxxxxxx'}
+      name:'同济大学附属同济医院 心内科'}
     ],
     experienceList:[
       {
-        title:'执照',
-        content:'上海'
-      },
-      {
-        title:'执照',
-        content:'上海'
-      },
-      {
-        title:'执照',
-        content:'上海'
+        title:'长年承担同济大学本科教学工作',
+        content:''
       }
+    
     ],
     educationList:[
       {
@@ -67,20 +62,21 @@ Page({
         college:'Peking University School of Medicine',
         date:'1985'
       },
-      {
-        school:'医学院',
-        imgUrl:'../../src/icon/PekingUniversity.png',
-        college:'Peking University School of Medicine',
-        date:'1985'
-      },
-      {
-        school:'医学院',
-        imgUrl:'../../src/icon/PekingUniversity.png',
-        college:'Peking University School of Medicine',
-        date:'1985'
-      },
+      // {
+      //   school:'医学院',
+      //   imgUrl:'../../src/icon/PekingUniversity.png',
+      //   college:'Peking University School of Medicine',
+      //   date:'1985'
+      // },
+      // {
+      //   school:'医学院',
+      //   imgUrl:'../../src/icon/PekingUniversity.png',
+      //   college:'Peking University School of Medicine',
+      //   date:'1985'
+      // },
     ],
-    commentList:[]
+    commentList:[],
+    isCollect:0
   },
 
   /**
@@ -97,6 +93,7 @@ Page({
       console.log(that.data.doctorid, ' from doctorList');
       this.getDoctorDetailById(that.data.doctorid)
       this.getCommentByDoctorId(that.data.doctorid)
+      this.checkLike()
     })
 
     
@@ -195,13 +192,20 @@ Page({
    * 响应图文问诊按钮点击事件
   */
   onClickInquiry: function (event) {
-  
-    var doctorid = this.data.doctorid
+   var inquiry_info={
+     id_doctor:this.data.doctorid,
+     id_patient:this.data.patientid,
+     doctor_name:this.data.doctorName,
+     price:this.data.inquiry_order_price,
+     department:this.data.department,
+     score:this.data.score,
+     doctor_openid:this.doctor_openid,
+   }
     wx.navigateTo({
       url: '/pages/inquiry/inquiry',
       success: function (res) {
         // 通过eventChannel向被打开页面传送数据
-        res.eventChannel.emit('sendData', doctorid)
+        res.eventChannel.emit('sendData', inquiry_info)
       }
     })
   },
@@ -238,6 +242,7 @@ Page({
             introduction: resp.introduction,
             address: resp.address,
             contactNumber: resp.contact_number,
+            department:resp.department
           }
         )
       }
@@ -252,7 +257,7 @@ Page({
     wx.request({
       url: 'http://119.45.143.38:80/api/comment/getCommentByDoctorId',
       data: {
-        id: doctorid,
+        id_doctor: doctorid,
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -318,12 +323,116 @@ Page({
   *响应预约挂号按钮点击事件
  */
   redirectToSchedule: function (event) {
+    var chat_info={
+      id_patient:this.data.patientid,
+      id_doctor:this.data.doctorid,
+      patient_openid:app.globalData.openid,
+      doctor_openid:this.doctor_openid,
+      price:this.data.chat_order_price,
+      // price:20,
+      doctor_name:this.data.doctorName
+    }
     wx.navigateTo({
       url: '/pages/schedule/schedule',
       success: function (res) {
         // 通过eventChannel向被打开页面传送数据
-        res.eventChannel.emit('sendData', this.data.doctorid)
+        res.eventChannel.emit('sendData', chat_info)
       }
     })
-  }
+  },
+  /**
+  *响应问诊价格按钮点击事件
+ */
+  showPrice(){
+    wx.showToast({
+      icon: 'none',
+      title: '图文问诊：20元/15次；在线咨询：40元/时',
+    })
+  },
+  /**
+  *收藏医生
+ */
+ onClickLike(){
+  wx.showToast({
+    icon: 'none',
+    title: '收藏成功',
+  })
+  this.setData({
+    isCollect:1
+  })
+      //收藏
+      wx.request({
+        url: 'http://119.45.143.38:80/api/collect/addCollect',
+        data: {
+          // uid:app.globalData.id,
+          uid:1,
+          doctor_id:this.data.doctorid,
+          doctor_name:this.data.doctorName,
+          department:this.data.department,
+          score:this.data.score
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        method: 'POST',
+        success(res) {
+          console.log(res.data)
+        }
+      })
+},
+/**
+  *取消收藏医生
+ */
+ onClickDislike(){
+  wx.showToast({
+    icon: 'none',
+    title: '取消收藏成功',
+  })
+  this.setData({
+    isCollect:0
+  })
+   //取消收藏
+   wx.request({
+    url: 'http://119.45.143.38:80/api/collect/deleteCollect',
+    data: {
+      // uid:app.globalData.id,
+      uid:1,
+      doctor_id:this.data.doctorid,
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    method: 'POST',
+    success(res) {
+      console.log(res.data)
+    }
+  })
+},
+/**
+  *是否收藏
+ */
+checkLike(){
+  //查询收藏
+  var that=this
+  wx.request({
+    url: 'http://119.45.143.38:80/api/collect/getCollectByUid',
+    data: {
+      // uid:app.globalData.id,
+      uid:1,
+      doctor_id:this.data.doctorid,
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    method: 'POST',
+    success(res) {
+      console.log(res.data.data)
+      if(res.data.data.length!=0){
+        that.setData({
+          isCollect:1
+        })
+      }
+    }
+  })
+}
 })

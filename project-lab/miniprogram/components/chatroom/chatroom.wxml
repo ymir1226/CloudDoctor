@@ -21,7 +21,7 @@
       wx:for="{{chats}}"
       wx:key="_id"
       id="item-{{index}}"
-      class="message {{openId == item._openid ? 'message__self' : ''}}"
+      class="message {{item._openid == openId? 'message__self':'' }}"
     >
       <image 
         class="avatar"
@@ -45,7 +45,8 @@
         <block wx:if="{{item.msgType === 'record'}}">
           <view class="text-wrapper" data-file="{{item.recordID}}" bindtap="playAudio">
             <view class="loading" wx:if="{{item.writeStatus === 'pending'}}">···</view>
-         <image src="./listen.png"  class="image-content2" mode="scallToFill" ></image>
+         <image src="../../src/icon/play-{{item._openid==openId?'right':'left'}}.png"  class="image-content2" mode="aspectFit" wx:if="{{isAudioPlay==false}}"></image>
+          <image src="../../src/icon/play-gif-{{item._openid==openId?'right':'left'}}.gif"  class="image-content2" mode="aspectFit" wx:if="{{isAudioPlay==true}}"></image>
             
           </view>
         </block>

@@ -1,3 +1,5 @@
+/* miniprogram/comment/comment.wxss */
+/* pages/schedule/schedule.wxss */
 .inq-container{
   background-color: #f6f6f6;
   padding: 40rpx;
@@ -5,9 +7,7 @@
   box-sizing: border-box;
   position: relative;
 }
-.name{
-  color:  #999;
-}
+
 .card{
   background-color: white;
   border-radius: 40rpx;
@@ -115,36 +115,36 @@
   color: #fff; 
 }
 
-
-.send-more-result-main{
-margin-top:30rpx;
+.pre-name{
+  color: #199bfe;
+  font-size: 35rpx;
 }
-.send-more-result-main image{
-  height: 100%;
-  width: 100%;
-}
-.send-more-result-main .file-box{
-margin-right: 14rpx;
-height: 160rpx;
-width: 160rpx;
-position:relative;
-display:inline-block;
+.precription{
+  background-color: #f6f6f6;
+  border-radius: 20rpx;
+  padding: 20rpx;
 }
 
-.send-more-result-main .file-box .img-box{
-  height: 100%;
-  width: 100%;
-}
-.send-more-result-main .remove-icon{
-position: absolute;
-right:5rpx;
-top:5rpx;
+.intro {
+  margin: 30px;
+  text-align: center;
 }
 
-.weui-cells__title{
-  margin-top: 40rpx;
+.star-set{
+  text-align: center;
 }
 
-.second_title{
-  margin-top: 20rpx;
+.star-set image{
+  width: 60rpx;
+}
+
+.gray { 
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  
+  filter: grayscale(100%);
+
+  filter: gray;
 }

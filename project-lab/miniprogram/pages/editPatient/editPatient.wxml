@@ -22,7 +22,7 @@
     <view class="page-second-title"></view> 
     <radio-group bindchange="radioChange">
     <label class="radio">
-      <radio value="r1" checked="{{male}}"/>男
+      <radio value="r1" checked="1"/>男
     </label>
     <label class="radio">
       <radio value="r2" checked="{{female}}"/>女

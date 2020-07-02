@@ -8,6 +8,18 @@
 			<text>预约挂号</text>
 		</view>
 		<view class="card-body">
+<Calendar id="Calendar" bind:select="select"></Calendar>
+
+<view style='width:90%;margin:0 auto;text-align:center;padding:30rpx 20rpx;border:1rpx dashed #aaa;'>
+    <!-- <button type='default' bindtap='toggleType'>切换展示效果</button> -->
+
+    <!-- <text>index.wxml</text> -->
+    <view>医生排班</view>
+		<view>09 : 00 ~ 11 : 00</view>
+		<view>14 : 00 ~ 17 : 00</view>
+</view>
+
+
 
 <view class="card-button" bindtap="uploadPic" bindtap="pickerShow">
 				<image mode="widthFix" src="../../src/icon/label.png"></image>

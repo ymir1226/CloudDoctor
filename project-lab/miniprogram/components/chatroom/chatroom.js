@@ -5,6 +5,7 @@ innerAudioContext.onPlay(() => {
 })
 innerAudioContext.onEnded(() => {
   console.log('播放结束')
+
   //播放结束，销毁该实例
   // innerAudioContext.destroy()
   // console.log('已执行destory()')
@@ -39,6 +40,7 @@ Component({
     scrollTop: 0,
     scrollToMessage: '',
     hasKeyboard: false,
+    isAudioPlay:false,
   },
 
   methods: {
@@ -138,6 +140,7 @@ Component({
           switch (docChange.queueType) {
             case 'enqueue': {
               hasOthersMessage = docChange.doc._openid !== this.data.openId
+              //hasOthersMessage = docChange.doc.groupId !== this.data.groupId
               const ind = chats.findIndex(chat => chat._id === docChange.doc._id)
               if (ind > -1) {
                 if (chats[ind].msgType === 'image' && chats[ind].tempFilePath) {
@@ -230,6 +233,9 @@ Component({
       //开始录音
       recorderManager.start(options);
       recorderManager.onStart(() => {
+        wx.showLoading({
+          title: '正在录音...',
+        })
         console.log('。。。开始录音。。。')
       });
     },
@@ -238,6 +244,7 @@ Component({
         recording: false
       })
       console.log('。。。停止录音了。。。')
+      wx.hideLoading()
       recorderManager.stop();
       recorderManager.onStop((res) => {
         console.log('录音文件', res.tempFilePath)
@@ -249,6 +256,9 @@ Component({
     },
     async playAudio(e) {
       console.log('点击了播放')
+      this.setData({
+        isAudioPlay:true
+      })
       var tempsound = e.currentTarget.dataset.file
       var arr = []
       arr.push(tempsound)
