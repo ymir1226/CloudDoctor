@@ -73,7 +73,7 @@ Page({
     //请求医生信息
     wx.request({
       // url: 'http://119.45.143.38:80/api/inquiry/addInquiry',
-      url: 'http://localhost:8080/api/inquiry/addInquiry',
+      url: 'http://119.45.143.38:80/api/inquiry/addInquiry',
       data: {
         id_inquiry:this.data.id_inquiry,
         id_doctor:this.data.id_doctor,
@@ -337,7 +337,7 @@ addPatient: function () {
   var that = this;
   //请求医生信息
   wx.request({
-    url: 'http://localhost:8080/api/patient/addPatient',
+    url: 'http://119.45.143.38:80/api/patient/addPatient',
     data: {
       name: this.data.name,
       author_id:this.data.id_user,
