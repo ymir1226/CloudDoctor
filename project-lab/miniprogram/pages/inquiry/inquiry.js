@@ -299,7 +299,8 @@ Page({
         illness_history:this.data.patientList[index].illness_history,
         medicine_history:this.data.patientList[index].medicine_history,
         allergen:this.data.patientList[index].allergen,
-        currentName:this.data.patientList[index].name
+        currentName:this.data.patientList[index].name,
+        id_patient:this.data.patientList[index].id
       })
     },
   /**
@@ -316,7 +317,7 @@ Page({
      content:that.data.newReply,
      pic_url:that.data.picurlList,
      floor:1,
-     id_patient:that.data.id_patient,
+     id_patient:app.globalData.id,
      id_doctor:that.data.id_doctor,
      from_user:1//来自用户
 
@@ -366,7 +367,7 @@ addPatient: function () {
      */
     payForInquiry: function (e) {
       this.uploadImagesToCloud()
-      if(this.data.medicine==false){this.addPatient()}
+      if(this.data.medicine==true){this.addPatient()}
       else{this.createInquiry()}
     },
    /**
