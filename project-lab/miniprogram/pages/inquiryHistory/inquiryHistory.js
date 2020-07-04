@@ -74,7 +74,7 @@ Page({
     wx.request({
       url: 'http://119.45.143.38:80/api/inquiry/getInquiryByPatientId',
       data: {
-        id_patient: id,
+      id_user: id,
       },
       header: {
         'content-type': 'application/json' // 默认值
