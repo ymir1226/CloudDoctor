@@ -173,13 +173,13 @@ Component({
       if (this.data.isPicking) { return }
       let startTime = new Date(this.data.startPickTime.replace(/-/g, "/"));
       let endTime = new Date(this.data.endPickTime.replace(/-/g, "/"));
-      if (startTime <= endTime || !this.data.endDate) {
+      //if (startTime <= endTime || !this.data.endDate) {
         this.setData({
           startTime,
-          endTime
+          //endTime
         });
         let startArr = formatTime(startTime).arr;
-        let endArr = formatTime(endTime).arr;
+        //let endArr = formatTime(endTime).arr;
         let format0 = function (num) {
           return num < 10 ? '0' + num : num
         }
@@ -197,33 +197,34 @@ Component({
           ":" +
           (this.data.secColumn ? format0(startArr[5]) : "00");
 
-        let endTimeBack =
-          endArr[0] +
-          "-" +
-          format0(endArr[1]) +
-          "-" +
-          format0(endArr[2]) +
-          " " +
-          (this.data.hourColumn ? format0(endArr[3]) : "00") +
-          ":" +
-          (this.data.minColumn ? format0(endArr[4]) : "00") +
-          ":" +
-          (this.data.secColumn ? format0(endArr[5]) : "00");
+        // let endTimeBack =
+        //   endArr[0] +
+        //   "-" +
+        //   format0(endArr[1]) +
+        //   "-" +
+        //   format0(endArr[2]) +
+        //   " " +
+        //   (this.data.hourColumn ? format0(endArr[3]) : "00") +
+        //   ":" +
+        //   (this.data.minColumn ? format0(endArr[4]) : "00") +
+        //   ":" +
+        //   (this.data.secColumn ? format0(endArr[5]) : "00");
 
         let time = {
           startTime: startTimeBack,
-          endTime: endTimeBack
+          //endTime: endTimeBack
         };
 
         //触发自定义事件
         this.triggerEvent("setPickerTime", time);
         this.triggerEvent("hidePicker", {});
-      } else {
-        wx.showToast({
-          icon: "none",
-          title: "时间不合理"
-        });
-      }
+      // }
+      //  else {
+      //   wx.showToast({
+      //     icon: "none",
+      //     title: "时间不合理"
+      //   });
+      // }
     },
     hideModal: function () {
 
@@ -271,13 +272,16 @@ Component({
           this.data.HourList[val[3]],
           this.data.MinuteList[val[4]],
           this.data.SecondList[val[5]]]
-      } else if (type == "start" && timeNum > new Date(this.data.endPickTime.replace(/-/g, '/')) && this.data.config.endDate) {
-        limitDate = formatTime(this.data.endPickTime).arr;
+      } 
+      // else if (type == "start" && timeNum > new Date(this.data.endPickTime.replace(/-/g, '/')) && this.data.config.endDate) {
+      //   limitDate = formatTime(this.data.endPickTime).arr;
 
-      } else if (type == "end" && timeNum < new Date(this.data.startPickTime.replace(/-/g, '/'))) {
-        limitDate = formatTime(this.data.startPickTime).arr;
+      // } 
+      // else if (type == "end" && timeNum < new Date(this.data.startPickTime.replace(/-/g, '/'))) {
+      //   limitDate = formatTime(this.data.startPickTime).arr;
 
-      } else if (timeNum < start) {
+      // } 
+      else if (timeNum < start) {
         limitDate = this.data.limitStartTimeArr.arr;
 
       } else if (timeNum > end) {

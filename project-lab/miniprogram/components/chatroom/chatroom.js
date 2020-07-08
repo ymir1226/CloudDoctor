@@ -91,6 +91,7 @@ Component({
         this.setData({
           openId,
         })
+        console.log(openId)
       }, '初始化 openId 失败')
     },
 

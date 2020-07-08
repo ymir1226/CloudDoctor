@@ -79,8 +79,8 @@
        {{item.content}}    
 			</view>
 
-			<view class="illness-box">
-				<image mode="widthFix" src="../../src/icon/illness.png"></image>		
+			<view class="illness-box" wx:for="{{item.pic_url}}" wx:for-item="{{pic_url}}">
+				<image mode="widthFix" src="{{item.pic_url}}"></image>		
 			</view>
 		</view>
 	</block>
@@ -93,13 +93,11 @@
 		</view>
 </block>
 </view>
-    <view class="card-body">
+    <view class="card-body" wx:for="{{prescription}}">
       <view>处方</view>
       <view class="precription">
-        <view class="pre-name">无环鸟苷</view>
-        <view class="pre-des">每天四次</view>
-				 <view class="pre-name">阿精胞甘</view>
-        <view class="pre-des">每天两次</view>
+        <view class="pre-name">{{item.content}}</view>
+        <view class="pre-des">{{item.description}}</view>
       </view>
 
      
