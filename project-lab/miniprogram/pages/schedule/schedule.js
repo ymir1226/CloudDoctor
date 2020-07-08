@@ -28,6 +28,7 @@ Page({
       limitStartTime: "2015-05-06 12:32:44",
       limitEndTime: "2055-05-06 12:32:44"
     },
+    order_id:"",
     //************推送数据 */
     userOrderId: "a3510731313",
     item: {
@@ -60,6 +61,7 @@ Page({
     var that = this
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
     eventChannel.on('sendData', data => {
+      console.log(data)
       that.setData({
         patient_openid:data.patient_openid,
         doctor_openid:data.doctor_openid,
@@ -68,7 +70,7 @@ Page({
         id_doctor:data.id_doctor,
         price:data.price
       });
-      console.log(that.data.doctorid, ' from doctorList');
+      console.log(that.data.doctor_openid, ' from doctorList');
       this.getScheduleByDoctorId(that.data.doctorid)
     })
 
@@ -160,11 +162,16 @@ Page({
   },
   setPickerTime: function (val) {
     console.log(val);
-    let data = val.detail;
+    let data = val.detail
+    // //加上一天的时间戳(1*24*60*60*1000)
+    // var nextday = new Date(new Date(start_time).getTime() + 1*24*60*60*1000);
+    // var end_time = this.formatTime(nextday).str
+    // console.log("end_time:"+end_time)
     this.setData({
       startTime: data.startTime,
-      endTime: data.endTime
+      //endTime: end_time
     });
+    console.log("startTime:"+this.data.startTime)
   },
    /**
    * 支付诊费按钮响应事件
@@ -195,9 +202,10 @@ Page({
               name: 'subscribeMessage',
               data: {
                 data: self.data.item,
+                doctor_id: self.data.doctor_openid,
                 templateId: TmplId,
                 //这个是给用户发送订阅消息后，用户点击订阅消息进入小程序的相关页面，一定要是在线的才可以
-                page: '/pages/room/room?id=' + self.data.userOrderId,
+                page: '/pages/room/room?id=' + self.data.group_id,
               },
             })
             .then(() => {
@@ -261,20 +269,29 @@ Page({
    * 确认支付
    */
   addChatOrder: function(){
-var that=this
-    console.log("pay...")
+  var that=this
+
+    var start_time =this.data.startTime
+    console.log("start_time"+start_time)
+    //加上一天的时间戳(1*24*60*60*1000)
+    var nextday = new Date(new Date(start_time).getTime() + 1*24*60*60*1000);
+    var endTime = this.formatTime(nextday).str
+    console.log("end_time:"+endTime)
+
+  console.log("pay...")
      //预支付
  wx.request({
   url: 'http://119.45.143.38:80/api/chatorder/addChatOrder',
+  //url: 'http://localhost:8080/api/chatorder/addChatOrder',
   data: {
    id_patient:app.globalData.id,
    id_doctor:that.data.id_doctor,
    patient_openid:app.globalData.openid,
    doctor_openid:that.data.doctor_openid,
-   state:0,
+   status:0,
    doctor_name:that.data.doctor_name,
    start_time:that.data.startTime,
-   end_time:that.data.endTime,
+   end_time:endTime,
    price:that.data.price
   },
   header: {
@@ -292,6 +309,7 @@ var that=this
     var value3="item.character_string5.value"
     that.setData({
       group_id:groupid,
+      order_id:orderid,
       [value1]:that.data.doctor_name+"的咨询",
       [value2]:that.data.startTime,
       [value3]:orderid
@@ -313,6 +331,8 @@ var that=this
         that.redirectToChat()
        },
       'fail': function (res) {
+        //订单失败或取消，更改订单状态
+        that.cancelChatOrder(that.data.order_id)
         console.log(res)
        }
     })
@@ -328,5 +348,56 @@ var that=this
     wx.redirectTo({
       url: '/pages/chat/chat',
     })
-   }
+   },
+   /**时间格式化 */
+   formatTime (date) {
+
+    if (typeof date == 'string' || 'number') {
+      try {
+        date = date.replace(/-/g, '/')//兼容ios
+      } catch (error) {
+      }
+      date = new Date(date)
+    }
+  
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hour = date.getHours()
+    const minute = date.getMinutes()
+    const second = date.getSeconds()
+  
+    return {
+      str: [year, month, day].map(this.formatNumber).join('-') + ' ' + [hour, minute, second].map(this.formatNumber).join(':'),
+      arr: [year, month, day, hour, minute, second]
+    }
+  },
+  formatNumber(n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+  },
+ /**更改订单状态：取消订单*/
+  cancelChatOrder(orderid){
+    console.log('cancel')
+    wx.request({
+      url: 'http://119.45.143.38:80/api/chatorder/updateChatOrder',
+      //url: 'http://localhost:8080/api/chatorder/updateChatOrder',
+      data: {
+       order_id:orderid,
+       status:3
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        wx.showToast({
+          title: '取消成功',
+          icon: 'success',
+          duration: 1000,
+        });
+      }
+    })
+
+  }
 })

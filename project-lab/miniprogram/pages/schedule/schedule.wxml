@@ -30,9 +30,9 @@
   <view wx:if="{{startTime}}">
     开始时间：{{startTime}}
   </view>
-  <view wx:if="{{endTime}}">
+  <!-- <view wx:if="{{endTime}}">
     结束时间：{{endTime}}
-  </view>
+  </view> -->
 </view>
 
 

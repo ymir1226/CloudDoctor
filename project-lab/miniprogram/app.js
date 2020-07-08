@@ -26,7 +26,6 @@ App({
       complete: res => {
         console.log('callFunction login result: ', res)
         this.globalData.openid = res.result.openid
-        // this.globalData.openid="olNFt5WTT2m0YRK2SdXtGz3Mv2mA"
         this.getUserIdByOpenid(this.globalData.openid)
       }
     })

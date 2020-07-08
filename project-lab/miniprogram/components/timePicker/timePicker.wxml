@@ -32,7 +32,7 @@
       </picker-view>
     </view>
 
-    <view wx:if="{{endDate}}">
+    <!-- <view wx:if="{{endDate}}">
       <view class='to' style='margin-top: 4px;margin-bottom: 4px;'>至</view>
         <picker-view class='sensorTypePicker' indicator-style='height: 35px;' bindchange="changeEndDateTime" bindpickstart="handlePickStart" bindpickend="handlePickEnd" 
           value="{{endValue}}">
@@ -57,7 +57,7 @@
       
       
         </picker-view>
-    </view>
+    </view> -->
     
 
     <!-- <view class='sure' bindtap="onConfirm">确定</view> -->

@@ -242,7 +242,8 @@ Page({
             introduction: resp.introduction,
             address: resp.address,
             contactNumber: resp.contact_number,
-            department:resp.department
+            department:resp.department,
+            doctor_openid:resp.openid
           }
         )
       }
@@ -327,11 +328,13 @@ Page({
       id_patient:this.data.patientid,
       id_doctor:this.data.doctorid,
       patient_openid:app.globalData.openid,
-      doctor_openid:this.doctor_openid,
+      doctor_openid:this.data.doctor_openid,
       price:this.data.chat_order_price,
       // price:20,
       doctor_name:this.data.doctorName
     }
+    console.log("doctor_home")
+    console.log(this.data.doctor_openid)
     wx.navigateTo({
       url: '/pages/schedule/schedule',
       success: function (res) {

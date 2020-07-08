@@ -71,12 +71,11 @@ Page({
     if (this.openid) {
       return this.openid
     }
-
+  
     const { result } = await wx.cloud.callFunction({
       name: 'login',
     })
-
-    return "olNFt5WTT2m0YRK2SdXtGz3Mv2mA"
+    return result.openid
   },
 
   onGetUserInfo: function (e) {

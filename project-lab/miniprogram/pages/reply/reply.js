@@ -1,4 +1,6 @@
 const app = getApp()
+//云文件存储路径
+const cloudPath="cloud://airobot-z9ted.6169-airobot-z9ted-1302168733/"
 Page({
   data:{
     replyList:[],
@@ -61,18 +63,28 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       method: 'POST',
-      success(res) {
-       
-       
+      success(res) {      
         let resp=res.data.data
         for(var t in resp)
-        {
+        {//回复时间
           let display_time = resp[t].created_at
           let year = display_time.substring(0,4)+"年"
           let month = display_time.substring(5,7) + "月"
           let day = display_time.substring(8,10) + "日"
           let hour_minute = display_time.substring(11, 16)
           resp[t].created_at=year+month+day+"  "+hour_minute
+          //图片url字符串解析为数组
+          var picString = resp[t].pic_url
+          var urlList = []
+          if( picString !="")
+          {
+              urlList= picString.split(';').slice(0,-1)
+              for(var i in urlList)
+              {
+                urlList[i] = cloudPath + urlList[i]
+              }
+          }
+          resp[t].pic_url=urlList
         }
         that.setData({
           replyList:res.data.data
@@ -329,10 +341,12 @@ uploadPic : function () {
   uploadImagesToCloud()
   {   // 云函数上传
     var that=this
+    //生成随机字符串
+    var rString = this.randomString(10, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
     var pics=''
     for(var i=0;i<that.data.images.length;i++){
     let timestamp = (new Date()).valueOf();
-    let path=timestamp + '.png'
+    let path='inquiry/'+rString+'/'+timestamp + '.png'
     pics=pics+path+';'
    
     wx.cloud.uploadFile({
@@ -356,4 +370,10 @@ uploadPic : function () {
     })
   }
     },
+      //用于生成命名图片文件夹的随机字符串
+      randomString(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
+    }
 })

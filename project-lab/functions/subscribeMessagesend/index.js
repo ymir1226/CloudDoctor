@@ -5,12 +5,13 @@ const db = cloud.database();
 
 exports.main = async (event, context) => {
   try {
+    const { OPENID } = cloud.getWXContext();
+    // console.log(OPENID)
     // 从云开数据库中查询等待发送的消息列表
     const messages = await db
       .collection('SubscribeMessage')
-      // 查询条件这里做了简化，只查找了状态为未发送的消息
-      // 在真正的生产环境，可以根据开课日期等条件筛选应该发送哪些消息
       .where({
+        touser: OPENID,
         done: false,
       })
       .get();
@@ -19,7 +20,13 @@ exports.main = async (event, context) => {
       try {
         // 发送订阅消息
         await cloud.openapi.subscribeMessage.send({
-          touser: message.touser,
+          touser: message.touser[0],
+          page: message.page,
+          data: message.data,
+          templateId: message.templateId,
+        });
+        await cloud.openapi.subscribeMessage.send({
+          touser: message.touser[1],
           page: message.page,
           data: message.data,
           templateId: message.templateId,

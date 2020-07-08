@@ -76,8 +76,10 @@ Page({
   {
     var that = this
     //请求医生列表
+    console.log(app.globalData.id)
     wx.request({
       url: 'http://119.45.143.38:80/api/chatorder/getChatOrderByPatientId',
+      //url: 'http://localhost:8080/api/chatorder/getChatOrderByPatientId',
       data: {
         id_patient: app.globalData.id
       },
@@ -102,31 +104,32 @@ Page({
    */
   redirectToChatRoom: function (event) {
     console.log(event.currentTarget.dataset.item)
-    var groupid = event.currentTarget.dataset.item.groupid
+    var groupid = event.currentTarget.dataset.item.group_id
     var doctor_name = event.currentTarget.dataset.item.doctor_name
     var doctor_avatar = event.currentTarget.dataset.item.doctor_avatar
-    var state=event.currentTarget.dataset.item.state
-    console.log(state)
-    if(state==1){
+    var status=event.currentTarget.dataset.item.status
+    console.log(status)
+  
     wx.navigateTo({
       url: '/pages/room/room',
       success: function (res) {
         var chatinfo={
           groupid: groupid,
           doctor_name:doctor_name,
-          doctor_avatar:doctor_avatar
+          doctor_avatar:doctor_avatar,
+          status:status
         }
         // 通过eventChannel向被打开页面传送数据
         //res.eventChannel.emit('sendData', roomid)
         res.eventChannel.emit('sendData', chatinfo)
       }
-    })}
-    else if(state==2){
-      wx.showToast({
-        icon: 'none',
-        title: '预约还未开始！',
-      })
-    }
+    })
+    // else if(state==2){
+    //   wx.showToast({
+    //     icon: 'none',
+    //     title: '预约还未开始！',
+    //   })
+    // }
     // else if(state==3){
     //   wx.showToast({
     //     icon: 'none',
