@@ -205,28 +205,20 @@ Page({
                 doctor_id: self.data.doctor_openid,
                 templateId: TmplId,
                 //这个是给用户发送订阅消息后，用户点击订阅消息进入小程序的相关页面，一定要是在线的才可以
-                page: '/pages/room/room?id=' + self.data.group_id,
+                page: '/pages/chat/chat',
               },
             })
             .then(() => {
               self.send();
-              wx.showToast({
-                title: '订阅成功',
-                icon: 'success',
-                duration: 2000,
-              });
+              console.log('订阅成功，写入数据库');
             })
             .catch(() => {
-              wx.showToast({
-                title: '订阅失败',
-                icon: 'success',
-                duration: 2000,
-              });
+              console.log('订阅失败');
             });
         }
       },
       fail(re) {
-        console.log(re)
+        console.log(re);
       },
     });
   },
@@ -240,15 +232,11 @@ Page({
     wx.cloud.callFunction({
       name: 'subscribeMessagesend',
       success(res) {
-        wx.showToast({
-          title: '发送成功',
-          icon: 'success',
-          duration: 2000,
-        });
-        console.log(res)
+        console.log('订阅消息发送成功');
+        console.log(res);
       },
       fail(re) {
-        console.log(re)
+        console.log(re);
       }
     })
 
@@ -277,6 +265,27 @@ Page({
     var nextday = new Date(new Date(start_time).getTime() + 1*24*60*60*1000);
     var endTime = this.formatTime(nextday).str
     console.log("end_time:"+endTime)
+    
+    var timeNow = new Date();
+    var timeDiff = timeNow.getTime() - new Date(start_time).getTime();
+    if (timeDiff > 60 * 1000){
+      wx.showModal({
+        title: '警告',
+        content: '您选择的预约时间需要不早于当前时间！',
+        showCancel: false, 
+        confirmText: "是",
+        confirmColor: 'skyblue', //确定文字的颜色
+        success: function (res) {
+          if (res.confirm) {
+            console.log("您点击了确定")
+          }
+          else{
+            console.log(res)
+          }
+        }
+      })
+      return
+    }
 
   console.log("pay...")
      //预支付

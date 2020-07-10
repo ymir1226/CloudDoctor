@@ -1,15 +1,5 @@
 var util = require('../../utils/util.js');
 const innerAudioContext = wx.createInnerAudioContext()
-innerAudioContext.onPlay(() => {
-  console.log('开始播放')
-})
-innerAudioContext.onEnded(() => {
-  console.log('播放结束')
-
-  //播放结束，销毁该实例
-  // innerAudioContext.destroy()
-  // console.log('已执行destory()')
-})
 wx.setInnerAudioOption({ obeyMuteSwitch: false });
 const FATAL_REBUILD_TOLERANCE = 10
 const SETDATA_SCROLL_TO_BOTTOM = {
@@ -60,6 +50,19 @@ Component({
     },
 
     async initRoom() {
+      innerAudioContext.onPlay(() => {
+        console.log('开始播放')
+      })
+      innerAudioContext.onEnded(() => {
+        this.setData({
+          isAudioPlay: false
+        })
+        console.log('播放结束')
+
+        //播放结束，销毁该实例
+        // innerAudioContext.destroy()
+        // console.log('已执行destory()')
+      })
       this.try(async () => {
         await this.initOpenID()
 
@@ -260,6 +263,7 @@ Component({
       this.setData({
         isAudioPlay:true
       })
+      self = this
       var tempsound = e.currentTarget.dataset.file
       var arr = []
       arr.push(tempsound)
@@ -279,7 +283,6 @@ Component({
               console.log(innerAudioContext.src)
               
               innerAudioContext.play()
-              
             },
             fail: err => {
               console.log('播放错误', err)
