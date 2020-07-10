@@ -387,7 +387,7 @@ addPatient: function () {
        id_doctor:this.data.id_doctor,
        patient_openid:app.globalData.openid,
        doctor_openid:this.data.doctor_openid,
-       state:0,
+       status:0,
        doctor_name:this.data.doctor_name,
        id_inquiry:this.data.id_inquiry,
        price:this.data.price
@@ -413,6 +413,8 @@ addPatient: function () {
             that.redirectToInquiryHistory()
            },
           'fail': function (res) {
+            //支付取消或失败，更改订单状态
+          that.cancelInquiryOrder(that.data.id_inquiry)
             console.log(res)
            }
         })
@@ -420,6 +422,8 @@ addPatient: function () {
       fail(res){
         console.log("response...")
         console.log(res.data)
+        //支付取消或失败，更改订单状态
+        that.cancelInquiryOrder(that.data.id_inquiry)
       },
     })
        },
@@ -434,6 +438,30 @@ addPatient: function () {
         var result = '';
         for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
         return result;
-    }
+    },
+    /**更改订单状态：取消订单*/
+  cancelInquiryOrder(id){
+    console.log('cancel')
+    wx.request({
+       url: 'http://119.45.143.38:80/api/inquiryorder/updateInquiryOrder',
+      //url: 'http://localhost:8080/api/inquiryorder/updateInquiryOrder',
+      data: {
+       id_inquiry:id,
+       status:3
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'POST',
+      success(res) {
+        wx.showToast({
+          title: '取消成功',
+          icon: 'success',
+          duration: 1000,
+        });
+      }
+    })
+
+  }
   
 })

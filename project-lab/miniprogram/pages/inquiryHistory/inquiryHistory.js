@@ -72,7 +72,8 @@ Page({
     var that = this;
     //请求问诊信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/inquiry/getInquiryByPatientId',
+      //url: 'http://119.45.143.38:80/api/inquiry/getInquiryByPatientId',
+      url: 'http://localhost:8080/api/inquiry/getInquiryByPatientId',
       data: {
       id_user: id,
       },
