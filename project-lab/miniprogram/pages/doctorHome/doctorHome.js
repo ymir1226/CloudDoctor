@@ -1,4 +1,6 @@
 const app = getApp()
+const cloudPath="cloud://airobot-z9ted.6169-airobot-z9ted-1302168733/"
+
 // pages/doctorHome/doctorHome.js
 Page({
 
@@ -7,8 +9,8 @@ Page({
    */
   data: {
     department:'',
-    chat_order_price:40,
-    inquiry_order_price:20,
+    chat_price:50,
+    inquiry_price:10,
     doctor_openid:"",
     patientid:1,
     doctorid:1,
@@ -22,7 +24,7 @@ Page({
     rate:99,
     introduction:"我知道这里是一段介绍",
     address:'地址',
-    contactNumber:'1234565432',
+    contactNumber:'暂无',
     modalBodyBottom:0,
     hideModal:true,
     list:[
@@ -31,13 +33,13 @@ Page({
     ],
     currentItem:0,
     map:{
-      longitude:113.324520,
-      latitude:23.099994,
+      latitude:31.306067,
+      longitude:121.529228,
       scale:14,
       markers:[{
         id:0,
-        latitude:23.099994,
-        longitude:113.324520,
+        latitude:31.306067,
+        longitude:121.529228,
         width:50,
         heigt:50
       }]
@@ -200,6 +202,7 @@ Page({
      department:this.data.department,
      score:this.data.score,
      doctor_openid:this.doctor_openid,
+     avatar:this.data.avatar
    }
     wx.navigateTo({
       url: '/pages/inquiry/inquiry',
@@ -217,7 +220,7 @@ Page({
     var that = this;
     //请求医生信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/doctor/getDoctorByID',
+      url: 'https://yiwei.run/api/doctor/getDoctorByID',
       data: {
         id: doctorid,
       },
@@ -228,6 +231,14 @@ Page({
       success(res) {
         console.log(res.data.data[0])
         let resp = res.data.data[0]
+          //获取头像图片
+          var picString = cloudPath+resp.avatar         
+          resp.avatar=picString
+          if(resp.contact_number=='')
+          {
+            resp.contact_number='暂无'
+          }
+
         //todo:异常处理
         that.setData(
           {
@@ -243,7 +254,8 @@ Page({
             address: resp.address,
             contactNumber: resp.contact_number,
             department:resp.department,
-            doctor_openid:resp.openid
+            doctor_openid:resp.openid,
+            avatar: resp.avatar
           }
         )
       }
@@ -256,7 +268,7 @@ Page({
     var that = this;
     //请求医生信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/comment/getCommentByDoctorId',
+      url: 'https://yiwei.run/api/comment/getCommentByDoctorId',
       data: {
         id_doctor: doctorid,
       },
@@ -284,7 +296,7 @@ Page({
     //请求医生信息
     wx.request({
       //url: 'http://localhost:8000/api/chat/getChatByPatientId',
-      url: 'http://119.45.143.38:80/api/collect/getCollectByUid',
+      url: 'https://yiwei.run/api/collect/getCollectByUid',
       data: {
         //id: app.globalData.id
         id:7
@@ -305,7 +317,7 @@ Page({
         {
           wx.showToast({
             icon: 'none',
-            title: '您还未挂号，请先预约！',
+            title: '请先预约！',
           })
         }
         else{
@@ -331,7 +343,8 @@ Page({
       doctor_openid:this.data.doctor_openid,
       price:this.data.chat_order_price,
       // price:20,
-      doctor_name:this.data.doctorName
+      doctor_name:this.data.doctorName,
+      doctor_avatar:this.data.avatar
     }
     console.log("doctor_home")
     console.log(this.data.doctor_openid)
@@ -349,7 +362,7 @@ Page({
   showPrice(){
     wx.showToast({
       icon: 'none',
-      title: '图文问诊：20元/15次；在线咨询：40元/时',
+      title: '图文咨询上限50次；在线咨询24小时内',
     })
   },
   /**
@@ -365,13 +378,15 @@ Page({
   })
       //收藏
       wx.request({
-        url: 'http://119.45.143.38:80/api/collect/addCollect',
+        url: 'https://yiwei.run/api/collect/addCollect',
+        // url: 'http://localhost:8080/api/collect/addCollect',
         data: {
           // uid:app.globalData.id,
           uid:1,
           doctor_id:this.data.doctorid,
           doctor_name:this.data.doctorName,
           department:this.data.department,
+          doctor_avatar:this.data.avatar,
           score:this.data.score
         },
         header: {
@@ -396,10 +411,9 @@ Page({
   })
    //取消收藏
    wx.request({
-    url: 'http://119.45.143.38:80/api/collect/deleteCollect',
+    url: 'https://yiwei.run/api/collect/deleteCollect',
     data: {
-      // uid:app.globalData.id,
-      uid:1,
+      uid:app.globalData.id,
       doctor_id:this.data.doctorid,
     },
     header: {
@@ -418,7 +432,7 @@ checkLike(){
   //查询收藏
   var that=this
   wx.request({
-    url: 'http://119.45.143.38:80/api/collect/getCollectByUid',
+    url: 'https://yiwei.run/api/collect/getCollectByUid',
     data: {
       // uid:app.globalData.id,
       uid:1,

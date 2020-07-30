@@ -70,7 +70,7 @@ Page({
     console.log("pay...")
      //预支付
  wx.request({
-  url: 'http://119.45.143.38:80/api/chatorder/addChatOrder', 
+  url: 'https://yiwei.run/api/chatorder/addChatOrder', 
   data: {
    id_patient:1,
    id_doctor:1,

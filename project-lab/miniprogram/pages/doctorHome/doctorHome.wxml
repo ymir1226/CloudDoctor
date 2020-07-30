@@ -3,7 +3,7 @@
   <view class="blueBackground"></view>
   <view class="doctorBasicInfo">
     <view class="doctorImgInfo">
-      <image src="../../src/doctor1.png" class="doctorImg"></image>
+      <image src="{{avatar}}" class="doctorImg"></image>
       <view class="doctorInfo">
        <view style="width:180px"></view>
         <view wx:if="{{isCollect == 0}}">
@@ -13,7 +13,8 @@
          <image src="../../src/icon/like.png" class="like" bindtap="onClickDislike"></image>
         </view>
         <text class="doctorName">{{doctorName}}</text>
-       
+
+
         <text class="doctorDep">{{title}}</text>
         
        
@@ -22,33 +23,35 @@
           <text class="doctorScore">{{score}}</text>
           <text class="doctorReview">({{reviews}} 人评分)</text>
         </view>
-        <text class="doctorSpecial">擅长：{{expert}}</text>
       </view>
+   
+
     </view>
+           <text class="doctorSpecial">擅长：{{expert}}</text>
     <view class="doctorWork">
       <view>
-        <text style="display:block;font-size:25rpx;color:#c0c0c0;">病例</text>
-        <text style="display:block;font-size:45rpx;color:black;">{{patientNum}}</text>
+        <text style="display:block;font-size:25rpx;color:#c0c0c0;">图文咨询</text>
+        <text style=" text-align: center;display:block;font-size:45rpx;color:black;">¥{{inquiry_price}}</text>
       </view>
       <view>
-        <text style="display:block;font-size:25rpx;color:#c0c0c0;">问诊量</text>
-        <text style="display:block;font-size:45rpx;color:black;">{{quiryNum}}</text>
+        <text style="display:block;font-size:25rpx;color:#c0c0c0;">在线咨询</text>
+        <text style=" text-align: center;display:block;font-size:45rpx;color:black;">¥{{chat_price}}</text>
       </view>
       <view>
-        <text style="display:block;font-size:25rpx;color:#c0c0c0;">接诊率</text>
-        <text style="display:block;font-size:45rpx;color:black;">{{rate}}%</text>
+        <text style="display:block;font-size:25rpx;color:#c0c0c0;">接受咨询率</text>
+        <text style=" text-align: center;display:block;font-size:45rpx;color:black;">{{rate}}%</text>
       </view>
     </view>
   </view>
   <view class="title">
-    <text style="font-size:35rpx;color:black;margin-left:35rpx;">问诊服务定价</text>
+    <text style="font-size:35rpx;color:black;margin-left:35rpx;">咨询服务定价</text>
     <image src="../../src/icon/i .png" style="margin-left:15rpx;height:50rpx;width:50rpx" bindtap="showPrice"></image>
     <!-- <text style="font-size:35rpx;color:rgb(10, 143, 245);margin-left:280rpx;">医生排班</text> -->
   </view>
   <view class="consultType">
     <button style="width:220rpx;height:140rpx;" bindtap="onClickInquiry">
       <image src="../../src/icon/email.png" style="display:block;width:60rpx;height:60rpx;"></image>
-      <text style="font-size:25rpx;color:white;display:block;">图文问诊</text>
+      <text style="font-size:25rpx;color:white;display:block;">图文咨询</text>
     </button>
     <button style="width:220rpx;height:140rpx;" bindtap="redirectToChatRooms">
       <image src="../../src/icon/video.png" style="display:block;width:60rpx;height:60rpx;"></image>
@@ -56,7 +59,7 @@
     </button>
     <button style="width:220rpx;height:140rpx;" bindtap="redirectToSchedule">
       <image src="../../src/icon/appointment.png" style="display:block;width:60rpx;height:60rpx;"></image>
-      <text style="font-size:25rpx;color:white;display:block;" >预约挂号</text>
+      <text style="font-size:25rpx;color:white;display:block;" >预约咨询</text>
     </button>
   </view>
   <view class="tabbar">
@@ -79,7 +82,7 @@
           {{introduction}}
           </text>
         </view>
-        <text class="knowMore">了解更多</text>
+        <!-- <text class="knowMore">了解更多</text> -->
       </view>
     </view>
     <view class="address">
@@ -96,10 +99,11 @@
         </view>
       </view>
     </view>
-    <view style="margin-top:60rpx;margin-left:4%;">
+    <!-- <view style="margin-top:60rpx;margin-left:4%;">
       <text style="font-size:40rpx;color:black;font-weight:bolder;">工作经历</text>
-    </view>
-    <view class="classroom">
+    </view> -->
+
+    <!-- <view class="classroom">
       <view class="classroomPart1">
         <image src="../../src/icon/classroom.png" style="height:60rpx;width:60rpx;margin-left:40rpx;"></image>
         <text style="font-size:40rpx;font-weight:bolder;margin-left:40rpx;">科室</text>
@@ -110,8 +114,9 @@
           <text style="font-size:40rpx;margin-left:40rpx;word-break:break-all;">{{item.name}}</text>
         </view>
       </view>
-    </view>
-    <view class="experience">
+    </view> -->
+
+    <!-- <view class="experience">
       <view class="experiencePart1">
         <image src="../../src/icon/Stethoscope.png" style="height:60rpx;width:60rpx;margin-left:40rpx;"></image>
         <text style="font-size:40rpx;font-weight:bolder;margin-left:40rpx;">经验</text>
@@ -122,8 +127,9 @@
           <text style="font-size:40rpx;display:block;margin-left:40rpx;font-weight:bolder;word-break:break-all;margin-top:20rpx;">{{item.content}}</text>
         </view>
       </view>
-    </view>
-    <view style="margin-top:60rpx;margin-left:4%;">
+    </view> -->
+
+    <!-- <view style="margin-top:60rpx;margin-left:4%;">
       <text style="font-size:40rpx;color:black;font-weight:bolder;">教育经历</text>
     </view>
     <view class="education">
@@ -143,7 +149,7 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> -->
     <!-- <button class="requestNewConsult" style="width:92%;">Request New Consult</button> -->
   </view>
 

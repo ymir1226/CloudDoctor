@@ -22,16 +22,16 @@ Page({
     patientList:[],
     index:0,
     content:'',
-    name:'请输入就诊人姓名或昵称',
-    age:'请输入就诊人岁数',
-    illness_history:'请输入就诊人病史',
-    medicine_history:'请输入就诊人用药史',
-    allergen:'请输入就诊人过敏药物',
+    name:'请输入咨询人姓名或昵称',
+    age:'请输入咨询人岁数',
+    illness_history:'请输入咨询人病史',
+    medicine_history:'请输入咨询人用药史',
+    allergen:'请输入咨询人过敏药物',
     medHistory:true,
     medicine:true,
     allergy:true,
     images:[],
-    currentName:'点击选取就诊人',
+    currentName:'点击选取咨询人',
 
     patient_openid:'',
     doctor_openid:''
@@ -52,7 +52,8 @@ Page({
         price:data.price,
         department:data.department,
         score:data.score,
-        doctor_openid:data.doctor_openid
+        doctor_openid:data.doctor_openid,
+        doctor_avatar:data.avatar
       });
       this.getPatientByAuthor(app.globalData.id)
     })
@@ -73,7 +74,7 @@ Page({
     //请求医生信息
     wx.request({
       // url: 'http://119.45.143.38:80/api/inquiry/addInquiry',
-      url: 'http://119.45.143.38:80/api/inquiry/addInquiry',
+      url: 'https://yiwei.run/api/inquiry/addInquiry',
       data: {
         id_inquiry:this.data.id_inquiry,
         id_doctor:this.data.id_doctor,
@@ -84,7 +85,8 @@ Page({
         abstract:this.data.newReply,
         state:0,
         department:this.data.department,
-        score:this.data.score
+        score:this.data.score,
+        doctor_avatar:this.data.doctor_avatar
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -196,7 +198,7 @@ Page({
     var that = this;
     //请求病人信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/patient/getPatientByAuthor',
+      url: 'https://yiwei.run/api/patient/getPatientByAuthor',
       data: {
         author_id: author,
       },
@@ -314,7 +316,7 @@ Page({
   console.log(that.data.id_inquiry)
   //请求评论信息
   wx.request({
-   url: 'http://119.45.143.38:80/api/reply/addReply',
+   url: 'https://yiwei.run/api/reply/addReply',
    data: {
      id_inquiry:that.data.id_inquiry,
      content:that.data.newReply,
@@ -341,7 +343,7 @@ addPatient: function () {
   var that = this;
   //请求医生信息
   wx.request({
-    url: 'http://119.45.143.38:80/api/patient/addPatient',
+    url: 'https://yiwei.run/api/patient/addPatient',
     data: {
       name: this.data.name,
       author_id:this.data.id_user,
@@ -381,7 +383,7 @@ addPatient: function () {
         console.log("pay...")
          //预支付
      wx.request({
-      url: 'http://119.45.143.38:80/api/inquiryorder/addInquiryOrder',
+      url: 'https://yiwei.run/api/inquiryorder/addInquiryOrder',
       data: {
        id_patient:app.globalData.id,
        id_doctor:this.data.id_doctor,
@@ -443,7 +445,7 @@ addPatient: function () {
   cancelInquiryOrder(id){
     console.log('cancel')
     wx.request({
-       url: 'http://119.45.143.38:80/api/inquiryorder/updateInquiryOrder',
+       url: 'https://yiwei.run/api/inquiryorder/updateInquiryOrder',
       //url: 'http://localhost:8080/api/inquiryorder/updateInquiryOrder',
       data: {
        id_inquiry:id,

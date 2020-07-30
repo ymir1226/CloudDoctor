@@ -1,4 +1,6 @@
 // pages/doctorList/doctorList.js
+//云文件存储路径
+const cloudPath="cloud://airobot-z9ted.6169-airobot-z9ted-1302168733/"
 Page({
 
   /**
@@ -8,14 +10,13 @@ Page({
     search:'',
     doctorList:[],
     typeArray:[
-      {type:'心内科',status:1,index:0},
-      {type:'儿科',status:0,index:1},
-      {type:'眼科',status:0,index:2},
-      {type:'妇科',status:0,index:3},
-      {type:'骨科',status:0,index:4},
-      {type:'呼吸科',status:0,index:5},
-      {type:'消化科',status:0,index:6},
-      {type:'皮肤科',status:0,index:7}
+      {type:'神经内科',status:1,index:0},
+      {type:'耳鼻喉科',status:0,index:1},
+      {type:'骨科',status:0,index:2},
+      {type:'神经外科',status:0,index:3},
+      {type:'眼科',status:0,index:4},
+      {type:'泌尿科',status:0,index:5},
+      {type:'血液科',status:0,index:6},
     ],
     currentChosen:0,//当前选中
     StorageFlag:true,
@@ -26,7 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getDoctorByDepartment('心内科');
+    this.getDoctorByDepartment('神经内科');
   },
 
   /**
@@ -85,7 +86,7 @@ Page({
     var that = this
     //请求医生列表
     wx.request({
-      url: 'http://yiwei.run/api/doctor/getDoctorByDepartment',
+      url: 'https://yiwei.run/api/doctor/getDoctorByDepartment',
       data: {
         department: type,
       },
@@ -96,12 +97,26 @@ Page({
       success(res) {
         console.log(res.data.data)
         let resp = res.data.data
+        for(var t in resp)
+        {
+          //获取头像图片
+          var picString = cloudPath+resp[t].avatar         
+          resp[t].avatar=picString
+          //截断介绍
+          var expertString = resp[t].expert.substring(0,24)+"..."
+          resp[t].expert=expertString
+          //截断title
+          var titleString = resp[t].title.substring(0,5)
+          resp[t].title=titleString
+        }
+
         //异常处理
         that.setData(
           {
             doctorList: resp,
           }
         )
+        
       }
     })
   },
@@ -112,7 +127,7 @@ Page({
     var that = this
     //请求医生列表
     wx.request({
-      url: 'http://119.45.143.38:80/api/doctor/getDoctorByText',
+      url: 'https://yiwei.run/api/doctor/getDoctorByText',
       data: {
         key: text,
       },
@@ -236,5 +251,32 @@ Page({
     this.setData({
       searcherStorage:[]
     })
-  }
+  },
+   /**
+     * 获取医生科室类别
+     */
+    getTypeArray(){
+  var that=this
+  //请求医生列表
+  wx.request({
+    url: 'https://yiwei.run/api/doctor/getDepartmentList',
+    data: {
+      department: type,
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    method: 'POST',
+    success(res) {
+      console.log(res.data.data)
+      let resp = res.data.data
+      //异常处理
+      that.setData(
+        {
+          typeArray: resp,
+        }
+      )
+    }
+  })
+    }
 })

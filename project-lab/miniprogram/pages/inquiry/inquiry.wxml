@@ -10,7 +10,7 @@
 				<image mode="widthFix" src="../../src/icon/label.png"></image>
 				<text>上传图片</text>
 			</view>
-      <view class="send-more-result-main" hidden="{{images==0}}">
+      <view class="send-more-result-main" hidden="{{images.length==0}}">
         <block wx:for="{{images}}" wx:for-index="idx">
           <view class="file-box">
           <view class="img-box">
@@ -26,14 +26,14 @@
 	<view class="card">
 		<view class="card-head">
 			<image src="../../src/icon/menu.png" mode="widthFix"></image>
-			<text>就诊人信息</text>
+			<text>咨询人信息</text>
 		</view>
 		<view class="card-body">
 
 			
 
 			<view class="select-item">
-				<text>选择已有就诊人</text>
+				<text>选择已咨询人</text>
 				<switch bindchange="medicineChange"></switch>
 			</view>
 			<view hidden="{{medicine}}">
@@ -56,7 +56,7 @@
 					<text>添加药物</text> -->
 			<!-- </view> -->
 			</view>
-      <view class="weui-cells__title">就诊人</view>
+      <view class="weui-cells__title">咨询人</view>
       <view class="second_title"> </view>
       <view class="weui-cell weui-cell_input">
         <input class="weui-input" auto-focus placeholder="{{name}}" bindinput="getName"/>
@@ -105,7 +105,7 @@
 		</view>
 
 		<view class="card-button" id="pay" bindtap="payForInquiry">
-			<text>支付诊费</text>
+			<text>支付咨询费</text>
 			<image mode="widthFix" src="../../src/icon/Right.png"></image>
 		</view>
 	</view>

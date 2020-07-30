@@ -3,7 +3,9 @@
 	<view class="card" wx:for="{{patientList}}">
 		<view class="card-head">
 			<image src="../../src/icon/boy.png" mode="widthFix"></image>
-			<text>{{item.name}}</text>
+			<view class="patientName">
+      <text>{{item.name}}</text>
+      </view>
       <view class="img-box">
       	<image src="../../src/icon/edit.png" mode="widthFix" bindtap="editPatient" data-patientid="{{item.id}}"></image>
    

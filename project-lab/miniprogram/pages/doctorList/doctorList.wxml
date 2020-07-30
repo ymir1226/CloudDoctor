@@ -17,20 +17,26 @@
   <view class="sector-one"></view>
     <view class="typeList">
       <view class="type"  wx:for="{{typeArray}}" bindtap="onClickDepartment" data-department="{{item}}">
-        <text class="typeText1" wx:if = "{{item.status == 0}}">{{item.type}}</text>
-        <text class="typeText2" wx:if = "{{item.status == 1}}">{{item.type}}</text>
+        <text class="typeText1" wx:if = "{{item.status == 0}}">
+        <!-- {{item.type}} -->
+        </text>
+        <text class="typeText2" wx:if = "{{item.status == 1}}">
+        <!-- {{item.type}} -->
+        </text>
+        <text class="typeText3">（咨询）</text>
+
       </view>
     </view>
     <view class="doctorList">
       <view class="doctor" wx:for="{{doctorList}}">
         <!-- <image src="{{item.avatar}}" class="doctorImg"></image> -->
-        <image src="../../src/doctor1.png" class="doctorImg"></image>
+        <image src="{{item.avatar}}" class="doctorImg"  mode='aspectFill'></image>
         <view class="doctorInfo">
           <view class="doctorNamePos">
             <text class="doctorName">{{item.doctor_name}}</text>
             <text class="doctorPos">{{item.title}}</text>
           </view>
-          <text class="doctorDep">{{item.department}}</text>
+          <!-- <text class="doctorDep">{{item.department}} 咨询</text> -->
           <view class="doctorScore">
             <image src="../../src/icon/star.png" class="star"></image>
             <text class="score">{{item.score}}</text>
@@ -38,7 +44,7 @@
           </view>
           <text class="doctorSpecial">{{item.expert}}</text>
           <view class="priceConsult">
-            <text class="price">￥{{item.price}}</text>
+            <text class="price">￥{{item.inquiry_price}}</text>
             <button style="width:auto" class="consultButton" bindtap="onClickConsult" data-doctorId="{{item.id}}">向他咨询</button>
           </view>
         </view>

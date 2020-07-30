@@ -1,12 +1,14 @@
+const app=getApp()
 Page({
   data: {
-   
+   is_doctor: 0,
   },
   onLoad: function (options) {
     // 应该使用success: res => {} 从后端获取 userOrderId
-    // this.setData({
-
-    // })
+    this.setData({
+      is_doctor:app.globalData.is_doctor
+    })
+    
   },
 
 
@@ -39,6 +41,11 @@ Page({
   redirectToPrescription: function (e) {
     wx.navigateTo({
       url: '/pages/prescription/prescription',
+    })
+  },
+  redirectToDoctorRegister:function(){
+    wx.navigateTo({
+      url: '/pages/doctorRegister/doctorRegister',
     })
   }
 })

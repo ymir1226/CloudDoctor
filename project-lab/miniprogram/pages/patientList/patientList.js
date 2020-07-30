@@ -7,6 +7,7 @@ Page({
   data: {
   patientList:[],
   modalHidden: true,
+  currentPatientId: 0,
   },
 
   /**
@@ -66,8 +67,10 @@ Page({
   },
 
   modalTap: function (e) {
+    console.log(e)
     this.setData({
-      modalHidden: false
+      modalHidden: false,
+      currentPatientId: e.currentTarget.dataset.patientid
     })
   },
   /**
@@ -91,7 +94,7 @@ Page({
    * 编辑病历
   */
   editPatient: function (event) {
-    console.log(event.currentTarget.dataset.patientid)
+    console.log(event)
     let patientid = event.currentTarget.dataset.patientid
     wx.navigateTo({
       url: '/pages/editPatient/editPatient',
@@ -108,14 +111,14 @@ Page({
    * 删除病历
   */
   deletePatient: function (event) {
-    console.log(event.currentTarget.dataset.patientid)
+    console.log(this.data.currentPatientId)
+    let patientid = this.data.currentPatientId
     var that = this
-    var id_patient = event.currentTarget.dataset.patientid
     //删除病人信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/patient/deletePatient',
+      url: 'https://yiwei.run/api/patient/deletePatient',
       data: {
-        id: id_patient,
+        id: patientid,
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -123,7 +126,9 @@ Page({
       method: 'POST',
       success(res) {
         console.log(res.data.data)
-        modalHidden: true
+        that.setData({
+          modalHidden: true
+        })
         that.onLoad();//刷新页面
       }
     })
@@ -136,7 +141,7 @@ Page({
     var that = this;
     //请求病人信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/patient/getPatientByAuthor',
+      url: 'https://yiwei.run/api/patient/getPatientByAuthor',
       data: {
         author_id: author,
       },

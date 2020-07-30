@@ -1,4 +1,6 @@
 // pages/collect/collect.js
+const cloudPath="cloud://airobot-z9ted.6169-airobot-z9ted-1302168733/"
+
 Page({
 
   /**
@@ -71,7 +73,8 @@ Page({
     var that = this
     //请求医生列表
     wx.request({
-      url: 'http://119.45.143.38:80/api/collect/getCollectByUid',
+      url: 'https://yiwei.run/api/collect/getCollectByUid',
+      // url: 'http://localhost:8080/api/collect/getCollectByUid',
       data: {
         uid: userid,
       },
@@ -82,12 +85,20 @@ Page({
       success(res) {
         console.log(res.data.data)
         let resp = res.data.data
+
         //异常处理
         that.setData(
           {
             doctorList: resp,
           }
         )
+        if(that.data.doctorList.length==0){
+          wx.showToast({
+            title: '还没有收藏哦，去首页看看吧~',
+            icon: 'none',
+            duration: 5000
+            })
+        }
       }
     })
   },
@@ -107,7 +118,7 @@ Page({
     var that = this
     //请求医生列表
     wx.request({
-      url: 'http://119.45.143.38:80/api/collect/deleteCollect',
+      url: 'https://yiwei.run/api/collect/deleteCollect',
       data: {
         id: collect_id,
       },

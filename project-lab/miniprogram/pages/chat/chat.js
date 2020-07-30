@@ -1,5 +1,7 @@
 // pages/chat/chat.js
 const app=getApp()
+const cloudPath="cloud://airobot-z9ted.6169-airobot-z9ted-1302168733/"
+
 Page({
 
   /**
@@ -78,7 +80,7 @@ Page({
     //请求医生列表
     console.log(app.globalData.id)
     wx.request({
-      url: 'http://119.45.143.38:80/api/chatorder/getChatOrderByPatientId',
+      url: 'https://yiwei.run/api/chatorder/getChatOrderByPatientId',
       //url: 'http://localhost:8080/api/chatorder/getChatOrderByPatientId',
       data: {
         id_patient: app.globalData.id
@@ -90,12 +92,24 @@ Page({
       success(res) {
         console.log(res.data.data)
         let resp = res.data.data
+        for(var t in resp)
+        {
+          resp[t].avatar=cloudPath+resp[t].avatar
+          console.log(resp[t].avatar)
+        }
         //异常处理
         that.setData(
           {
             orderList: resp,
           }
         )
+        if(that.data.orderList.length==0){
+          wx.showToast({
+            title: '还没有咨询哦，去向专家发起咨询吧~',
+            icon: 'none',
+            duration: 5000
+            })
+        }
       }
     })
   },
