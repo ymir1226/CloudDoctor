@@ -5,7 +5,7 @@
 	<view class="card">
 		<view class="card-head">
 			<image src="../../src/icon/menu.png" mode="widthFix"></image>
-			<text>预约挂号</text>
+			<text>预约咨询</text>
 		</view>
 		<view class="card-body">
 <Calendar id="Calendar" bind:select="select"></Calendar>
@@ -14,7 +14,7 @@
     <!-- <button type='default' bindtap='toggleType'>切换展示效果</button> -->
 
     <!-- <text>index.wxml</text> -->
-    <view>医生排班</view>
+    <view>可预约时间</view>
 		<view>09 : 00 ~ 11 : 00</view>
 		<view>14 : 00 ~ 17 : 00</view>
 </view>
@@ -52,7 +52,7 @@
 		</view>
 
 		<view class="card-button" id="pay" bindtap="payForChat">
-			<text>支付诊费</text>
+			<text>支付咨询费</text>
 			<image mode="widthFix" src="../../src/icon/Right.png"></image>
 		</view>
 	</view>

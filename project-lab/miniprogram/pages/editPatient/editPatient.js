@@ -160,7 +160,7 @@ Page({
     var that = this;
     //请求医生信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/patient/addPatient',
+      url: 'https://yiwei.run/api/patient/addPatient',
       data: {
         name: this.data.name,
 	      author_id:this.data.author_id,
@@ -178,8 +178,8 @@ Page({
         console.log(res.data.data)
       }
     })
-    wx.navigateBack({
-      delta:1,
+    wx.redirectTo({
+      url: '/pages/patientList/patientList',
     })
   },
   /**
@@ -190,7 +190,7 @@ Page({
   var id_patient = event.currentTarget.dataset.patientid
       //编辑病人信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/patient/editPatient',
+      url: 'https://yiwei.run/api/patient/editPatient',
     data: {
       id: id_patient,
       name: this.data.name,
@@ -219,7 +219,7 @@ Page({
     var id_patient = id
     //获取病人信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/patient/getPatientById',
+      url: 'https://yiwei.run/api/patient/getPatientById',
       data: {
         id: id_patient,
       },

@@ -1,22 +1,22 @@
 {
   "pages": [
     "pages/doctorList/doctorList",
+    "pages/doctorRegister/doctorRegister",
+    "pages/personal/personal",
+    "pages/register/register",
     "pages/comment/comment",
     "pages/schedule/schedule",
     "pages/checkOrder/checkOrder",
     "pages/reply/reply",
-    "pages/personal/personal",
     "pages/chat/chat",
     "pages/room/room",
     "pages/inquiry/inquiry",
-    "pages/register/register",
     "pages/editPatient/editPatient",
     "pages/patientList/patientList",
     "pages/doctorHome/doctorHome",
     "pages/collect/collect",
     "pages/inquiryHistory/inquiryHistory",
     "pages/prescription/prescription"
-   
   ],
   "window": {
     "backgroundTextStyle": "light",

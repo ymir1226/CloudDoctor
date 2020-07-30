@@ -6,7 +6,7 @@
 	<view class="card">
 		<view class="card-head">
 			<image src="../../src/icon/menu.png" mode="widthFix"></image>
-			<text>评价问诊</text>
+			<text>评价咨询</text>
 		</view>
 		<view class="card-body">
 
@@ -17,7 +17,7 @@
       </view>
 			</view>
 			<view style="height:10px"></view>
-     	<textarea maxlength='1000' placeholder="请输入您对本次问诊服务的评价" bindinput="handleInput"></textarea>
+     	<textarea maxlength='1000' placeholder="请输入您对本次咨询服务的评价" bindinput="handleInput"></textarea>
 
 <view class="card-button" bindtap="uploadPic" bindtap="commit">
 				<image mode="widthFix" src="../../src/icon/edit.png"></image>

@@ -1,11 +1,11 @@
 <view class="reply-container">
 	<view class="card">
 		<view class="card-body doc-info">
-			<image mode="widthFix" src="../../src/doctor1.png"></image>
+			<image mode="aspectFill" style="height:150rpx;" src="{{doctor_avatar}}"></image>
 			<view style="margin-bottom: 0;" class="doc-info-right">
 				<!-- <text style="font-size:45rpx">{{doctorName}}</text> -->
 				 <text style="font-size:45rpx">{{doctor_name}}</text>
-				<text>{{department}}</text>
+				<text>{{department}} 咨询</text>
 				<!-- <text>心内科</text> -->
 				<view style="display:flex;align-items:center;">
 					<image mode="widthFix" src="../../src/icon/star.png"></image>
@@ -66,7 +66,7 @@
 
 		<view class="card-head">
 			<image mode="widthFix" src="../../src/icon/question.png"></image>
-			<text>问诊信息</text>
+			<text>咨询信息</text>
 		</view>
 		<view wx:for="{{replyList}}">
 		<block wx:if="{{item.from_user==1}}">
@@ -86,7 +86,7 @@
 	</block>
 	<block wx:if="{{item.from_user==0}}">
 		<view class="card-body">
-			<view>医生回复</view>
+			<view>专家回复</view>
 			<view class="note">回复时间：{{item.created_at}}</view>
 			<!-- <view>水痘疫苗是一种弱化的水痘活菌。不要用阿司匹林或含有阿司匹林的药物治疗发烧，或其它水痘症状，以免引发雷氏症候群，影响肝脏和大脑，而且可能会致命。一定要保持身体水分充足。水痘患者可能会脱水。一整天都要多喝水和其它补水液体，比如运动饮料。</view> -->
 			<view>{{item.content}}</view>
@@ -94,7 +94,7 @@
 </block>
 </view>
     <view class="card-body" wx:for="{{prescription}}">
-      <view>处方</view>
+      <view>建议</view>
       <view class="precription">
         <view class="pre-name">{{item.content}}</view>
         <view class="pre-des">{{item.description}}</view>
@@ -103,8 +103,8 @@
      
     </view>
 		<view class="card-body">
- <view class="card-button" bindtap="continueInquiry" wx:if="{{state==0}}">
-        <text>继续问诊</text>
+ <view class="card-button" bindtap="continueInquiry" wx:if="{{status==0}}">
+        <text>继续咨询</text>
       </view>
 	</view>
 		</view>
@@ -122,7 +122,7 @@
 			</view>
 				<view class="card-button" bindtap="onClickCommit">
 				<image mode="widthFix" src="../../src/icon/edit.png"></image>
-				<text>提交问诊</text>
+				<text>提交咨询</text>
 			</view>
       <view class="send-more-result-main" hidden="{{images==0}}">
         <block wx:for="{{images}}" wx:for-index="idx">
@@ -157,7 +157,7 @@
 
   
 
-	<view class="card" wx:if="{{state==1}}">
+	<view class="card" wx:if="{{status==2}}">
 
 		<view class="card-head">
       <image mode="widthFix" src="../../src/icon/comment.png"></image>
@@ -168,12 +168,10 @@
 								<image mode="widthFix" src="../../src/icon/star.png" bindtap="onClickStar" data-star="{{item}}" wx:for="{{starArray}}"></image>
 					<image mode="widthFix" src="../../src/icon/star.png" wx:for="{{unstarArray}}" data-star="{{item}}" class="gray" bindtap="onClickStar"></image>
       </view>
-      <!-- <view wx:if="{{id_inquiry!=24}}">
-        医生提供的答案非常有用，知识渊博，给我开出的处方很有效，吃了两天身体就有明显好转，头也不痛了，气也不喘了，吃饭很有食欲，恢复得非常棒。医生真的特别耐心，态度亲切。非常感谢医生！
-      </view> -->
-			 <!-- <view wx:if="{{id_inquiry==24}}">
-        医生真的非常耐心!
-      </view> -->
+      <view>
+       {{comment}}
+      </view>
+		
     </view>
 	</view>
 
@@ -181,7 +179,7 @@
 
 </view>
 
-	<view class="bottom-card-button" id="pay" bindtap="finishInquiry" wx:if="{{state==0}}">
-			<text>结束问诊</text>
+	<view class="bottom-card-button" id="pay" bindtap="finishInquiry" wx:if="{{status==0}}">
+			<text>结束咨询</text>
 			<image mode="widthFix" src="../../src/icon/Right.png"></image>
 	</view>

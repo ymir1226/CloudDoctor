@@ -68,7 +68,8 @@ Page({
         doctor_name:data.doctor_name,
         id_patient:data.id_patient,
         id_doctor:data.id_doctor,
-        price:data.price
+        price:data.price,
+        doctor_avatar:data.doctor_avatar
       });
       console.log(that.data.doctor_openid, ' from doctorList');
       this.getScheduleByDoctorId(that.data.doctorid)
@@ -290,7 +291,7 @@ Page({
   console.log("pay...")
      //预支付
  wx.request({
-  url: 'http://119.45.143.38:80/api/chatorder/addChatOrder',
+  url: 'https://yiwei.run/api/chatorder/addChatOrder',
   //url: 'http://localhost:8080/api/chatorder/addChatOrder',
   data: {
    id_patient:app.globalData.id,
@@ -301,7 +302,8 @@ Page({
    doctor_name:that.data.doctor_name,
    start_time:that.data.startTime,
    end_time:endTime,
-   price:that.data.price
+   price:that.data.price,
+   doctor_avatar:that.data.doctor_avatar,
   },
   header: {
     'content-type': 'application/json' // 默认值
@@ -389,7 +391,7 @@ Page({
   cancelChatOrder(orderid){
     console.log('cancel')
     wx.request({
-      url: 'http://119.45.143.38:80/api/chatorder/updateChatOrder',
+      url: 'https://yiwei.run/api/chatorder/updateChatOrder',
       //url: 'http://localhost:8080/api/chatorder/updateChatOrder',
       data: {
        order_id:orderid,

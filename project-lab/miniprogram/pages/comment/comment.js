@@ -7,13 +7,27 @@ Page({
   data: {
     content:'',
     starArray:[1,2,3],
-    unstarArray:[4,5]
+    unstarArray:[4,5],
+    score:5,
+    id_doctor:1,
+    id_patient:1,
+    id_inquiry:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const eventChannel = this.getOpenerEventChannel()
+    var that = this
+    // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
+    eventChannel.on('sendData', data => {
+      that.setData({
+        id_inquiry: data.id_inquiry,
+        id_doctor:data.id_doctor,
+        id_patient:data.id_patient
+      });
+    })
 
   },
 
@@ -80,7 +94,9 @@ Page({
     }
     this.setData({
       starArray:star,
-      unstarArray:unstar
+      unstarArray:unstar,
+      score:starArray.length                            
+
     })
   },
    /**
@@ -90,13 +106,13 @@ addComment: function () {
   var that = this;
   //请求医生信息
   wx.request({
-    url: 'http://119.45.143.38:80/api/comment/addComment',
+    url: 'https://yiwei.run/api/comment/addComment',
     data: {
-     score:5,
+     score:this.data.score,
      content:this.data.content,
-     id_patient:1,
-     id_doctor:1,
-     id_inquiry:18
+     id_patient:this.data.id_patient,
+     id_doctor:this.data.id_doctor,
+     id_inquiry:this.data.id_inquiry
     },
     header: {
       'content-type': 'application/json' // 默认值

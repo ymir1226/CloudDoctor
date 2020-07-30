@@ -5,7 +5,10 @@ Page({
    */
   data: {
     inquiryList: [],
-    picurlList:''
+    picurlList:'',
+    currentPage: 1, // 当前页码
+    pageSize: 10, // 每页加载的条数
+    hasMore: 0, // 是否有下一页: 0（无）；1（有）
   },
 
   /**
@@ -13,7 +16,7 @@ Page({
    */
   onLoad: function (options) {
     const appInstance = getApp()
-    this.getInquiryListById(appInstance.globalData.id)
+    this.getInquiryListById(appInstance.globalData.id,this.data.currentPage)
   },
 
   /**
@@ -55,7 +58,15 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log("onReachBottom")
+    if(this.data.hasMore==true){
+      console.log("get more...")
+      var pg=this.data.currentPage+1
+      this.setData({
+        currentPage:pg
+      })
+      this.getInquiryListById(appInstance.globalData.id,this.data.currentPage)
+    }
   },
 
   /**
@@ -68,14 +79,16 @@ Page({
   /**
    * 获取问诊列表
   */
-  getInquiryListById: function (id) {
+  getInquiryListById: function (id,currentPage) {
     var that = this;
+    console.log("currentpage="+currentPage)
     //请求问诊信息
     wx.request({
       //url: 'http://119.45.143.38:80/api/inquiry/getInquiryByPatientId',
-      url: 'http://localhost:8080/api/inquiry/getInquiryByPatientId',
+     url: 'https://yiwei.run/api/inquiry/getInquiryByPatientId',
       data: {
       id_user: id,
+      current_page:currentPage,
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -99,7 +112,13 @@ Page({
             inquiryList: res.data.data
           }
         )
-        
+        if(that.data.inquiryList.length==0){
+          wx.showToast({
+            title: '还没有咨询哦，去向专家发起咨询吧~',
+            icon: 'none',
+            duration: 5000
+            })
+        }
       }
     })
   },

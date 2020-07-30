@@ -72,7 +72,7 @@ Page({
     var that = this
     //请求医生列表
     wx.request({
-      url: 'http://119.45.143.38:80/api/prescription/getPrescriptionByPatientId',
+      url: 'https://yiwei.run/api/prescription/getPrescriptionByPatientId',
       data: {
         id_patient: id,
       },
@@ -89,6 +89,13 @@ Page({
             prescriptionList: resp,
           }
         )
+        if(that.data. prescriptionList.length==0){
+          wx.showToast({
+            title: '还没有建议哦，去发起咨询吧~',
+            icon: 'none',
+            duration: 5000
+            })
+        }
       }
     })
   },

@@ -5,12 +5,12 @@
 	<view class="card">
 		<view class="card-head">
 			<image src="../../src/icon/menu.png" mode="widthFix"></image>
-			<text>就诊人信息</text>
+			<text>咨询人信息</text>
 		</view>
 	<view class="card-body">
 
 
-<view class="weui-cells__title">就诊人</view>
+<view class="weui-cells__title">咨询人</view>
     <view class="weui-cells weui-cells_after-title">
     <view class="page-second-title"></view> 
       <view class="weui-cell weui-cell_input">

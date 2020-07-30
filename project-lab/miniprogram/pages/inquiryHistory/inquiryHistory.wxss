@@ -134,3 +134,12 @@
   color: #c0c0c0;
 }
 
+.doctorImg
+{
+  width:80rpx;
+  height:80rpx;
+  /* margin-top:49rpx;
+  margin-left:43rpx;
+  float:left; */
+  /* border-radius:20rpx; */
+}

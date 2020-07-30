@@ -64,7 +64,8 @@ App({
     var that = this;
     //请求用户id
     wx.request({
-      url: 'http://119.45.143.38:80/api/user/getUserId',
+      // url: 'https://yiwei.run/api/user/getUserId',
+      url: 'https://yiwei.run/api/user/getUserId',
       data: {
         openid:openId,
       },
@@ -75,12 +76,15 @@ App({
       success(res) {
           console.log(res.data.data)
           that.globalData.id = res.data.data.id
+          that.globalData.is_doctor = res.data.data.is_doctor
+
       }
     })
   },
   globalData: {
     openid: null,
-    id:null
+    id:null,
+    is_doctor:0 //判断当前用户是否是医生
   }
 }
 )

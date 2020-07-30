@@ -12,7 +12,7 @@ Page({
     user_id:1,
     doctor_avatar: "",
     doctor_name: "吴医生",
-    state:0,
+    status:0,
     department:'',
     score:5,
    
@@ -28,7 +28,9 @@ Page({
     prescription:'',
     hasPrescription:0,
     newReply:'',
-    picurlList:''
+    picurlList:'',
+  
+    avatar:'',
   },
 /**
    * 生命周期函数--监听页面加载
@@ -55,7 +57,7 @@ Page({
     var that = this;
     //请求回复信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/reply/getReplyListByInquiryId',
+      url: 'https://yiwei.run/api/reply/getReplyListByInquiryId',
       data: {
         id_inquiry:id
       },
@@ -100,7 +102,7 @@ Page({
   var that = this;
   //请求回复信息
   wx.request({
-    url: 'http://119.45.143.38:80/api/prescription/getPrescriptionByInquiry',
+    url: 'https://yiwei.run/api/prescription/getPrescriptionByInquiry',
     data: {
       id_inquiry:id
     },
@@ -124,7 +126,7 @@ Page({
     var that = this;
     //请求问诊信息
     wx.request({
-      url: 'http://119.45.143.38:80/api/inquiry/getInquiryByInquiryId',
+      url: 'https://yiwei.run/api/inquiry/getInquiryByInquiryId',
       data: {
         id:id_inquiry
       },
@@ -135,17 +137,18 @@ Page({
       success(res) {
         console.log(res.data.data[0])
         let resp = res.data.data[0]
+       
         that.setData({
           doctor_id:resp.id_doctor,
           user_id:resp.id_user,
           patient_id: resp.id_patient,
           doctor_avatar: resp.doctor_avatar,
           doctor_name: resp.doctor_name,
-          state: resp.state,
+          status: resp.status,
           department:resp.department
         })
         that.getPatient(resp.id_patient)
-        if(resp.state==1)
+        if(resp.status==2)
         {
           that.getComment(resp.id)
         }
@@ -159,7 +162,7 @@ Page({
   var that = this;
   //请求问诊信息
   wx.request({
-    url: 'http://119.45.143.38:80/api/patient/getPatientById',
+    url: 'https://yiwei.run/api/patient/getPatientById',
     data: {
       id:patient_id
     },
@@ -198,10 +201,10 @@ Page({
     var that=this
     //请求评论信息
     wx.request({
-     url: 'http://119.45.143.38:80/api/inquiry/updateInquiry',
+     url: 'https://yiwei.run/api/inquiry/updateInquiry',
      data: {
-       id:that.data.id_inquiry,
-      state:1
+      id:that.data.id_inquiry,
+      status:2
      },
      header: {
        'content-type': 'application/json' // 默认值
@@ -211,11 +214,16 @@ Page({
        console.log(res)
      }
    })
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/comment/comment',
       success: function (res) {
+        var commentInfo={
+          id_inquiry:that.data.id_inquiry,
+          id_patient:app.globalData.id,
+          id_doctor:that.data.doctor_id,
+            }
         // 通过eventChannel向被打开页面传送数据
-        //res.eventChannel.emit('sendData', inquiryid)
+        res.eventChannel.emit('sendData',commentInfo)
       }
     })
   },
@@ -243,7 +251,7 @@ Page({
    console.log(that.data.id_inquiry)
    //请求评论信息
    wx.request({
-    url: 'http://119.45.143.38:80/api/reply/addReply',
+    url: 'https://yiwei.run/api/reply/addReply',
     data: {
       id_inquiry:that.data.id_inquiry,
       content:that.data.newReply,
@@ -251,7 +259,8 @@ Page({
       floor:that.data.replyList.length+1,
       id_patient:that.data.patient_id,
       id_doctor:that.data.doctor_id,
-      from_user:1
+      from_user:1,
+      author_id:app.globalData.id
 
     },
     header: {
@@ -270,7 +279,7 @@ Page({
   var that = this;
   //请求评论信息
   wx.request({
-    url: 'http://119.45.143.38:80/api/comment/getCommentByInquiryId',
+    url: 'https://yiwei.run/api/comment/getCommentByInquiryId',
     data: {
       id_inquiry:id
     },

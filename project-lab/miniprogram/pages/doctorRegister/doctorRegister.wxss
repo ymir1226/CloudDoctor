@@ -1,4 +1,4 @@
-/* pages/patientList/patientList.wxss */
+/* miniprogram/pages/doctorRegister/doctorRegister.wxss */
 .inq-container{
   background-color: #f6f6f6;
   padding: 40rpx;
@@ -19,7 +19,6 @@
   padding: 40rpx;
   display: flex;
   align-items: center;
-  flex-direction: row;
 }
 
 .card-body{
@@ -115,22 +114,36 @@
   color: #fff; 
 }
 
-.pre-name{
-  color: #199bfe;
-  font-size: 35rpx;
-}
-.precription{
-  background-color: #f6f6f6;
-  border-radius: 20rpx;
-  padding: 20rpx;
-  margin-top: 40rpx;
-}
-.img-box{
-  /* margin-left: 200rpx; */
-  flex:5
+.page-section-title{
+   margin-top: 40rpx;
 }
 
-.patientName{
- flex:9
+.page-second-title{
+   margin-top: 20rpx;
 }
 
+  
+.send-more-result-main{
+  margin-top:30rpx;
+  }
+  .send-more-result-main image{
+    height: 100%;
+    width: 100%;
+  }
+  .send-more-result-main .file-box{
+  margin-right: 14rpx;
+  height: 160rpx;
+  width: 160rpx;
+  position:relative;
+  display:inline-block;
+  }
+  
+  .send-more-result-main .file-box .img-box{
+    height: 100%;
+    width: 100%;
+  }
+  .send-more-result-main .remove-icon{
+  position: absolute;
+  right:5rpx;
+  top:5rpx;
+  }
