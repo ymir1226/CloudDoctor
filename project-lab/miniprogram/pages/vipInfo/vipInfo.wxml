@@ -1,0 +1,54 @@
+<!--pages/doctorList/doctorList.wxml-->
+<view class="container">
+  <view class="person-top">
+		<view class="info-box">
+			<view class="head-img">
+        <open-data class="head-img" type="userAvatarUrl"></open-data>
+      </view>
+			<view class="text-box">
+				<open-data type="userNickName" lang="zh_CN"></open-data>
+			</view>
+		</view>
+	</view>
+  <view class="infoBlocks">
+    <view class="title">
+      <text class="titleText">会员咨询信息（普通专家）</text>
+    </view>
+    <view class="details">
+      <view class="detailsInfo">
+        剩余咨询次数： <text class="availableTimes">{{generalExperts.availableTimes}}</text>
+      </view>
+      <view class="detailsInfo">
+        已使用咨询次数： <text class="usedTimes">{{generalExperts.usedTimes}}</text>
+      </view>
+      <view class="detailsInfo">
+        全部咨询次数： <text class="totalTimes">{{generalExperts.totalTimes}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="infoBlocks">
+    <view class="title">
+      <text class="titleText">会员咨询信息（特殊专家）</text>
+    </view>
+    <view class="details">
+      <view class="detailsInfo">
+        剩余咨询次数： <text class="availableTimes">{{specialExperts.availableTimes}}</text>
+      </view>
+      <view class="detailsInfo">
+        已使用咨询次数： <text class="usedTimes">{{specialExperts.usedTimes}}</text>
+      </view>
+      <view class="detailsInfo">
+        全部咨询次数： <text class="totalTimes">{{specialExperts.totalTimes}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="infoBlocks">
+    <view class="title">
+      <text class="titleText">额外说明</text>
+    </view>
+    <view class="details">
+      <text class="additionInfo">{{additionInfo}}</text>
+    </view>
+  </view>
+</view>
+

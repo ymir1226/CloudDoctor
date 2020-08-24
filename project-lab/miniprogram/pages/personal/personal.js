@@ -33,6 +33,11 @@ Page({
       url: '/pages/inquiryHistory/inquiryHistory',
     })
   },
+  redirectToBuyVip: function (e) {
+    wx.navigateTo({
+      url: '/pages/buyvip/buyvip',
+    })
+  },
   redirectToChat: function (e) {
     wx.navigateTo({
       url: '/pages/chat/chat',
@@ -47,5 +52,10 @@ Page({
     wx.navigateTo({
       url: '/pages/doctorRegister/doctorRegister',
     })
-  }
+  },
+  redirectToVipInfo: function (e) {
+    wx.navigateTo({
+      url: '/pages/vipInfo/vipInfo',
+    })
+  },
 })
