@@ -18,11 +18,10 @@
 	</view>
 
 	<view class="per-mid">
-		<view class="img-box" bindtap="redirectToInquiryHistory">
-			<image mode="aspectFit" class="con-img" src='../../src/icon/record1.png'></image>
+		<view class="img-box" bindtap="redirectToBuyVip">
+			<image mode="aspectFit" class="con-img" src='../../src/icon/buyvip.png'></image>
 		</view>
 		<view class="img-box" bindtap="redirectToChat">
-			<!-- <image mode="widthFix" class="con-img" src='../../src/icon/consult.png'></image> -->
       <image mode="widthFix" bindtap="goChat" class="con-img" src='../../src/icon/consult.png'></image>
 		</view>
 		<view class="img-box" hidden="{{is_doctor==0}}">
@@ -36,6 +35,9 @@
 		</view>
 		<view class="img-box" bindtap="redirectToCollect" hidden="{{is_doctor==1}}">
 			<image mode="widthFix" class="con-img" src='../../src/icon/favorite.png'></image>
+		</view>
+    <view class="img-box" bindtap="redirectToVipInfo" hidden="{{is_doctor==1}}">
+			<image mode="widthFix" class="con-img" src='../../src/icon/vipinfo.png'></image>
 		</view>
 		<view style="width:600rpx;height:180rpx;backgrand:transparent;">
 		</view>

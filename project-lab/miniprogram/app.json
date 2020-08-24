@@ -16,6 +16,8 @@
     "pages/doctorHome/doctorHome",
     "pages/collect/collect",
     "pages/inquiryHistory/inquiryHistory",
+    "pages/buyvip/buyvip",
+    "pages/vipInfo/vipInfo",
     "pages/prescription/prescription"
   ],
   "window": {
