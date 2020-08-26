@@ -3,7 +3,7 @@
   <view class="search">
     <!-- <image src="../../src/icon/delete.png" class="deleteImg"></image> -->
     <image src="../../src/icon/search.png" bindtap="onClickSearch" class="deleteImg"></image>
-    <input placeholder="搜疾病/症状/科室" style="text-align:center" bindinput="bindSearch" class="inputSearch"></input>
+    <input placeholder="搜索咨询内容" style="text-align:center" bindinput="bindSearch" class="inputSearch"></input>
   </view>
   <view class='result-container' style="position: fixed; z-index: 10">
   <view class='search-history' wx:if="{{StorageFlag}}">
@@ -42,7 +42,7 @@
             <text class="score">{{item.score}}</text>
             <text class="review">{{item.reviews}} reviews</text>
           </view>
-          <text class="doctorSpecial">{{item.expert}}</text>
+          <!-- <text class="doctorSpecial">{{item.expert}}</text> -->
           <view class="priceConsult">
             <text class="price">￥{{item.inquiry_price}}</text>
             <button style="width:auto" class="consultButton" bindtap="onClickConsult" data-doctorId="{{item.id}}">向他咨询</button>

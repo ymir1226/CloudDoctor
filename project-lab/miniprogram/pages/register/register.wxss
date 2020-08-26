@@ -9,7 +9,7 @@
 
 .reg-mid{
   background-color: white;
-  height: 180rpx;
+  height: 80rpx;
   border-radius: 0 0 100rpx 100rpx;
   position: relative;
   top: -5rpx;
@@ -29,7 +29,7 @@
   /* position: relative;
   top: -90rpx; */
   width: auto;
-  background-color: #0091ff;
+  /* background-color: #0091ff; */
 }
 
 .reg-bottom text{
@@ -42,7 +42,7 @@
 }
 
 .reg-button{
-  margin: 200rpx 20rpx 0rpx 20rpx;
+  margin: 55rpx 20rpx 55rpx 20rpx;
   border-radius: 100rpx;
   background-color: #0091ff;
   border:2rpx solid #fff;

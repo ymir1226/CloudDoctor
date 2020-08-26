@@ -1,4 +1,4 @@
-// pages/inquiryHistory/inquiryHistory.js
+// miniprogram/pages/doctor_inquiryList/doctor_inquiryList.js
 Page({
   /**
    * 页面的初始数据
@@ -84,10 +84,11 @@ Page({
     console.log("currentpage="+currentPage)
     //请求问诊信息
     wx.request({
-      //url: 'http://119.45.143.38:80/api/inquiry/getInquiryByPatientId',
-     url: 'https://yiwei.run/api/inquiry/getInquiryByPatientId',
+      url: 'http://localhost:8080/api/inquiry/getInquiryByDoctorId',
+
       data: {
-      id_user: id,
+      // id_doctor: id,
+      id_doctor: 42,
       current_page:currentPage,
       },
       header: {
@@ -130,13 +131,11 @@ Page({
     console.log(event.currentTarget.dataset.id)
     var inquiryid = event.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/reply/reply',
+      url: '/pages/doctor_reply/doctor_reply',
       success: function (res) {
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit('sendData', inquiryid)
       }
     })
-  },
-   
-  
+  }, 
 })

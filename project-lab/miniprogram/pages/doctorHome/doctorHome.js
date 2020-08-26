@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    starArray:[],
+    unstarArray:[],
     department:'',
     chat_price:50,
     inquiry_price:10,
@@ -33,11 +35,12 @@ Page({
     ],
     currentItem:0,
     map:{
-      latitude:31.306067,
+      latitude:31.319067,
       longitude:121.529228,
       scale:14,
       markers:[{
         id:0,
+        // latitude:31.306067,
         latitude:31.306067,
         longitude:121.529228,
         width:50,

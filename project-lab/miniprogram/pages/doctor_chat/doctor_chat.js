@@ -1,7 +1,6 @@
-// pages/chat/chat.js
+// miniprogram/pages/doctor_chat/doctor_chat.js
 const app=getApp()
 const cloudPath="cloud://airobot-z9ted.6169-airobot-z9ted-1302168733/"
-
 Page({
 
   /**
@@ -10,7 +9,6 @@ Page({
   data: {
     focus: false,
     val: '',
-    // orderList: [{ name: '吴医生', src: 'http://img1.imgtn.bdimg.com/it/u=105692044,3597038919&fm=27&gp=0.jpg', cue: '血糖控制异常', status: 2 }, { name: '张医生', src: 'http://img1.imgtn.bdimg.com/it/u=105692044,3597038919&fm=27&gp=0.jpg', status: 1 }],
     orderList: [],
     toView: 1
    
@@ -80,10 +78,10 @@ Page({
     //请求医生列表
     console.log(app.globalData.id)
     wx.request({
-      url: 'https://yiwei.run/api/chatorder/getChatOrderByPatientId',
-      //url: 'http://localhost:8080/api/chatorder/getChatOrderByPatientId',
+      // url: 'https://yiwei.run/api/chatorder/getChatOrderByDoctorId',
+      url: 'https://yiwei.run/api/chatorder/getChatOrderByDoctorId',
       data: {
-        id_patient: app.globalData.id
+        id_doctor: app.globalData.id
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -92,11 +90,7 @@ Page({
       success(res) {
         console.log(res.data.data)
         let resp = res.data.data
-        for(var t in resp)
-        {
-          resp[t].avatar=cloudPath+resp[t].avatar
-          console.log(resp[t].avatar)
-        }
+        
         //异常处理
         that.setData(
           {
@@ -105,7 +99,7 @@ Page({
         )
         if(that.data.orderList.length==0){
           wx.showToast({
-            title: '还没有咨询哦，去发起咨询吧~',
+            title: '还没有患者向您咨询哦~',
             icon: 'none',
             duration: 5000
             })
@@ -138,18 +132,6 @@ Page({
         res.eventChannel.emit('sendData', chatinfo)
       }
     })
-    // else if(state==2){
-    //   wx.showToast({
-    //     icon: 'none',
-    //     title: '预约还未开始！',
-    //   })
-    // }
-    // else if(state==3){
-    //   wx.showToast({
-    //     icon: 'none',
-    //     title: '预约已经结束！',
-    //   })
-    // }
   },
   showToast(){
     wx.showToast({

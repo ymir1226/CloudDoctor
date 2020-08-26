@@ -1,16 +1,14 @@
+<!--miniprogram/pages/doctor_reply/doctor_reply.wxml-->
 <view class="reply-container">
 	<view class="card">
 		<view class="card-body doc-info">
 			<image mode="aspectFill" style="height:150rpx;" src="{{doctor_avatar}}"></image>
 			<view style="margin-bottom: 0;" class="doc-info-right">
-				<!-- <text style="font-size:45rpx">{{doctorName}}</text> -->
 				 <text style="font-size:45rpx">{{doctor_name}}</text>
 				<text>咨询</text>
-				<!-- <text>心内科</text> -->
 				<view style="display:flex;align-items:center;">
 					<image mode="widthFix" src="../../src/icon/star.png"></image>
 					<text >{{score}}</text>
-					<!-- <text >4.8</text> -->
 				</view>
 			</view>
 		</view>
@@ -91,7 +89,6 @@
 		<view class="card-body">
 			<view>专家回复</view>
 			<view class="note">回复时间：{{item.created_at}}</view>
-			<!-- <view>水痘疫苗是一种弱化的水痘活菌。不要用阿司匹林或含有阿司匹林的药物治疗发烧，或其它水痘症状，以免引发雷氏症候群，影响肝脏和大脑，而且可能会致命。一定要保持身体水分充足。水痘患者可能会脱水。一整天都要多喝水和其它补水液体，比如运动饮料。</view> -->
 			<view>{{item.content}}</view>
 		</view>
 </block>
@@ -106,8 +103,11 @@
      
     </view>
 		<view class="card-body">
- <view class="card-button" bindtap="continueInquiry" wx:if="{{status==0}}">
-        <text>继续咨询</text>
+ <view class="card-button" bindtap="replyInquiry" wx:if="{{status==0}}">
+        <text>回复咨询</text>
+      </view>
+	 <view class="card-button" bindtap="addPrescription" wx:if="{{status==0}}">
+        <text>添加建议</text>
       </view>
 	</view>
 		</view>
@@ -115,17 +115,17 @@
 <view class="card" hidden="{{ifInquiry==1?false:true}}">
 		<view class="card-head">
 			<image src="../../src/icon/question.png" mode="widthFix"></image>
-			<text>请输入你的问题/描述你的症状</text>
+			<text>请输入您的回复</text>
 		</view>
 		<view class="card-body">
-			<textarea maxlength='1000' placeholder="请输入你的问题" bindinput="handleInput"></textarea>
+			<textarea maxlength='1000' placeholder="" bindinput="handleInput"></textarea>
 			<view class="card-button" bindtap="uploadPic">
 				<image mode="widthFix" src="../../src/icon/label.png"></image>
 				<text>上传图片</text>
 			</view>
 				<view class="card-button" bindtap="onClickCommit">
 				<image mode="widthFix" src="../../src/icon/edit.png"></image>
-				<text>提交咨询</text>
+				<text>提交回复</text>
 			</view>
       <view class="send-more-result-main" hidden="{{images==0}}">
         <block wx:for="{{images}}" wx:for-index="idx">
@@ -178,11 +178,11 @@
     </view>
 	</view>
 
-	<text class="alert" >对于紧急医疗情况，请致电120（或您当地的紧急服务部门）或去最近的急诊室</text>
+	<!-- <text class="alert" >对于紧急医疗情况，请致电120（或您当地的紧急服务部门）或去最近的急诊室</text> -->
 
 </view>
 
-	<view class="bottom-card-button" id="pay" bindtap="finishInquiry" wx:if="{{status==0}}">
+	<!-- <view class="bottom-card-button" id="pay" bindtap="finishInquiry" wx:if="{{status==0}}">
 			<text>结束咨询</text>
 			<image mode="widthFix" src="../../src/icon/Right.png"></image>
-	</view>
+	</view> -->

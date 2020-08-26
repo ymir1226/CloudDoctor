@@ -40,13 +40,13 @@
       </view>
 </view>
 
-<view class="weui-cells__title">科室</view>
+<!-- <view class="weui-cells__title">科室</view>
     <view class="weui-cells weui-cells_after-title">
     <view class="page-second-title"></view> 
       <view class="weui-cell weui-cell_input">
         <input class="weui-input" auto-focus placeholder="{{department}}" bindinput="getDepartment"/>
       </view>
-</view>
+</view> -->
 
 <view class="weui-cells__title">联系方式</view>
     <view class="weui-cells weui-cells_after-title">

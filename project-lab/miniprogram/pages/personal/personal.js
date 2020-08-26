@@ -30,12 +30,12 @@ Page({
   },
   redirectToInquiryHistory: function (e) {
     wx.navigateTo({
-      url: '/pages/inquiryHistory/inquiryHistory',
+      url: '/pages/doctor_inquiryList/doctor_inquiryList',
     })
   },
   redirectToChat: function (e) {
     wx.navigateTo({
-      url: '/pages/chat/chat',
+      url: '/pages/doctor_chat/doctor_chat',
     })
   },
   redirectToPrescription: function (e) {

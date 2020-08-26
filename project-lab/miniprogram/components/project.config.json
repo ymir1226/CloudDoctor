@@ -1,13 +1,8 @@
 {
-	"description": "项目配置文件",
-	"miniprogramRoot": "miniprogram/",
-	"packOptions": {
-		"ignore": []
-	},
+	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
-		"enhance": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
@@ -28,16 +23,11 @@
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.1",
-	"appid": "wx7793c11227913a66",
-	"projectname": "project-lab",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
+	"libVersion": "1.9.94",
+	"appid": "wxc2482a4d3bf8ad0d",
+	"projectname": "cityPicker",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
-	"cloudfunctionRoot": "functions/",
-	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,

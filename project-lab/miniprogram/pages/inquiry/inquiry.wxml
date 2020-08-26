@@ -84,13 +84,13 @@
       </view>
     </view>
 		
-    <view class="weui-cells__title">病史</view>
+    <view class="weui-cells__title">身体状况</view>
       <view class="second_title"> </view>    
       <textarea maxlength='800' placeholder="{{illness_history}}" bindinput="getIllnessHistory"></textarea>
-   <view class="weui-cells__title">用药史</view>        
+   <view class="weui-cells__title">身体状况</view>        
       <view class="second_title"> </view>
       <textarea maxlength='800' placeholder="{{medicine_history}}" bindinput="getMedicineHistory"></textarea>
-    <view class="weui-cells__title">过敏药物</view>
+    <view class="weui-cells__title">身体状况</view>
       <view class="second_title"> </view>    
       <textarea maxlength='800' placeholder="{{allergen}}" bindinput="getAllergen"></textarea>
 		
