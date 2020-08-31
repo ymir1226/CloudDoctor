@@ -1,6 +1,21 @@
 {
   "pages": [
-    "index/index"
+    "pages/doctorList/doctorList",
+    "pages/personal/personal",
+    "pages/userRegister/userRegister",
+    "pages/register/register",
+    "pages/comment/comment",
+    "pages/schedule/schedule",
+    "pages/chat/chat",
+    "pages/room/room",
+    "pages/editPatient/editPatient",
+    "pages/patientList/patientList",
+    "pages/doctorHome/doctorHome",
+    "pages/collect/collect",
+    "pages/prescription/prescription",
+    "pages/buyvip/buyvip",
+    "pages/vipInfo/vipInfo",
+    "pages/doctorPersonal/doctorPersonal"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -8,5 +23,22 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/doctorList/doctorList",
+        "text": "首页",
+        "iconPath": "src/icon/home.png",
+        "selectedIconPath": "src/icon/home.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "我的",
+        "iconPath": "src/icon/person.png",
+        "selectedIconPath": "src/icon/person.png"
+      }
+    ]
+  },
+  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

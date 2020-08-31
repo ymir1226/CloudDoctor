@@ -78,8 +78,8 @@ Page({
     //请求医生列表
     console.log(app.globalData.id)
     wx.request({
-      // url: 'https://yiwei.run/api/chatorder/getChatOrderByDoctorId',
       url: 'https://yiwei.run/api/chatorder/getChatOrderByDoctorId',
+      // url: 'http://localhost:8080/api/chatorder/getChatOrderByDoctorId',
       data: {
         id_doctor: app.globalData.id
       },
@@ -113,7 +113,7 @@ Page({
   redirectToChatRoom: function (event) {
     console.log(event.currentTarget.dataset.item)
     var groupid = event.currentTarget.dataset.item.group_id
-    var doctor_name = event.currentTarget.dataset.item.doctor_name
+    var doctor_name = event.currentTarget.dataset.item.patient_name
     var doctor_avatar = event.currentTarget.dataset.item.doctor_avatar
     var status=event.currentTarget.dataset.item.status
     console.log(status)
@@ -121,11 +121,15 @@ Page({
     wx.navigateTo({
       url: '/pages/room/room',
       success: function (res) {
+        var boolean_status=true
+        if(status==1){
+          boolean_status=false
+        }
         var chatinfo={
           groupid: groupid,
           doctor_name:doctor_name,
           doctor_avatar:doctor_avatar,
-          status:status
+          room_status:boolean_status
         }
         // 通过eventChannel向被打开页面传送数据
         //res.eventChannel.emit('sendData', roomid)

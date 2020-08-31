@@ -1,0 +1,50 @@
+<!--pages/doctorList/doctorList.wxml-->
+<view class="reg-box" >
+	<image class="reg-top" src='../../src/icon/vip.png' mode="widthFix" bindtap="loginss"></image>
+
+	<view class="reg-mid">
+	</view>
+
+
+  <view class="infoBlocks">
+    <view class="title">
+      <text class="titleText">会员咨询信息（普通专家）</text>
+    </view>
+    <view class="details">
+      <view class="detailsInfo">
+        剩余咨询次数： <text class="availableTimes">{{general_remain}}</text>
+      </view>
+      <view class="detailsInfo">
+        已使用咨询次数： <text class="usedTimes">{{general_used}}</text>
+      </view>
+      <view class="detailsInfo">
+        全部咨询次数： <text class="totalTimes">{{general_total}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="infoBlocks">
+    <view class="title">
+      <text class="titleText">会员咨询信息（特殊专家）</text>
+    </view>
+    <view class="details">
+      <view class="detailsInfo">
+        剩余咨询次数： <text class="availableTimes">{{special_remain}}</text>
+      </view>
+      <view class="detailsInfo">
+        已使用咨询次数： <text class="usedTimes">{{special_used}}</text>
+      </view>
+      <view class="detailsInfo">
+        全部咨询次数： <text class="totalTimes">{{special_total}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="infoBlocks">
+    <view class="title">
+      <text class="titleText">额外说明</text>
+    </view>
+    <view class="details">
+      <text class="additionInfo">{{addition_info}}</text>
+    </view>
+  </view>
+
+</view>

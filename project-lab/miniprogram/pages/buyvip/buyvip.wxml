@@ -1,0 +1,37 @@
+<!--pages/doctorList/doctorList.wxml-->
+<!-- <image src="../../src/icon/card.png" ></image> -->
+<view class="container">
+  <view class="productList">
+    <view class="product" wx:for="{{cardList}}">
+      <image src="{{item.img_url}}" class="productImg"  mode='aspectFill'></image>
+      <view class="productInfo">
+        <view class="productName">
+            <text class="productNameText">{{item.title}}</text>
+        </view>
+        <view class="productDetail">
+            <text class="productDetailText">{{item.introduction}}</text>
+        </view>
+        <view class="productPrice">
+          <text class="price">￥{{item.price}}</text>
+          <button  class="vipDetailButton" bindtap="onClickVipDetail" data-product="{{item}}">介绍</button>
+          <button  class="vipBuyButton" bindtap="onClickVipBuy" data-card="{{item}}">购买</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<modal title="详细信息" confirm-text="确定" hidden="{{modalHidden}}" no-cancel bindconfirm="modalHide">
+    <view>
+      <text>会员类型: {{modalContent.title}}</text>
+    </view>
+    <view>
+      <text>价格: ¥ {{modalContent.price}}</text>
+    </view>
+    <view>
+      <text>详细介绍: {{modalContent.info}}</text>
+    </view>
+    <view>
+      <text>额外说明: {{modalContent.additioninfo}}</text>
+    </view>
+</modal>
