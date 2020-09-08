@@ -1,6 +1,6 @@
 const app = getApp()
 const cloudPath="cloud://airobot-z9ted.6169-airobot-z9ted-1302168733/"
-const TmplId = '4SnZohkpw5KAM4rxZYUrUl1TDncs9-RexIfgsNoFIwo';
+const TmplId = '8bV0_9WUaavyWCmjRalYcrCUTB7-zcR64_bv-845OsE';//长期订阅-问诊提醒模板
 var utils=require('../../utils/util.js')
 
 // pages/doctorHome/doctorHome.js
@@ -92,14 +92,17 @@ Page({
     isCollect:0,
     item: {
       "thing1": {
-        "value": "X医生的咨询"
-      },
-      "thing3": {
-        "value": "请在X个工作日以内进入聊天室咨询"
-      },//推送文案： 预约时间：this.data.startTime - this.data.endTime
-      "character_string5": {
-        "value": "a3510731313"
-      }
+        "value": "晚上血压又升高了，是否需要加药？"
+      },//问诊内容
+      "name3": {
+        "value": "钟医生"
+      },//问诊医生
+      "thing2":{
+        "value":"来自张三的问诊"
+      },//提醒内容
+      "thing4": {
+        "value": "点击进入小程序回复咨询"
+      }//提示说明
     },
   },
 
@@ -605,12 +608,12 @@ addChatOrder: function(){
     var value1="item.thing1.value"
     var value2="item.thing3.value"
     var value3="item.character_string5.value"
-    that.setData({
-      // group_id:"聊天室id",
-      [value1]:"发起了咨询",
-      [value2]: "刚刚",
-      // [value3]:"订单id"
-    })
+    // that.setData({
+    //   // group_id:"聊天室id",
+    //   [value1]:"发起了咨询",
+    //   [value2]: "刚刚",
+    //   // [value3]:"订单id"
+    // })
     utils.Subscrib(that.data.item,that.data.doctor_openid,TmplId)
     //====
     that.redirectToChat()
